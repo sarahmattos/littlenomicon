@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     public Vector3 movement;
     public Vector3 lastPos;
+    public bool interagir=false;
+    private GameObject targetObjeto;
+     private Interagivel it;
+
+     public string test;
+
+     public TMP_FontAsset fontTexto;
 
     private void Start()
     {
@@ -25,6 +33,12 @@ public class PlayerController : MonoBehaviour
     {
         movePlayer();
         AnimatorManager();
+        if(interagir==true){
+            if(Input.GetKeyDown(KeyCode.E)){
+                 CanvasManager.Instance.dialogoUi.SetActive(true);
+                 CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, fontTexto);
+            }
+        }
         
     }
     public void movePlayer(){
@@ -43,4 +57,29 @@ public class PlayerController : MonoBehaviour
         }
         lastPos = transform.position;
     }
+    void OnTriggerEnter(Collider target)
+    {
+        if(target.tag == "Interagivel")
+        {
+            interagir=true;
+            targetObjeto=target.gameObject;
+            InfosDialogo();
+        }
+    }
+    void OnTriggerExit(Collider target)
+    {
+        if(target.tag == "Interagivel")
+        {
+            interagir=false;
+            CanvasManager.Instance.dialogoUi.SetActive(true);
+            CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, fontTexto);
+        }
+    }
+    public void InfosDialogo(){
+        
+        it =targetObjeto.GetComponent<Interagivel>();
+        fontTexto=it.fontTexto;
+        
+    }
+    //target.GameObject.FindObjectOfType<ZonaTerritorial>();
 }
