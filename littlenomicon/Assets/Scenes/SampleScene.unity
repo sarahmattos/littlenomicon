@@ -339,47 +339,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0, z: 0}
   lastPos: {x: 0, y: 0, z: 0}
   interagir: 0
-  actionReference:
-    m_Name: Action Reference
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 2a35d1c8-7e05-46cc-9b98-645091b70dd2
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 9be18d4d-1d35-40b0-bfdd-f2da0adea505
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action Reference
-      m_Flags: 0
-    - m_Name: 1D Axis
-      m_Id: aeb40c4e-cb75-4a7f-8334-13127fabe22e
-      m_Path: 1DAxis
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action Reference
-      m_Flags: 4
-    - m_Name: negative
-      m_Id: 4423e007-6919-4d26-83de-35f085e7ff5b
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action Reference
-      m_Flags: 8
-    - m_Name: positive
-      m_Id: 57a89cff-7e09-4d12-b54f-d46dd1b8c063
-      m_Path: 
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Action Reference
-      m_Flags: 8
-    m_Flags: 0
+  actionReference: {fileID: 7516675256088574087, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
 --- !u!114 &347033903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +381,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d5d39374-afa3-4975-a7aa-a7a6fc8ac490
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c535129a-9c63-494c-b9bd-664256a3bd04
+    m_ActionName: Player/Press[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
