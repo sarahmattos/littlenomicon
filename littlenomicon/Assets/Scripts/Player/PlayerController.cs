@@ -13,17 +13,25 @@ public class PlayerController : MonoBehaviour
     public Vector3 lastPos;
     public bool interagir=false;
     private GameObject targetObjeto;
-     private Interagivel it;
-
-     public string test;
-
-     public TMP_FontAsset fontTexto;
+    private Interagivel it;
+    public InputActionReference actionReference;
 
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        actionReference.action.started += context =>{
+            Debug.Log("aqui");
+            InfosDialogo();
+            };
     }
-
+     private void OnEnable()
+    {
+        actionReference.action.Enable();
+    }
+    private void OnDisable()
+    {
+        actionReference.action.Disable();
+    }
     public void OnMove(InputAction.CallbackContext context){
         move = context.ReadValue<Vector2>();
     }
@@ -33,12 +41,6 @@ public class PlayerController : MonoBehaviour
     {
         movePlayer();
         AnimatorManager();
-        if(interagir==true){
-            if(Input.GetKeyDown(KeyCode.E)){
-                 //
-            }
-        }
-        
     }
     public void movePlayer(){
         movement = new Vector3(move.x, 0f, move.y);
@@ -64,7 +66,6 @@ public class PlayerController : MonoBehaviour
         {
             interagir=true;
             targetObjeto=target.gameObject;
-            InfosDialogo();
         }
     }
     void OnTriggerExit(Collider target)
@@ -75,8 +76,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void InfosDialogo(){
-        it =targetObjeto.GetComponent<Interagivel>();
-        CanvasManager.Instance.dialogoUi.SetActive(true);
-        CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, it.fontAssetId);
+         if(interagir==true){
+                it =targetObjeto.GetComponent<Interagivel>();
+                CanvasManager.Instance.dialogoUi.SetActive(true);
+                CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, it.fontAssetId);
+         }
     }
 }
