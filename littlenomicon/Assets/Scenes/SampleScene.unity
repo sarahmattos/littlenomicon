@@ -253,7 +253,8 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: da545229eea36164d8b8cba2f75a1143, type: 3}
   texto:
   - "Isso \xE9 uma mesa!"
-  fontTexto: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  - "Pq vc est\xE1 olhando ainda?"
+  fontAssetId: 0
 --- !u!1 &267158293
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +340,7 @@ MonoBehaviour:
   lastPos: {x: 0, y: 0, z: 0}
   interagir: 0
   test: 
+  fontTexto: {fileID: 0}
 --- !u!114 &347033903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,6 +907,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1686075991}
   texto: {fileID: 1296534274}
+  fontTexto:
+  - {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  textosDialogo: []
   dialogoUi: {fileID: 642341745}
 --- !u!1 &963194225
 GameObject:

@@ -9,6 +9,7 @@ public class Interagivel : MonoBehaviour
 {
     public Sprite icon;
     public string[] texto;
-    public TMP_FontAsset fontTexto;
+    public int fontAssetId;
+   // public TMP_FontAsset fontTexto;
 }
 

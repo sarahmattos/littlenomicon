@@ -35,15 +35,16 @@ public class PlayerController : MonoBehaviour
         AnimatorManager();
         if(interagir==true){
             if(Input.GetKeyDown(KeyCode.E)){
-                 CanvasManager.Instance.dialogoUi.SetActive(true);
-                 CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, fontTexto);
+                 //
             }
         }
         
     }
     public void movePlayer(){
         movement = new Vector3(move.x, 0f, move.y);
+        if (movement != Vector3.zero) {
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
+        }
         //transform.rotation = Quaternion.Euler(0, movement, 0);
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
@@ -71,15 +72,11 @@ public class PlayerController : MonoBehaviour
         if(target.tag == "Interagivel")
         {
             interagir=false;
-            CanvasManager.Instance.dialogoUi.SetActive(true);
-            CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, fontTexto);
         }
     }
     public void InfosDialogo(){
-        
         it =targetObjeto.GetComponent<Interagivel>();
-        fontTexto=it.fontTexto;
-        
+        CanvasManager.Instance.dialogoUi.SetActive(true);
+        CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, it.fontAssetId);
     }
-    //target.GameObject.FindObjectOfType<ZonaTerritorial>();
 }
