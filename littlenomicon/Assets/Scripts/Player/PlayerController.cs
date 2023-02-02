@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool interagir = false;
     public bool dialogoAberto=false;
     private GameObject targetObjeto;
+    private bool jaConversou;
     private Interagivel it;
     public InputActionReference actionReference;
 
@@ -88,15 +89,16 @@ public class PlayerController : MonoBehaviour
     public void InfosDialogo()
     {
         if (interagir == true)
-        {
+        {   
             if(dialogoAberto==false){
                 it = targetObjeto.GetComponent<Interagivel>();
-                CanvasManager.Instance.dialogoUi.SetActive(true);
-                CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, it.fontAssetId);
-                dialogoAberto=true;
+                CanvasManager.Instance.atualizarCanvasDialogo(it.icon, it.texto, it.fontAssetId, it.personagem, it.jaConversou);
             }else{
                 CanvasManager.Instance.passarDialogo(it.texto);
             }
         }
+    }
+    public void DisableObject(){
+        it.jaConversou=true;
     }
 }
