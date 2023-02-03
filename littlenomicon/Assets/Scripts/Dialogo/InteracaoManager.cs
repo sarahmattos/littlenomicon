@@ -35,8 +35,11 @@ public class InteracaoManager : MonoBehaviour
     }
     public void optionSelected(DialogueObject selectedOption){
         optionselected=true;
+        dialogueObject = selectedOption;
+         StartDialogue();
     }
     IEnumerator DisplayDialogue(){
+        yield return null;
         Dialoguecanvas.SetActive(true);
         foreach(var dialogue in dialogueObject.dialogueSegments){
             texto.text=dialogue.dialogueText;
@@ -46,7 +49,7 @@ public class InteracaoManager : MonoBehaviour
             //options
             DialogueChoices.SetActive(true);
             for(int i=0;i<dialogue.dialogueChoices.Count;i++){
-                ChoicesBtn[i].GetComponentInChildren<TextMeshProUGUI>().text=dialogue.dialogueChoices[i].dialogueChoice;
+                 ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogue.dialogueChoices[i].followOnDialogue, dialogue.dialogueChoices[i].dialogueChoice);
             }
             while(!optionselected){
                 yield return null;

@@ -405,6 +405,7 @@ GameObject:
   - component: {fileID: 442148955}
   - component: {fileID: 442148954}
   - component: {fileID: 442148953}
+  - component: {fileID: 442148956}
   m_Layer: 5
   m_Name: bom
   m_TagString: Untagged
@@ -476,7 +477,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 442148954}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 442148956}
+        m_TargetAssemblyTypeName: UiDialogueInteract, Assembly-CSharp
+        m_MethodName: SelectOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &442148954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +528,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442148951}
   m_CullTransparentMesh: 1
+--- !u!114 &442148956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442148951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2f7a71653f325408d847be4d553329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 1812571706}
 --- !u!1 &496546163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,6 +1621,7 @@ GameObject:
   - component: {fileID: 1103264291}
   - component: {fileID: 1103264290}
   - component: {fileID: 1103264289}
+  - component: {fileID: 1103264292}
   m_Layer: 5
   m_Name: mal
   m_TagString: Untagged
@@ -1666,7 +1693,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1103264290}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1103264292}
+        m_TargetAssemblyTypeName: UiDialogueInteract, Assembly-CSharp
+        m_MethodName: SelectOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1103264290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1705,6 +1744,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103264287}
   m_CullTransparentMesh: 1
+--- !u!114 &1103264292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103264287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2f7a71653f325408d847be4d553329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 496546165}
 --- !u!1 &1296534272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,6 +2046,7 @@ GameObject:
   - component: {fileID: 1790367237}
   - component: {fileID: 1790367236}
   - component: {fileID: 1790367235}
+  - component: {fileID: 1790367238}
   m_Layer: 5
   m_Name: neutro
   m_TagString: Untagged
@@ -2065,7 +2118,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1790367236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1790367238}
+        m_TargetAssemblyTypeName: UiDialogueInteract, Assembly-CSharp
+        m_MethodName: SelectOption
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1790367236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,6 +2169,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790367233}
   m_CullTransparentMesh: 1
+--- !u!114 &1790367238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790367233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2f7a71653f325408d847be4d553329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 1102630818}
 --- !u!1 &1812571704
 GameObject:
   m_ObjectHideFlags: 0
