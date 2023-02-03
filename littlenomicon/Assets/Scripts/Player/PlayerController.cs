@@ -25,7 +25,8 @@ public class PlayerController : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         actionReference.action.started += context =>
         {
-            InfosDialogo();
+
+            //InfosDialogo();
         };
     }
     private void OnEnable()
@@ -82,8 +83,8 @@ public class PlayerController : MonoBehaviour
     {
         if (target.tag == "Interagivel")
         {
-            interagir = false;
-            CanvasManager.Instance.dialogoUi.SetActive(false);
+            //interagir = false;
+            //CanvasManager.Instance.dialogoUi.SetActive(false);
         }
     }
     public void InfosDialogo()
