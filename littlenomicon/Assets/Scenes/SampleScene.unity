@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84be204b81580264f9c6228d2d2d5bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueObject: {fileID: 11400000, guid: e813686fbe6e0dc4c8f0cd9b07deb912, type: 2}
+  startDialogueObject: {fileID: 11400000, guid: e813686fbe6e0dc4c8f0cd9b07deb912, type: 2}
   Dialoguecanvas: {fileID: 642341745}
   DialogueChoices: {fileID: 1624980601}
   ChoicesBtn:

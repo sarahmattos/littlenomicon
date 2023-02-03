@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 public class InteracaoManager : MonoBehaviour
 {
-    [SerializeField] DialogueObject dialogueObject;
+    [SerializeField] DialogueObject startDialogueObject;
     [SerializeField] GameObject Dialoguecanvas;
     [SerializeField] GameObject DialogueChoices;
     [SerializeField] GameObject[] ChoicesBtn;
@@ -18,7 +18,8 @@ public class InteracaoManager : MonoBehaviour
         actionReference.action.started += context =>
         {
             if(PlayerController.Instance.interagir==true){
-                StartDialogue();
+                StartDialogue(startDialogueObject);
+                
             }
         };
     }
@@ -30,18 +31,18 @@ public class InteracaoManager : MonoBehaviour
     {
         actionReference.action.Disable();
     }
-    public void StartDialogue(){
-        StartCoroutine(DisplayDialogue());
+    public void StartDialogue(DialogueObject _dialogueObject){
+        PlayerController.Instance.dialogoAberto=true;
+        StartCoroutine(DisplayDialogue(_dialogueObject));
     }
     public void optionSelected(DialogueObject selectedOption){
         optionselected=true;
-        dialogueObject = selectedOption;
-         StartDialogue();
+         StartDialogue(selectedOption);
     }
-    IEnumerator DisplayDialogue(){
+    IEnumerator DisplayDialogue(DialogueObject _dialogueObject){
         yield return null;
         Dialoguecanvas.SetActive(true);
-        foreach(var dialogue in dialogueObject.dialogueSegments){
+        foreach(var dialogue in _dialogueObject.dialogueSegments){
             texto.text=dialogue.dialogueText;
             if(dialogue.dialogueChoices.Count==0){
                 yield return new WaitForSeconds(dialogue.dialogueDisplayTime);
@@ -54,10 +55,13 @@ public class InteracaoManager : MonoBehaviour
             while(!optionselected){
                 yield return null;
             }
+            break;
         }
         
     }
         Dialoguecanvas.SetActive(false);
          DialogueChoices.SetActive(false);
+         optionselected=false;
+         PlayerController.Instance.dialogoAberto=false;
 }
 }
