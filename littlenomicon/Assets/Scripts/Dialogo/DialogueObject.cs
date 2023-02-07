@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "DialogueObject", menuName = "NPC Dialogue Object", order = 0)]
 public class DialogueObject : ScriptableObject
 {
@@ -13,10 +14,13 @@ public class DialogueObject : ScriptableObject
 public struct DialogueSegment{
     public string dialogueText;
     public float dialogueDisplayTime;
+    public Sprite icon;
+    public int fontAssetId;
     public List<DialogueChoice> dialogueChoices;
 }
 [System.Serializable]
 public struct DialogueChoice{
     public string dialogueChoice;
     public DialogueObject followOnDialogue;
+    
 }

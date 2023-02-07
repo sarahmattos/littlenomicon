@@ -11,6 +11,8 @@ public class InteracaoManager : MonoBehaviour
     [SerializeField] GameObject DialogueChoices;
     [SerializeField] GameObject[] ChoicesBtn;
     [SerializeField] TMP_Text texto;
+    [SerializeField] Image icon;
+    [SerializeField] TMP_FontAsset[] fontTexto;
     public InputActionReference actionReference;
     bool optionselected = false;
     void Start()
@@ -44,6 +46,8 @@ public class InteracaoManager : MonoBehaviour
         Dialoguecanvas.SetActive(true);
         foreach(var dialogue in _dialogueObject.dialogueSegments){
             texto.text=dialogue.dialogueText;
+            icon.sprite =dialogue.icon;
+            texto.font = fontTexto[dialogue.fontAssetId];
             if(dialogue.dialogueChoices.Count==0){
                 yield return new WaitForSeconds(dialogue.dialogueDisplayTime);
             }else{
