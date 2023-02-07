@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public bool dialogoAberto=false;
     private GameObject targetObjeto;
     private bool jaConversou;
-    private Interagivel it;
+    public Interagivel it;
     public InputActionReference actionReference;
 
     private void Start()
@@ -77,15 +77,18 @@ public class PlayerController : MonoBehaviour
         {   
             targetObjeto = target.gameObject;
             it = targetObjeto.GetComponent<Interagivel>();
-            jaConversou=it.jaConversou;
-            if(jaConversou==false){
-                InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
-                if(it.conversaUmaVez==true)it.jaConversou=true;
-            }else{
-                InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            }
             interagir = true;
-            
+            jaConversou=it.jaConversou;
+            if(jaConversou==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
+            if(jaConversou==true)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+        }
+    }
+    void OnTriggerStay(Collider target)
+    {
+        if (target.tag == "Interagivel")
+        {   
+            jaConversou=it.jaConversou;
+            if(jaConversou==true)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
         }
     }
     void OnTriggerExit(Collider target)

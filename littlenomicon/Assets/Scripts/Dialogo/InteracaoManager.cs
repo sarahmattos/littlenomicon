@@ -48,6 +48,7 @@ public class InteracaoManager : MonoBehaviour
         dialogueObject=selectedOption;
         ChamarDialogoInicio();
     }
+    
     public void DisplayDialogue(){
         PlayerController.Instance.dialogoAberto=true;
         PlayerController.Instance.interagir=false;
@@ -66,9 +67,14 @@ public class InteracaoManager : MonoBehaviour
         }else{
             Dialoguecanvas.SetActive(false);
             PlayerController.Instance.dialogoAberto=false;
+            if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
+            PlayerController.Instance.interagir=true;
         }
         
     }
+    
+    
+    
     /*
     IEnumerator DisplayDialogue(DialogueObject _dialogueObject){
         yield return null;
