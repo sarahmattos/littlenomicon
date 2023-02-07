@@ -74,11 +74,18 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider target)
     {
         if (target.tag == "Interagivel")
-        {
+        {   
             targetObjeto = target.gameObject;
             it = targetObjeto.GetComponent<Interagivel>();
-            InteracaoManager.Instance.startDialogueObject= it.startDialogueObject;
+            jaConversou=it.jaConversou;
+            if(jaConversou==false){
+                InteracaoManager.Instance.startDialogueObject= it.startDialogueObject;
+                if(it.conversaUmaVez==true)it.jaConversou=true;
+            }else{
+                InteracaoManager.Instance.startDialogueObject= it.jaVisitouDialogueObject;
+            }
             interagir = true;
+            
         }
     }
     void OnTriggerExit(Collider target)

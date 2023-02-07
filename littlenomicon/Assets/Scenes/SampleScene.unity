@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 240984945}
   - component: {fileID: 240984946}
   m_Layer: 0
-  m_Name: Mesa
+  m_Name: Toupeira
   m_TagString: Interagivel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,6 +235,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDialogueObject: {fileID: 11400000, guid: e813686fbe6e0dc4c8f0cd9b07deb912, type: 2}
+  jaVisitouDialogueObject: {fileID: 11400000, guid: 97a98e6c5c0c7d14f81aec7df99da54f, type: 2}
+  conversaUmaVez: 1
+  jaConversou: 0
 --- !u!54 &240984946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &267158293
 GameObject:
@@ -1231,6 +1234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDialogueObject: {fileID: 11400000, guid: 7e92a8eea2bf7f948b24830f3413b2a9, type: 2}
+  jaVisitouDialogueObject: {fileID: 0}
+  conversaUmaVez: 0
+  jaConversou: 0
 --- !u!65 &956903487
 BoxCollider:
   m_ObjectHideFlags: 0

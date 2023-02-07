@@ -8,8 +8,10 @@ using TMPro;
 public class Interagivel : MonoBehaviour
 {   
     public DialogueObject startDialogueObject;
+    public DialogueObject jaVisitouDialogueObject;
     //public bool personagem;
-    //public bool jaConversou;
+    public bool conversaUmaVez;
+    public bool jaConversou;
     //public Sprite icon;
     //public string[] texto;
     //public int fontAssetId;
