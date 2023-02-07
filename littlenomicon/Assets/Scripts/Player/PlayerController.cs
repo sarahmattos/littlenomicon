@@ -79,10 +79,10 @@ public class PlayerController : MonoBehaviour
             it = targetObjeto.GetComponent<Interagivel>();
             jaConversou=it.jaConversou;
             if(jaConversou==false){
-                InteracaoManager.Instance.startDialogueObject= it.startDialogueObject;
+                InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
                 if(it.conversaUmaVez==true)it.jaConversou=true;
             }else{
-                InteracaoManager.Instance.startDialogueObject= it.jaVisitouDialogueObject;
+                InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             }
             interagir = true;
             

@@ -7,14 +7,16 @@ using TMPro;
 public class InteracaoManager : MonoBehaviour
 {
     public static InteracaoManager Instance;
-    public DialogueObject startDialogueObject;
+    public DialogueObject dialogueObject;
     [SerializeField] GameObject Dialoguecanvas;
-    [SerializeField] GameObject DialogueChoices;
+    public GameObject DialogueChoices;
     [SerializeField] GameObject[] ChoicesBtn;
     [SerializeField] TMP_Text texto;
     [SerializeField] Image icon;
     [SerializeField] TMP_FontAsset[] fontTexto;
     public InputActionReference actionReference;
+    public int indice=0;
+    
     bool optionselected = false;
     void Start()
     {
@@ -22,8 +24,10 @@ public class InteracaoManager : MonoBehaviour
         actionReference.action.started += context =>
         {
             if(PlayerController.Instance.interagir==true){
-                StartDialogue(startDialogueObject);
-                
+                ChamarDialogoInicio();
+            }else{
+                indice++;
+                DisplayDialogue();
             }
         };
     }
@@ -35,14 +39,37 @@ public class InteracaoManager : MonoBehaviour
     {
         actionReference.action.Disable();
     }
-    public void StartDialogue(DialogueObject _dialogueObject){
-        PlayerController.Instance.dialogoAberto=true;
-        StartCoroutine(DisplayDialogue(_dialogueObject));
+    public void ChamarDialogoInicio(){
+        indice=0;
+        Dialoguecanvas.SetActive(true);
+        DisplayDialogue();
     }
     public void optionSelected(DialogueObject selectedOption){
-        optionselected=true;
-         StartDialogue(selectedOption);
+        dialogueObject=selectedOption;
+        ChamarDialogoInicio();
     }
+    public void DisplayDialogue(){
+        PlayerController.Instance.dialogoAberto=true;
+        PlayerController.Instance.interagir=false;
+        
+        if(indice<dialogueObject.dialogueSegments.Count){
+            texto.text=dialogueObject.dialogueSegments[indice].dialogueText;
+            icon.sprite =dialogueObject.dialogueSegments[indice].icon;
+            texto.font = fontTexto[dialogueObject.dialogueSegments[indice].fontAssetId];
+
+            if(dialogueObject.dialogueSegments[indice].dialogueChoices.Count>0){
+                    DialogueChoices.SetActive(true);
+                    for(int i=0;i<dialogueObject.dialogueSegments[indice].dialogueChoices.Count;i++){
+                        ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice);
+                    }
+            }
+        }else{
+            Dialoguecanvas.SetActive(false);
+            PlayerController.Instance.dialogoAberto=false;
+        }
+        
+    }
+    /*
     IEnumerator DisplayDialogue(DialogueObject _dialogueObject){
         yield return null;
         Dialoguecanvas.SetActive(true);
@@ -70,4 +97,5 @@ public class InteracaoManager : MonoBehaviour
          optionselected=false;
          PlayerController.Instance.dialogoAberto=false;
 }
+*/
 }

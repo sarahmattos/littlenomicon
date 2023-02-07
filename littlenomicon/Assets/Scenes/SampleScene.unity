@@ -1329,7 +1329,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &963194225
 GameObject:
@@ -1459,7 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84be204b81580264f9c6228d2d2d5bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDialogueObject: {fileID: 0}
+  dialogueObject: {fileID: 0}
   Dialoguecanvas: {fileID: 642341745}
   DialogueChoices: {fileID: 1624980601}
   ChoicesBtn:
@@ -1472,6 +1472,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   - {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   actionReference: {fileID: 7516675256088574087, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
+  indice: 0
 --- !u!1 &1102630816
 GameObject:
   m_ObjectHideFlags: 0

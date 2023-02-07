@@ -19,6 +19,7 @@ public class UiDialogueInteract : MonoBehaviour
         
     }
     public void SelectOption(){
+        InteracaoManager.Instance.DialogueChoices.SetActive(false);
         interacaoManager.optionSelected(dialogueObject);
     }
 }
