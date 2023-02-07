@@ -38,7 +38,7 @@ public class CanvasManager : MonoBehaviour
             aux=0;
             dialogoUi.SetActive(false);
             if(personagem==true){
-                PlayerController.Instance.DisableObject();
+                //PlayerController.Instance.DisableObject();
             }
             PlayerController.Instance.dialogoAberto=false;
         }

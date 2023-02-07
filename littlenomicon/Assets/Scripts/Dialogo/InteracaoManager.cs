@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 using TMPro;
 public class InteracaoManager : MonoBehaviour
 {
-    [SerializeField] DialogueObject startDialogueObject;
+    public static InteracaoManager Instance;
+    public DialogueObject startDialogueObject;
     [SerializeField] GameObject Dialoguecanvas;
     [SerializeField] GameObject DialogueChoices;
     [SerializeField] GameObject[] ChoicesBtn;
@@ -17,6 +18,7 @@ public class InteracaoManager : MonoBehaviour
     bool optionselected = false;
     void Start()
     {
+        Instance =this;
         actionReference.action.started += context =>
         {
             if(PlayerController.Instance.interagir==true){

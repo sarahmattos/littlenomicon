@@ -75,18 +75,21 @@ public class PlayerController : MonoBehaviour
     {
         if (target.tag == "Interagivel")
         {
-            interagir = true;
             targetObjeto = target.gameObject;
+            it = targetObjeto.GetComponent<Interagivel>();
+            InteracaoManager.Instance.startDialogueObject= it.startDialogueObject;
+            interagir = true;
         }
     }
     void OnTriggerExit(Collider target)
     {
         if (target.tag == "Interagivel")
         {
-            //interagir = false;
+            interagir = false;
             //CanvasManager.Instance.dialogoUi.SetActive(false);
         }
     }
+    /*
     public void InfosDialogo()
     {
         if (interagir == true)
@@ -102,4 +105,5 @@ public class PlayerController : MonoBehaviour
     public void DisableObject(){
         it.jaConversou=true;
     }
+    */
 }
