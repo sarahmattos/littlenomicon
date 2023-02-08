@@ -15,9 +15,11 @@ public class InteracaoManager : MonoBehaviour
     [SerializeField] Image icon;
     [SerializeField] TMP_FontAsset[] fontTexto;
     public InputActionReference actionReference;
-    public int recompensa;
+    public int recompensa, valorCompra;
     public int indice=0;
-    public bool onMission;
+    public bool onMission, onCompra;
+    public string nomeCompra;
+    [SerializeField] GameObject[] ObjetosInventario;
     
     bool optionselected = false;
     void Start()
@@ -63,7 +65,7 @@ public class InteracaoManager : MonoBehaviour
             if(dialogueObject.dialogueSegments[indice].dialogueChoices.Count>0){
                     DialogueChoices.SetActive(true);
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].dialogueChoices.Count;i++){
-                        ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice,dialogueObject.dialogueSegments[indice].dialogueChoices[i].AlteraStatus);
+                        ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice,dialogueObject.dialogueSegments[indice].dialogueChoices[i].AlteraStatus, dialogueObject.dialogueSegments[indice].dialogueChoices[i].Compra);
                     }
             }
             if(dialogueObject.dialogueSegments[indice].missoes.Count>0){
@@ -86,6 +88,17 @@ public class InteracaoManager : MonoBehaviour
                 if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
                 DialogueChoices.SetActive(false);
                 if(onMission)PlayerController.Instance.it.onMission=true;
+                if(onCompra){
+                    PlayerController.Instance.Dinheiro-=valorCompra;
+                    for(int i=0;i<ObjetosInventario.Length;i++){
+                        if(ObjetosInventario[i].name==nomeCompra){
+                            Inventario.Instance.itens.Add(ObjetosInventario[i]);
+                        }
+                    }
+                    
+                    
+                    onCompra=false;
+                }
                 
             }
             if(PlayerController.Instance.it.onMissionComplete==true){

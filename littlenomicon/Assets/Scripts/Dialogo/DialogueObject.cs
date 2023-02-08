@@ -23,6 +23,7 @@ public struct DialogueChoice{
     public string dialogueChoice;
     public DialogueObject followOnDialogue;
     public bool AlteraStatus;
+    public bool Compra;
     
 }
 [System.Serializable]

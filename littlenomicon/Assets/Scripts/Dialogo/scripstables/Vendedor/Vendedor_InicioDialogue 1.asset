@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57bedcdf1af7e824b815b5f0e4a6db21, type: 3}
+  m_Name: Vendedor_InicioDialogue 1
+  m_EditorClassIdentifier: 
+  dialogueSegments:
+  - dialogueText: Bom dia, eu sou o vendedor
+    icon: {fileID: 21300000, guid: e92527f6d0fe45342ab542b47346d45f, type: 3}
+    fontAssetId: 0
+    dialogueChoices: []
+    missoes: []
+  - dialogueText: "Estamos na promo\xE7\xE3o hoje"
+    icon: {fileID: 21300000, guid: 08c91a7677e66844281a99aaf6ea36f1, type: 3}
+    fontAssetId: 0
+    dialogueChoices: []
+    missoes: []
+  - dialogueText: Todos os itens por 5 dinheiros
+    icon: {fileID: 21300000, guid: e92527f6d0fe45342ab542b47346d45f, type: 3}
+    fontAssetId: 0
+    dialogueChoices: []
+    missoes: []
+  - dialogueText: Vai querer o que?
+    icon: {fileID: 21300000, guid: 08c91a7677e66844281a99aaf6ea36f1, type: 3}
+    fontAssetId: 0
+    dialogueChoices:
+    - dialogueChoice: Erva
+      followOnDialogue: {fileID: 11400000, guid: a3a58adc6291d5d49a94b71183241ef9, type: 2}
+      AlteraStatus: 0
+      Compra: 1
+    - dialogueChoice: "Po\xE7\xE3o de vida"
+      followOnDialogue: {fileID: 11400000, guid: 4b2303fca6f684a4e908a241b6bce843, type: 2}
+      AlteraStatus: 0
+      Compra: 1
+    - dialogueChoice: Nada
+      followOnDialogue: {fileID: 11400000, guid: 00d87990b41380b45a83f5b36d311c58, type: 2}
+      AlteraStatus: 0
+      Compra: 0
+    missoes: []
+  endDialogue: {fileID: 0}

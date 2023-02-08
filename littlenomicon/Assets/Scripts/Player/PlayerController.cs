@@ -27,11 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         Instance=this;
         anim = gameObject.GetComponent<Animator>();
-        actionReference.action.started += context =>
-        {
-
-            //InfosDialogo();
-        };
+        Dinheiro=5;
     }
     private void OnEnable()
     {
