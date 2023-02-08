@@ -30,8 +30,11 @@ MonoBehaviour:
     dialogueChoices:
     - dialogueChoice: Cuida da sua vida viado
       followOnDialogue: {fileID: 11400000, guid: 87cf00285d56b254b997ac4309dd08a6, type: 2}
+      AlteraStatus: 1
     - dialogueChoice: Estou procurando amizades
       followOnDialogue: {fileID: 11400000, guid: 5263682ff855b074b941415a62108dd4, type: 2}
+      AlteraStatus: 1
     - dialogueChoice: Estou na minha
       followOnDialogue: {fileID: 11400000, guid: b149ae5ba88e0da4683319be23e15dfd, type: 2}
+      AlteraStatus: 1
   endDialogue: {fileID: 0}

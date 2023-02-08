@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool jaConversou;
     public Interagivel it;
     public InputActionReference actionReference;
+    public int Status;
 
     private void Start()
     {

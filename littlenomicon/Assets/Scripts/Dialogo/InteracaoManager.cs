@@ -61,7 +61,7 @@ public class InteracaoManager : MonoBehaviour
             if(dialogueObject.dialogueSegments[indice].dialogueChoices.Count>0){
                     DialogueChoices.SetActive(true);
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].dialogueChoices.Count;i++){
-                        ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice);
+                        ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice,dialogueObject.dialogueSegments[indice].dialogueChoices[i].AlteraStatus);
                     }
             }
         }else{

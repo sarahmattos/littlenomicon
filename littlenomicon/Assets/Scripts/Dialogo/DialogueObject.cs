@@ -22,5 +22,6 @@ public struct DialogueSegment{
 public struct DialogueChoice{
     public string dialogueChoice;
     public DialogueObject followOnDialogue;
+    public bool AlteraStatus;
     
 }
