@@ -13,7 +13,7 @@ public class Interagivel : MonoBehaviour
     public DialogueObject missaoConcluidaDialogueObject;
     //public bool personagem;
     public bool conversaUmaVez;
-    public bool jaConversou;
+    public bool jaConversou, onMissionComplete,onMission;
     //public Sprite icon;
     //public string[] texto;
     //public int fontAssetId;

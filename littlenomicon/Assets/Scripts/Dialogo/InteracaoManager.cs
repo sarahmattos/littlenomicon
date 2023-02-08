@@ -85,13 +85,13 @@ public class InteracaoManager : MonoBehaviour
                 PlayerController.Instance.dialogoAberto=false;
                 if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
                 DialogueChoices.SetActive(false);
-                if(onMission)PlayerController.Instance.onMission=true;
+                if(onMission)PlayerController.Instance.it.onMission=true;
                 
             }
-            if(PlayerController.Instance.onMissionComplete==true){
+            if(PlayerController.Instance.it.onMissionComplete==true){
                 InteracaoManager.Instance.dialogueObject= PlayerController.Instance.it.missaoConcluidaDialogueObject;
                 PlayerController.Instance.Dinheiro+=recompensa;
-                PlayerController.Instance.onMissionComplete=false;
+                PlayerController.Instance.it.onMissionComplete=false;
             }
             
         }

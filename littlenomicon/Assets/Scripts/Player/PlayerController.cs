@@ -83,21 +83,21 @@ public class PlayerController : MonoBehaviour
             targetObjeto = target.gameObject;
             it = targetObjeto.GetComponent<Interagivel>();
             interagir = true;
-            jaConversou=it.jaConversou;
-            if(jaConversou==false && onMission==false && onMissionComplete==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
-            if(jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+            //jaConversou=it.jaConversou;
+            if(it.jaConversou==false && it.onMission==false && it.onMissionComplete==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
+            if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(it.onMission==true && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
         }
     }
     void OnTriggerStay(Collider target)
     {
         if (target.tag == "Interagivel")
         {   
-            jaConversou=it.jaConversou;
-            if(jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+            //jaConversou=it.jaConversou;
+            if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(it.onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
         }
     }
     void OnTriggerExit(Collider target)
@@ -109,9 +109,9 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void entregouMissao(){
-        if(onMission){
-            onMissionComplete=true;
-            onMission=false;
+        if(it.onMission){
+            it.onMissionComplete=true;
+            it.onMission=false;
             InteracaoManager.Instance.onMission=false;
         }
        
