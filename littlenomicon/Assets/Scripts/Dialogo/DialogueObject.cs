@@ -28,5 +28,6 @@ public struct DialogueChoice{
 [System.Serializable]
 public struct Missao{
     public string objetoDesejado;
+    public int recompensa;
     
 }

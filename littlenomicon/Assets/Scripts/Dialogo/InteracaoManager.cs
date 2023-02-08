@@ -15,6 +15,7 @@ public class InteracaoManager : MonoBehaviour
     [SerializeField] Image icon;
     [SerializeField] TMP_FontAsset[] fontTexto;
     public InputActionReference actionReference;
+    public int recompensa;
     public int indice=0;
     
     bool optionselected = false;
@@ -65,7 +66,12 @@ public class InteracaoManager : MonoBehaviour
                     }
             }
             if(dialogueObject.dialogueSegments[indice].missoes.Count>0){
+                    recompensa=0;
                     PlayerController.Instance.onMission=true;
+                    for(int i=0;i<dialogueObject.dialogueSegments[indice].missoes.Count;i++){
+                        recompensa += dialogueObject.dialogueSegments[indice].missoes[i].recompensa;
+                    }
+                    
             }
         }else{
             
@@ -77,11 +83,14 @@ public class InteracaoManager : MonoBehaviour
                 Dialoguecanvas.SetActive(false);
                 PlayerController.Instance.dialogoAberto=false;
                 if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
+                
             }
             if(PlayerController.Instance.onMissionComplete==true){
                 InteracaoManager.Instance.dialogueObject= PlayerController.Instance.it.missaoConcluidaDialogueObject;
+                PlayerController.Instance.Dinheiro+=recompensa;
                 PlayerController.Instance.onMissionComplete=false;
             }
+            
         }
         
     }

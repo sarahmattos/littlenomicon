@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public Interagivel it;
     public InputActionReference actionReference;
     public int Status;
+    public int Dinheiro;
     public bool onMission;
     public bool onMissionComplete;
 
