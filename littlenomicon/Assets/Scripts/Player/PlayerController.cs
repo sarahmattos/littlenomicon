@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
             movePlayer();
         }
         AnimatorManager();
-        entregouMissao();
     }
     public void movePlayer()
     {
@@ -84,6 +83,7 @@ public class PlayerController : MonoBehaviour
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+            
         }
     }
     void OnTriggerStay(Collider target)
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
             if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+            entregouMissao();
         }
     }
     void OnTriggerExit(Collider target)
@@ -112,11 +113,12 @@ public class PlayerController : MonoBehaviour
                         it.onMissionComplete=true;
                         it.onMission=false;
                         InteracaoManager.Instance.onMission=false;
+                        InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
+                        Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
                     }
                 }
                     
                 }
-            
             
         }
        

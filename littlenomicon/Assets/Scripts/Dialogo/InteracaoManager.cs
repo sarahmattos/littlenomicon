@@ -28,12 +28,15 @@ public class InteracaoManager : MonoBehaviour
         Instance =this;
         actionReference.action.started += context =>
         {
-            if(PlayerController.Instance.interagir==true){
+            if(PlayerController.Instance.it!= null){
+                if(PlayerController.Instance.interagir==true ){
                 ChamarDialogoInicio();
-            }else{
-                indice++;
-                DisplayDialogue();
+                }else{
+                    indice++;
+                    DisplayDialogue();
+                }
             }
+            
         };
     }
     private void OnEnable()
@@ -48,6 +51,7 @@ public class InteracaoManager : MonoBehaviour
         indice=0;
         Dialoguecanvas.SetActive(true);
         DisplayDialogue();
+        
     }
     public void optionSelected(DialogueObject selectedOption){
         dialogueObject=selectedOption;
@@ -89,23 +93,25 @@ public class InteracaoManager : MonoBehaviour
                 PlayerController.Instance.dialogoAberto=false;
                 if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
                 DialogueChoices.SetActive(false);
-                if(onMission)PlayerController.Instance.it.onMission=true;
+                if(onMission){
+                    PlayerController.Instance.it.onMission=true;
+                    onMission=false;
+                }
                 if(onCompra){
                     PlayerController.Instance.Dinheiro-=valorCompra;
                     for(int i=0;i<ObjetosInventario.Length;i++){
-                        if(ObjetosInventario[i].name==nomeCompra){
-                            Inventario.Instance.itens.Add(ObjetosInventario[i]);
-                        }
+                        if(ObjetosInventario[i].name==nomeCompra) Inventario.Instance.itens.Add(ObjetosInventario[i]);
                     }
                     onCompra=false;
                 }
-                
-            }
-            if(PlayerController.Instance.it.onMissionComplete==true){
+                //PlayerController.Instance.entregouMissao();
+                if(PlayerController.Instance.it.onMissionComplete==true){
                 InteracaoManager.Instance.dialogueObject= PlayerController.Instance.it.missaoConcluidaDialogueObject;
                 PlayerController.Instance.Dinheiro+=recompensa;
                 PlayerController.Instance.it.onMissionComplete=false;
             }
+            }
+            
             
         }
         
