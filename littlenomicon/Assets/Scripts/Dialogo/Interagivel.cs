@@ -9,6 +9,8 @@ public class Interagivel : MonoBehaviour
 {   
     public DialogueObject startDialogueObject;
     public DialogueObject jaVisitouDialogueObject;
+    public DialogueObject missaoDialogueObject;
+    public DialogueObject missaoConcluidaDialogueObject;
     //public bool personagem;
     public bool conversaUmaVez;
     public bool jaConversou;

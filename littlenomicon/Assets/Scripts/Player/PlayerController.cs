@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public Interagivel it;
     public InputActionReference actionReference;
     public int Status;
+    public bool onMission;
+    public bool onMissionComplete;
 
     private void Start()
     {
@@ -80,8 +82,10 @@ public class PlayerController : MonoBehaviour
             it = targetObjeto.GetComponent<Interagivel>();
             interagir = true;
             jaConversou=it.jaConversou;
-            if(jaConversou==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
-            if(jaConversou==true)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(jaConversou==false && onMission==false && onMissionComplete==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
+            if(jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
         }
     }
     void OnTriggerStay(Collider target)
@@ -89,7 +93,9 @@ public class PlayerController : MonoBehaviour
         if (target.tag == "Interagivel")
         {   
             jaConversou=it.jaConversou;
-            if(jaConversou==true)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
         }
     }
     void OnTriggerExit(Collider target)
@@ -99,6 +105,10 @@ public class PlayerController : MonoBehaviour
             interagir = false;
             //CanvasManager.Instance.dialogoUi.SetActive(false);
         }
+    }
+    public void entregouMissao(){
+        onMissionComplete=true;
+        onMission=false;
     }
     /*
     public void InfosDialogo()

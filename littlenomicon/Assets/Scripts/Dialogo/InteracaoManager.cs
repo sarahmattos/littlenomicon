@@ -64,11 +64,24 @@ public class InteracaoManager : MonoBehaviour
                         ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice,dialogueObject.dialogueSegments[indice].dialogueChoices[i].AlteraStatus);
                     }
             }
+            if(dialogueObject.dialogueSegments[indice].missoes.Count>0){
+                    PlayerController.Instance.onMission=true;
+            }
         }else{
-            Dialoguecanvas.SetActive(false);
-            PlayerController.Instance.dialogoAberto=false;
-            if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
-            PlayerController.Instance.interagir=true;
+            
+            if(dialogueObject.endDialogue!=null){
+                 dialogueObject=dialogueObject.endDialogue;
+                ChamarDialogoInicio();
+            }else{
+                PlayerController.Instance.interagir=true;
+                Dialoguecanvas.SetActive(false);
+                PlayerController.Instance.dialogoAberto=false;
+                if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
+            }
+            if(PlayerController.Instance.onMissionComplete==true){
+                InteracaoManager.Instance.dialogueObject= PlayerController.Instance.it.missaoConcluidaDialogueObject;
+                PlayerController.Instance.onMissionComplete=false;
+            }
         }
         
     }

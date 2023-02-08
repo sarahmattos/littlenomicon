@@ -13,15 +13,20 @@ public class DialogueObject : ScriptableObject
 [System.Serializable]
 public struct DialogueSegment{
     public string dialogueText;
-    public float dialogueDisplayTime;
     public Sprite icon;
     public int fontAssetId;
     public List<DialogueChoice> dialogueChoices;
+    public List<Missao> missoes;
 }
 [System.Serializable]
 public struct DialogueChoice{
     public string dialogueChoice;
     public DialogueObject followOnDialogue;
     public bool AlteraStatus;
+    
+}
+[System.Serializable]
+public struct Missao{
+    public string objetoDesejado;
     
 }

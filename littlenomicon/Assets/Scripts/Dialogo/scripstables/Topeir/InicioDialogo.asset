@@ -14,27 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueSegments:
   - dialogueText: Ola sou a toupeira
-    dialogueDisplayTime: 1
     icon: {fileID: 21300000, guid: 70632ddfe8e71b04b8f90ef7e29a9e98, type: 3}
     fontAssetId: 0
     dialogueChoices: []
+    missoes: []
   - dialogueText: Eu moro logo ali
-    dialogueDisplayTime: 1
     icon: {fileID: 21300000, guid: 372e7b39fc8f34549ac25d8757965a2c, type: 3}
     fontAssetId: 0
     dialogueChoices: []
+    missoes: []
   - dialogueText: O que vc faz aqui?
-    dialogueDisplayTime: 2
     icon: {fileID: 21300000, guid: 6fac4e39926fd9c4ca2ba4416160a857, type: 3}
     fontAssetId: 0
     dialogueChoices:
-    - dialogueChoice: Cuida da sua vida viado
-      followOnDialogue: {fileID: 11400000, guid: 87cf00285d56b254b997ac4309dd08a6, type: 2}
+    - dialogueChoice: Xingar ele
+      followOnDialogue: {fileID: 11400000, guid: 9a5735e0ab5c4c94287955be005db6a1, type: 2}
       AlteraStatus: 1
-    - dialogueChoice: Estou procurando amizades
-      followOnDialogue: {fileID: 11400000, guid: 5263682ff855b074b941415a62108dd4, type: 2}
+    - dialogueChoice: Ser amigo dele
+      followOnDialogue: {fileID: 11400000, guid: 4a7e9bc85f3661a438f3eb3c966b6603, type: 2}
       AlteraStatus: 1
-    - dialogueChoice: Estou na minha
-      followOnDialogue: {fileID: 11400000, guid: b149ae5ba88e0da4683319be23e15dfd, type: 2}
+    - dialogueChoice: Ficar na sua
+      followOnDialogue: {fileID: 11400000, guid: b66dba22d7205bc4c8a0307857134a44, type: 2}
       AlteraStatus: 1
+    missoes: []
   endDialogue: {fileID: 0}
