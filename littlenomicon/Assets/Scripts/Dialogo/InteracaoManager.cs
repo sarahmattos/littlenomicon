@@ -19,6 +19,7 @@ public class InteracaoManager : MonoBehaviour
     public int indice=0;
     public bool onMission, onCompra;
     public string nomeCompra;
+    public List<string> objetosDesejados;
     [SerializeField] GameObject[] ObjetosInventario;
     
     bool optionselected = false;
@@ -73,6 +74,7 @@ public class InteracaoManager : MonoBehaviour
                     onMission=true;
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].missoes.Count;i++){
                         recompensa += dialogueObject.dialogueSegments[indice].missoes[i].recompensa;
+                        objetosDesejados.Add(dialogueObject.dialogueSegments[indice].missoes[i].objetoDesejado);
                     }
                     
             }
@@ -95,8 +97,6 @@ public class InteracaoManager : MonoBehaviour
                             Inventario.Instance.itens.Add(ObjetosInventario[i]);
                         }
                     }
-                    
-                    
                     onCompra=false;
                 }
                 

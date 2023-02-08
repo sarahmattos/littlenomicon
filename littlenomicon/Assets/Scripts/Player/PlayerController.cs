@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             movePlayer();
         }
         AnimatorManager();
-        //entregouMissao();
+        entregouMissao();
     }
     public void movePlayer()
     {
@@ -105,10 +105,19 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void entregouMissao(){
-        if(it.onMission){
-            it.onMissionComplete=true;
-            it.onMission=false;
-            InteracaoManager.Instance.onMission=false;
+        if(it!= null && it.onMission){
+             for(int i=0;i<Inventario.Instance.itens.Count;i++){
+                for(int j=0;j<InteracaoManager.Instance.objetosDesejados.Count;j++){
+                    if(Inventario.Instance.itens[i].name==InteracaoManager.Instance.objetosDesejados[j]){
+                        it.onMissionComplete=true;
+                        it.onMission=false;
+                        InteracaoManager.Instance.onMission=false;
+                    }
+                }
+                    
+                }
+            
+            
         }
        
     }
