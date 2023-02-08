@@ -104,9 +104,7 @@ public class InteracaoManager : MonoBehaviour
                     }
                     onCompra=false;
                 }
-                //PlayerController.Instance.entregouMissao();
                 if(PlayerController.Instance.it.onMissionComplete==true){
-                InteracaoManager.Instance.dialogueObject= PlayerController.Instance.it.missaoConcluidaDialogueObject;
                 PlayerController.Instance.Dinheiro+=recompensa;
                 PlayerController.Instance.it.onMissionComplete=false;
             }

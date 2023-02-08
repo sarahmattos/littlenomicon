@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
             //jaConversou=it.jaConversou;
             if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+            if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject; 
             entregouMissao();
         }
     }
@@ -111,10 +111,15 @@ public class PlayerController : MonoBehaviour
                 for(int j=0;j<InteracaoManager.Instance.objetosDesejados.Count;j++){
                     if(Inventario.Instance.itens[i].name==InteracaoManager.Instance.objetosDesejados[j]){
                         it.onMissionComplete=true;
-                        it.onMission=false;
-                        InteracaoManager.Instance.onMission=false;
+                        if(it.onMission){
+                            InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+                            Debug.Log("chamar");
+                            InteracaoManager.Instance.ChamarDialogoInicio();
+                            it.onMission=false;
+                        }
                         InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
                         Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
+                        
                     }
                 }
                     
