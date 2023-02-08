@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
             movePlayer();
         }
         AnimatorManager();
+        //entregouMissao();
     }
     public void movePlayer()
     {
@@ -108,8 +109,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void entregouMissao(){
-        onMissionComplete=true;
-        onMission=false;
+        if(onMission){
+            onMissionComplete=true;
+            onMission=false;
+            InteracaoManager.Instance.onMission=false;
+        }
+       
     }
     /*
     public void InfosDialogo()
