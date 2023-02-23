@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FocoCamera : MonoBehaviour
 {
+    public static FocoCamera Instance;
     public Transform targetGoblin;
     public Transform targetPivo;
     public Transform targetCabeça;
@@ -17,7 +18,9 @@ public class FocoCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instance =this;
         transform.position=targetGoblin.position;
+        CameraSolta();
     }
 
     // Update is called once per frame
@@ -25,20 +28,26 @@ public class FocoCamera : MonoBehaviour
     {
         if (focar)
         {
-            CameraParada(targetPivo, targetCabeça);
+            CameraParada();
         }
             else{ 
                 CameraSolta();
             }
+           // */
     }
-    public void CameraParada(Transform _targetPivo,Transform _targetCabeça){
-        Vector3 targetPosition = _targetPivo.position;
+    public void CameraParada(){
+        Debug.Log("entrou aqui");
+        Vector3 targetPosition = targetPivo.position;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-        transform.LookAt(_targetCabeça);
+        transform.LookAt(targetCabeça);
     }
     public void CameraSolta(){
         Vector3 targetPosition = targetGoblin.position + offset;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         transform.LookAt(targetGoblin);
+    }
+    public void recebeTargets(Transform _targetPivo,Transform _targetCabeça){
+        targetPivo=_targetPivo;
+        targetCabeça=_targetCabeça;
     }
 }

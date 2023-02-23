@@ -176,6 +176,8 @@ MonoBehaviour:
   jaVisitouDialogueObject: {fileID: 0}
   missaoDialogueObject: {fileID: 0}
   missaoConcluidaDialogueObject: {fileID: 0}
+  targetPivo: {fileID: 0}
+  "targetCabe\xE7a": {fileID: 0}
   conversaUmaVez: 0
   jaConversou: 0
   onMissionComplete: 0
@@ -353,7 +355,9 @@ Transform:
   m_LocalPosition: {x: 17.48, y: 1.67, z: 23.9}
   m_LocalScale: {x: 5.9111376, y: 3.3776, z: 3.3776}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 432374157}
+  - {fileID: 423572470}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -373,6 +377,8 @@ MonoBehaviour:
   jaVisitouDialogueObject: {fileID: 11400000, guid: 97a98e6c5c0c7d14f81aec7df99da54f, type: 2}
   missaoDialogueObject: {fileID: 11400000, guid: 13912d66677f13642bc50f1d49eb026d, type: 2}
   missaoConcluidaDialogueObject: {fileID: 11400000, guid: b99b5949786bf5d489826d1f05473759, type: 2}
+  targetPivo: {fileID: 432374157}
+  "targetCabe\xE7a": {fileID: 423572470}
   conversaUmaVez: 1
   jaConversou: 0
   onMissionComplete: 0
@@ -669,6 +675,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352884669}
   m_CullTransparentMesh: 1
+--- !u!1 &423572469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423572470}
+  m_Layer: 0
+  m_Name: CabecaToupeira
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &423572470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423572469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.303, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 240984944}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &432374156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432374157}
+  m_Layer: 0
+  m_Name: PivoToupeira
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432374157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432374156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2.044}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 240984944}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &442148951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,6 +1827,8 @@ MonoBehaviour:
   jaVisitouDialogueObject: {fileID: 0}
   missaoDialogueObject: {fileID: 0}
   missaoConcluidaDialogueObject: {fileID: 0}
+  targetPivo: {fileID: 0}
+  "targetCabe\xE7a": {fileID: 0}
   conversaUmaVez: 0
   jaConversou: 0
   onMissionComplete: 0
@@ -7986,7 +8056,7 @@ MonoBehaviour:
   targetGoblin: {fileID: 2080114486}
   targetPivo: {fileID: 2066333998}
   "targetCabe\xE7a": {fileID: 2080114486}
-  smoothTime: 0.5
+  smoothTime: 0.4
   focar: 0
   offset: {x: 0, y: 9, z: -10}
 --- !u!1 &2066333997

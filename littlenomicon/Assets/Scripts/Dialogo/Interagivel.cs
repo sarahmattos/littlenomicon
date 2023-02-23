@@ -11,9 +11,16 @@ public class Interagivel : MonoBehaviour
     public DialogueObject jaVisitouDialogueObject;
     public DialogueObject missaoDialogueObject;
     public DialogueObject missaoConcluidaDialogueObject;
+
+    public Transform targetPivo, targetCabeça;
     //public bool personagem;
     public bool conversaUmaVez;
-    public bool jaConversou, onMissionComplete,onMission;
+    [HideInInspector]
+    public bool jaConversou;
+    [HideInInspector]
+    public bool onMissionComplete;
+    [HideInInspector]
+    public bool onMission;
     //public Sprite icon;
     //public string[] texto;
     //public int fontAssetId;

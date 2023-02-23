@@ -61,7 +61,8 @@ public class InteracaoManager : MonoBehaviour
     public void DisplayDialogue(){
         PlayerController.Instance.dialogoAberto=true;
         PlayerController.Instance.interagir=false;
-        
+        FocoCamera.Instance.recebeTargets(PlayerController.Instance.it.targetPivo, PlayerController.Instance.it.targetCabeça);
+        FocoCamera.Instance.focar=true;
         if(indice<dialogueObject.dialogueSegments.Count){
             texto.text=dialogueObject.dialogueSegments[indice].dialogueText;
             icon.sprite =dialogueObject.dialogueSegments[indice].icon;
@@ -88,6 +89,7 @@ public class InteracaoManager : MonoBehaviour
                  dialogueObject=dialogueObject.endDialogue;
                 ChamarDialogoInicio();
             }else{
+                FocoCamera.Instance.focar=false;
                 PlayerController.Instance.interagir=true;
                 Dialoguecanvas.SetActive(false);
                 PlayerController.Instance.dialogoAberto=false;
@@ -107,7 +109,9 @@ public class InteracaoManager : MonoBehaviour
                 if(PlayerController.Instance.it.onMissionComplete==true){
                 PlayerController.Instance.Dinheiro+=recompensa;
                 PlayerController.Instance.it.onMissionComplete=false;
+                
             }
+            
             }
             
             
