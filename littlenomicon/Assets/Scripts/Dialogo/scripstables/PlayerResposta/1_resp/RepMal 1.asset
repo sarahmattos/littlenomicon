@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RepMal 1
   m_EditorClassIdentifier: 
   dialogueSegments:
-  - dialogueText: Cuida da sua vida viado
+  - IsPlayer: 1
+    dialogueText: Cuida da sua vida viado
     icon: {fileID: 21300000, guid: 83634f409ff702d498b2b375ae0b3531, type: 3}
     fontAssetId: 0
     dialogueChoices: []

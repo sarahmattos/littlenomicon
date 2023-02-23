@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: RepMal
   m_EditorClassIdentifier: 
   dialogueSegments:
-  - dialogueText: "Sai fora! N\xE3o sou seu capanga!"
+  - IsPlayer: 1
+    dialogueText: "Sai fora! N\xE3o sou seu capanga!"
     icon: {fileID: 21300000, guid: 83634f409ff702d498b2b375ae0b3531, type: 3}
     fontAssetId: 0
     dialogueChoices: []

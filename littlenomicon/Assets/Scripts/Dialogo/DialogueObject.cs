@@ -12,6 +12,7 @@ public class DialogueObject : ScriptableObject
 }
 [System.Serializable]
 public struct DialogueSegment{
+    public bool IsPlayer;
     public string dialogueText;
     public Sprite icon;
     public int fontAssetId;

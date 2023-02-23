@@ -61,13 +61,19 @@ public class InteracaoManager : MonoBehaviour
     public void DisplayDialogue(){
         PlayerController.Instance.dialogoAberto=true;
         PlayerController.Instance.interagir=false;
-        FocoCamera.Instance.recebeTargets(PlayerController.Instance.it.targetPivo, PlayerController.Instance.it.targetCabeça);
-        FocoCamera.Instance.focar=true;
+        
+        
         if(indice<dialogueObject.dialogueSegments.Count){
             texto.text=dialogueObject.dialogueSegments[indice].dialogueText;
             icon.sprite =dialogueObject.dialogueSegments[indice].icon;
             texto.font = fontTexto[dialogueObject.dialogueSegments[indice].fontAssetId];
-
+            if(dialogueObject.dialogueSegments[indice].IsPlayer==true){
+                FocoCamera.Instance.recebeTargets(PlayerController.Instance.targetPivo, PlayerController.Instance.targetCabeça);
+                FocoCamera.Instance.focar=true;
+            }else{
+                FocoCamera.Instance.recebeTargets(PlayerController.Instance.it.targetPivo, PlayerController.Instance.it.targetCabeça);
+                FocoCamera.Instance.focar=true;
+            }
             if(dialogueObject.dialogueSegments[indice].dialogueChoices.Count>0){
                     DialogueChoices.SetActive(true);
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].dialogueChoices.Count;i++){

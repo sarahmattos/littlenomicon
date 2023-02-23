@@ -490,6 +490,8 @@ MonoBehaviour:
   Dinheiro: 0
   onMission: 0
   onMissionComplete: 0
+  targetPivo: {fileID: 2066333998}
+  "targetCabe\xE7a": {fileID: 2080114486}
 --- !u!114 &347033903
 MonoBehaviour:
   m_ObjectHideFlags: 0

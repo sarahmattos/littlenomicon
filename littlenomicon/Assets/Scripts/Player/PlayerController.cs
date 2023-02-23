@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public bool onMission;
     public bool onMissionComplete;
 
+    public Transform targetPivo;
+    public Transform targetCabeça;
+
     private void Start()
     {
         Instance=this;
