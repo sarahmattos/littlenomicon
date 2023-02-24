@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
             targetObjeto = target.gameObject;
             it = targetObjeto.GetComponent<Interagivel>();
             interagir = true;
+            
             //jaConversou=it.jaConversou;
             if(it.jaConversou==false && it.onMission==false && it.onMissionComplete==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour
         if (target.tag == "Interagivel")
         {   
             //jaConversou=it.jaConversou;
+            Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
+            targetObjeto.transform.LookAt(targetPostition);
             if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject; 

@@ -21,6 +21,7 @@ public class InteracaoManager : MonoBehaviour
     public string nomeCompra;
     public List<string> objetosDesejados;
     [SerializeField] GameObject[] ObjetosInventario;
+    public bool começou=false;
     
     bool optionselected = false;
     void Start()
@@ -30,10 +31,12 @@ public class InteracaoManager : MonoBehaviour
         {
             if(PlayerController.Instance.it!= null){
                 if(PlayerController.Instance.interagir==true ){
-                ChamarDialogoInicio();
-                }else{
+                    if(começou==false){
+                        ChamarDialogoInicio();
+                    }else{
                     indice++;
                     DisplayDialogue();
+                }
                 }
             }
             
@@ -60,7 +63,8 @@ public class InteracaoManager : MonoBehaviour
     
     public void DisplayDialogue(){
         PlayerController.Instance.dialogoAberto=true;
-        PlayerController.Instance.interagir=false;
+        //PlayerController.Instance.interagir=false;
+        começou=true;
         
         
         if(indice<dialogueObject.dialogueSegments.Count){
@@ -95,8 +99,9 @@ public class InteracaoManager : MonoBehaviour
                  dialogueObject=dialogueObject.endDialogue;
                 ChamarDialogoInicio();
             }else{
+                começou=false;
                 FocoCamera.Instance.focar=false;
-                PlayerController.Instance.interagir=true;
+                //PlayerController.Instance.interagir=false;
                 Dialoguecanvas.SetActive(false);
                 PlayerController.Instance.dialogoAberto=false;
                 if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
