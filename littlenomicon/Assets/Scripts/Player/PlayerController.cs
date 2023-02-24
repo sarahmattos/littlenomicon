@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         if(dialogoAberto==false){
             movePlayer();
         }
+           
         AnimatorManager();
     }
     public void movePlayer()
@@ -97,6 +98,10 @@ public class PlayerController : MonoBehaviour
             //jaConversou=it.jaConversou;
             Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
             targetObjeto.transform.LookAt(targetPostition);
+            if(dialogoAberto==true){
+                 Vector3 targetPostition2 = new Vector3( targetObjeto.transform.position.x,transform.position.y, targetObjeto.transform.position.z ) ;
+                transform.LookAt(targetPostition2);
+            }
             if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject; 
