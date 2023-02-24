@@ -21,6 +21,8 @@ public class Interagivel : MonoBehaviour
     public bool onMissionComplete;
     [HideInInspector]
     public bool onMission;
+
+    public bool NPC;
     //public Sprite icon;
     //public string[] texto;
     //public int fontAssetId;

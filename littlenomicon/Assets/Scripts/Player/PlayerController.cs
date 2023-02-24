@@ -96,8 +96,11 @@ public class PlayerController : MonoBehaviour
         if (target.tag == "Interagivel")
         {   
             //jaConversou=it.jaConversou;
-            Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
-            targetObjeto.transform.LookAt(targetPostition);
+            if(it.NPC){
+                Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
+                targetObjeto.transform.LookAt(targetPostition);
+            }
+            
             if(dialogoAberto==true){
                  Vector3 targetPostition2 = new Vector3( targetObjeto.transform.position.x,transform.position.y, targetObjeto.transform.position.z ) ;
                 transform.LookAt(targetPostition2);
