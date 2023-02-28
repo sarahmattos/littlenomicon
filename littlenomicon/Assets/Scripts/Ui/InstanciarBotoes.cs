@@ -15,6 +15,8 @@ public class InstanciarBotoes : MonoBehaviour
     public GameObject panelOpcoes;
     public int faseId=0;
     public Button[] btnEscolhidoVolta;
+    public Button btnItem;
+    bool abriuInventario=false;
     void Start()
     {
         Instance= this;
@@ -27,39 +29,41 @@ public class InstanciarBotoes : MonoBehaviour
         };
          actionReferenceI.action.started += context =>
         {
-           abrir(panelInventory);
+           QuandoAbreInventario();
         };
         
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     public void instanciar(){
         Button _go = Instantiate(botaoItens,botaoItens.transform.position,botaoItens.transform.rotation);
         _go.transform.SetParent(this.transform, false);
     }
     public void VoltarPanel(){
-            fechar(panelOpcoes);
-            ButtonSelected.Instance.SetSelected(btnEscolhidoVolta[faseId-1]);
-            //panelInventory[faseId].SetActive(false);
-            faseId--;
-        
+        fechar(panelOpcoes);
+        ButtonSelected.Instance.SetSelected(btnEscolhidoVolta[faseId-1]);
+        faseId--;
     }
     public void AbrirPanel(Button btn){
-        //panelInventory[faseId].SetActive(true);
         btnEscolhidoVolta[faseId]=btn;
          faseId++;
-        
-        
     }
     public void abrir(GameObject go){
         go.SetActive(true);
     }
     public void fechar(GameObject go){
          go.SetActive(false);
+    }
+    public void QuandoFechaInventario(){
+        abriuInventario=false;
+    }
+    public void QuandoAbreInventario(){
+        if(abriuInventario==false){
+            ButtonSelected.Instance.SetSelected(btnItem);
+            abrir(panelInventory);
+            abriuInventario=true;
+        }
     }
 
 }
