@@ -36,7 +36,7 @@ public class FocoCamera : MonoBehaviour
            // */
     }
     public void CameraParada(){
-        Debug.Log("entrou aqui");
+       // Debug.Log("entrou aqui");
         Vector3 targetPosition = targetPivo.position;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         transform.LookAt(targetCabeça);

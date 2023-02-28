@@ -22,9 +22,12 @@ public class PlayerController : MonoBehaviour
     public int Dinheiro;
     public bool onMission;
     public bool onMissionComplete;
+    bool temItem;
 
     public Transform targetPivo;
     public Transform targetCabeça;
+
+    int i,j;
 
     private void Start()
     {
@@ -52,6 +55,9 @@ public class PlayerController : MonoBehaviour
         }
            
         AnimatorManager();
+         if(it!= null && it.onMission){
+            checaItemInventario();
+         }
     }
     public void movePlayer()
     {
@@ -86,16 +92,18 @@ public class PlayerController : MonoBehaviour
             //jaConversou=it.jaConversou;
             if(it.jaConversou==false && it.onMission==false && it.onMissionComplete==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(it.onMission==true && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+            if(it.onMission==true && it.onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             
+            if(it.onMission==true && onMissionComplete==false && temItem==true) {
+                InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+                it.onMissionComplete=true;
+            }
         }
     }
     void OnTriggerStay(Collider target)
     {
         if (target.tag == "Interagivel")
         {   
-            //jaConversou=it.jaConversou;
             if(it.NPC){
                 Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
                 targetObjeto.transform.LookAt(targetPostition);
@@ -106,38 +114,36 @@ public class PlayerController : MonoBehaviour
                 transform.LookAt(targetPostition2);
             }
             if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(it.onMission==true && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(it.onMissionComplete==true)InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject; 
-            entregouMissao();
+            if(it.onMission==true && onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(it.onMission==true && onMissionComplete==false && temItem==true) {
+                InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
+                it.onMissionComplete=true;
+            }
         }
+    }
+    public void entregou(){
+        it.onMission=false;
+        temItem=false;
+        InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
+        Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
     }
     void OnTriggerExit(Collider target)
     {
         if (target.tag == "Interagivel")
         {
             interagir = false;
-            //CanvasManager.Instance.dialogoUi.SetActive(false);
         }
     }
-    public void entregouMissao(){
-        if(it!= null && it.onMission){
-             for(int i=0;i<Inventario.Instance.itens.Count;i++){
-                for(int j=0;j<InteracaoManager.Instance.objetosDesejados.Count;j++){
-                    if(Inventario.Instance.itens[i].name==InteracaoManager.Instance.objetosDesejados[j]){
-                        it.onMissionComplete=true;
-                        if(it.onMission){
-                            InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
-                            Debug.Log("chamar");
-                            InteracaoManager.Instance.ChamarDialogoInicio();
-                            it.onMission=false;
-                        }
-                        InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
-                        Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
-                        
+    public void checaItemInventario(){
+             for(int _i=0;_i<Inventario.Instance.itens.Count;_i++){
+                for(int _j=0;_j<InteracaoManager.Instance.objetosDesejados.Count;_j++){
+                    if(Inventario.Instance.itens[_i].name==InteracaoManager.Instance.objetosDesejados[_j]){
+                            temItem=true;
+                            i=_i;
+                            j=_j;
                     }
                 }
                     
-                }
             
         }
        

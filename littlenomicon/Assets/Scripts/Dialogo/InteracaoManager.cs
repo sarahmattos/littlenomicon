@@ -34,8 +34,10 @@ public class InteracaoManager : MonoBehaviour
                     if(começou==false){
                         ChamarDialogoInicio();
                     }else{
-                    indice++;
-                    DisplayDialogue();
+                            indice++;
+                            DisplayDialogue();
+                        
+                    
                 }
                 }
             }
@@ -118,6 +120,7 @@ public class InteracaoManager : MonoBehaviour
                     onCompra=false;
                 }
                 if(PlayerController.Instance.it.onMissionComplete==true){
+                PlayerController.Instance.entregou();
                 PlayerController.Instance.Dinheiro+=recompensa;
                 PlayerController.Instance.it.onMissionComplete=false;
                 
