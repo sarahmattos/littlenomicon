@@ -53,6 +53,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Voltar"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f0c56f7-a03c-439b-a8c2-0f97a650ff35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""915211f8-8215-4d82-9ad7-c7ffe7bde488"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Voltar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Press = m_Player.FindAction("Press", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_Voltar = m_Player.FindAction("Voltar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -205,6 +226,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Press;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_Voltar;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -212,6 +234,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Press => m_Wrapper.m_Player_Press;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @Voltar => m_Wrapper.m_Player_Voltar;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -230,6 +253,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
+                @Voltar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVoltar;
+                @Voltar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVoltar;
+                @Voltar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVoltar;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -243,6 +269,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
+                @Voltar.started += instance.OnVoltar;
+                @Voltar.performed += instance.OnVoltar;
+                @Voltar.canceled += instance.OnVoltar;
             }
         }
     }
@@ -252,5 +281,6 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnPress(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnVoltar(InputAction.CallbackContext context);
     }
 }
