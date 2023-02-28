@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+ using UnityEngine.EventSystems;
 
 public class InstanciarBotoes : MonoBehaviour
 {
@@ -19,8 +20,12 @@ public class InstanciarBotoes : MonoBehaviour
     public Button btnItem;
     bool abriuInventario=false;
     public Transform Item;
+    GameObject lastselect;
+    public Button btnAtual;
+     
     void Start()
     {
+        lastselect = new GameObject();
         Instance= this;
         actionReferenceEscape.action.started += context =>
         {
@@ -67,13 +72,33 @@ public class InstanciarBotoes : MonoBehaviour
     }
     public void QuandoFechaInventario(){
         abriuInventario=false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Debug.Log("aqui");
     }
     public void QuandoAbreInventario(){
         if(abriuInventario==false){
+           Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             ButtonSelected.Instance.SetSelected(btnItem);
             abrir(panelInventory);
             abriuInventario=true;
         }
     }
+     void Update () {         
+       if( abriuInventario==true)
+            {
+                if (EventSystem.current.currentSelectedGameObject == null)
+                    {
+                        //Debug.Log("Reselecting first input");
+                        //return;
+                        //EventSystem.current.SetSelectedGameObject(btnAtual);
+                        btnAtual.Select();
+                        Cursor.lockState = CursorLockMode.Locked;
+                        Cursor.visible = false;
+                    }
+
+            }        
+     }
 
 }
