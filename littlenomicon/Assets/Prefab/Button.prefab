@@ -147,6 +147,8 @@ GameObject:
   - component: {fileID: 7947255310497057603}
   - component: {fileID: 7947255310497057604}
   - component: {fileID: 7947255310497057605}
+  - component: {fileID: 351952749}
+  - component: {fileID: 7663800174760518240}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -256,40 +258,28 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7947255310497057604}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonSelected, Assembly-CSharp
-        m_MethodName: SetSelected
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonSelected, Assembly-CSharp
-        m_MethodName: BotaoApertado
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7947255310497057605}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InstanciarBotoes, Assembly-CSharp
-        m_MethodName: abrir
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &351952749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947255310497057607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5c5199a6820d5489e2d4a222197495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7663800174760518240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7947255310497057607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10baf48efc330fc4280100df79424481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

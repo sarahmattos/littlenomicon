@@ -17,7 +17,7 @@ public class InstanciarBotoes : MonoBehaviour
     public GameObject panelOpcoes;
     public int faseId=0;
     public Button[] btnEscolhidoVolta;
-    public Button btnItem;
+    public Button[] btnProximo;
     bool abriuInventario=false;
     public Transform Item;
     GameObject lastselect;
@@ -48,8 +48,6 @@ public class InstanciarBotoes : MonoBehaviour
         };
         
     }
-
-    // Update is called once per frame
     
     public void instanciar(){
         Button _go = Instantiate(botaoItens,botaoItens.transform.position,botaoItens.transform.rotation);
@@ -71,16 +69,18 @@ public class InstanciarBotoes : MonoBehaviour
          go.SetActive(false);
     }
     public void QuandoFechaInventario(){
-        abriuInventario=false;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Debug.Log("aqui");
+
+        fechar(panelInventory);
+        abriuInventario=false;
     }
     public void QuandoAbreInventario(){
         if(abriuInventario==false){
            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            ButtonSelected.Instance.SetSelected(btnItem);
+            
+            ButtonSelected.Instance.SetSelected(btnProximo[0]);
             abrir(panelInventory);
             abriuInventario=true;
         }
@@ -90,9 +90,6 @@ public class InstanciarBotoes : MonoBehaviour
             {
                 if (EventSystem.current.currentSelectedGameObject == null)
                     {
-                        //Debug.Log("Reselecting first input");
-                        //return;
-                        //EventSystem.current.SetSelectedGameObject(btnAtual);
                         btnAtual.Select();
                         Cursor.lockState = CursorLockMode.Locked;
                         Cursor.visible = false;

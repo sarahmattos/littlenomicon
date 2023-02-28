@@ -8,9 +8,7 @@ using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
     private Button btn;
-    //public Selectable AnySelectable;
     private PropertyInfo _selectableStateInfo = null;
-    // Start is called before the first frame update
     void Start()
     {
          btn = this.GetComponent<Button>();
@@ -23,12 +21,10 @@ public class ButtonManager : MonoBehaviour
  
     private void Update()
     {
-        //Debug.Log(_selectableStateInfo.GetValue(btn));
         if(_selectableStateInfo.GetValue(btn).ToString()== "Selected"){
             InstanciarBotoes.Instance.btnAtual=btn;
         }
     }
 
-    // Update is called once per frame
     
 }
