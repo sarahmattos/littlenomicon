@@ -12,7 +12,7 @@ public class InstanciarBotoes : MonoBehaviour
     public InputActionReference actionReferenceEscape;
      public InputActionReference actionReferenceI;
      public InputActionReference actionReferenceP;
-    public Button botaoItens;
+    public GameObject botaoItens;
     public GameObject panelInventory;
     public GameObject panelOpcoes;
     public GameObject panelsInfo;
@@ -40,7 +40,7 @@ public class InstanciarBotoes : MonoBehaviour
         };
         actionReferenceP.action.started += context =>
         {
-            instanciar();
+            instanciar(botaoItens);
            
         };
          actionReferenceI.action.started += context =>
@@ -50,8 +50,8 @@ public class InstanciarBotoes : MonoBehaviour
         
     }
     
-    public void instanciar(){
-        Button _go = Instantiate(botaoItens,botaoItens.transform.position,botaoItens.transform.rotation);
+    public void instanciar(GameObject go){
+        GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(Item, false);
     }
     public void VoltarPanel(){

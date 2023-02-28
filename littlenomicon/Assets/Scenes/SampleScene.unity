@@ -3750,7 +3750,7 @@ MonoBehaviour:
   actionReferenceEscape: {fileID: -1753511893988314127, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
   actionReferenceI: {fileID: 6014793645306863993, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
   actionReferenceP: {fileID: -2982934772160677244, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
-  botaoItens: {fileID: 7947255310497057605, guid: 59892d66c83f02f469f173cd9abef355, type: 3}
+  botaoItens: {fileID: 7947255310497057607, guid: d79c68f9f70723b4b996ed34336ba159, type: 3}
   panelInventory: {fileID: 1088558625}
   panelOpcoes: {fileID: 919215900}
   panelsInfo: {fileID: 999539279}
@@ -4192,8 +4192,8 @@ MonoBehaviour:
   nomeCompra: 
   objetosDesejados: []
   ObjetosInventario:
-  - {fileID: 3760802824515956234, guid: e2c37f53f0794c64db8fe93e1f2999bf, type: 3}
-  - {fileID: 3760802824515956234, guid: cb8617c52435c744e8b89160248fd4eb, type: 3}
+  - {fileID: 7947255310497057607, guid: 59892d66c83f02f469f173cd9abef355, type: 3}
+  - {fileID: 7947255310497057607, guid: d79c68f9f70723b4b996ed34336ba159, type: 3}
   "come\xE7ou": 0
 --- !u!1 &999539279
 GameObject:

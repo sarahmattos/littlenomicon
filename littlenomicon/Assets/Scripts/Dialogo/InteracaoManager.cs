@@ -115,7 +115,10 @@ public class InteracaoManager : MonoBehaviour
                 if(onCompra){
                     PlayerController.Instance.Dinheiro-=valorCompra;
                     for(int i=0;i<ObjetosInventario.Length;i++){
-                        if(ObjetosInventario[i].name==nomeCompra) Inventario.Instance.itens.Add(ObjetosInventario[i]);
+                        if(ObjetosInventario[i].name==nomeCompra) {
+                            Inventario.Instance.itens.Add(ObjetosInventario[i]);
+                            InstanciarBotoes.Instance.instanciar(ObjetosInventario[i]);
+                        }
                     }
                     onCompra=false;
                 }
