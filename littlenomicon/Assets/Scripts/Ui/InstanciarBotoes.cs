@@ -10,6 +10,7 @@ public class InstanciarBotoes : MonoBehaviour
     public static InstanciarBotoes Instance;
     public InputActionReference actionReferenceEscape;
      public InputActionReference actionReferenceI;
+     public InputActionReference actionReferenceP;
     public Button botaoItens;
     public GameObject panelInventory;
     public GameObject panelOpcoes;
@@ -17,6 +18,7 @@ public class InstanciarBotoes : MonoBehaviour
     public Button[] btnEscolhidoVolta;
     public Button btnItem;
     bool abriuInventario=false;
+    public Transform Item;
     void Start()
     {
         Instance= this;
@@ -24,7 +26,15 @@ public class InstanciarBotoes : MonoBehaviour
         {
             if(faseId!=0){
                 VoltarPanel();
+            }else{
+                fechar(panelInventory);
+                QuandoFechaInventario();
             }
+           
+        };
+        actionReferenceP.action.started += context =>
+        {
+            instanciar();
            
         };
          actionReferenceI.action.started += context =>
@@ -38,7 +48,7 @@ public class InstanciarBotoes : MonoBehaviour
     
     public void instanciar(){
         Button _go = Instantiate(botaoItens,botaoItens.transform.position,botaoItens.transform.rotation);
-        _go.transform.SetParent(this.transform, false);
+        _go.transform.SetParent(Item, false);
     }
     public void VoltarPanel(){
         fechar(panelOpcoes);
