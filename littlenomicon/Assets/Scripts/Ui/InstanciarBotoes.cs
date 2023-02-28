@@ -15,6 +15,7 @@ public class InstanciarBotoes : MonoBehaviour
     public Button botaoItens;
     public GameObject panelInventory;
     public GameObject panelOpcoes;
+    public GameObject panelsInfo;
     public int faseId=0;
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
@@ -54,7 +55,9 @@ public class InstanciarBotoes : MonoBehaviour
         _go.transform.SetParent(Item, false);
     }
     public void VoltarPanel(){
+        //if(faseId>= 2&& faseId<=3)fechar(panelsFechar[faseId]);
         fechar(panelOpcoes);
+        fechar(panelsInfo);
         ButtonSelected.Instance.SetSelected(btnEscolhidoVolta[faseId-1]);
         faseId--;
     }
