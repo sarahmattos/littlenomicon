@@ -18,13 +18,9 @@ public class ButtonSelected : MonoBehaviour
     public void SetSelected(Button btn){
         btn.Select();
     }
-    public void panelTrue(Button btn){
-         btn.Select();
-    }
+    
     public void BotaoApertado(Button btn){
         InstanciarBotoes.Instance.AbrirPanel(btn);
     }
-    public void panelFalse(GameObject go){
-        go.SetActive(false);
-    }
+    
 }
