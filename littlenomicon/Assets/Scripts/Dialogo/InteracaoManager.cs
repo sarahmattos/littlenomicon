@@ -20,7 +20,7 @@ public class InteracaoManager : MonoBehaviour
     public bool onMission, onCompra;
     public string nomeCompra;
     public List<string> objetosDesejados;
-    [SerializeField] GameObject[] ObjetosInventario;
+    public GameObject[] ObjetosInventario;
     public bool começou=false;
     
     bool optionselected = false;

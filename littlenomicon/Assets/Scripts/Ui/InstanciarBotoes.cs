@@ -43,7 +43,8 @@ public class InstanciarBotoes : MonoBehaviour
         };
         actionReferenceP.action.started += context =>
         {
-            instanciar(botaoItens);
+            int rng = Random.Range(0,InteracaoManager.Instance.ObjetosInventario.Length);
+            instanciar(InteracaoManager.Instance.ObjetosInventario[rng]);
            
         };
          actionReferenceI.action.started += context =>
