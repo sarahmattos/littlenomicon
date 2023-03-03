@@ -24,9 +24,11 @@ public class InstanciarBotoes : MonoBehaviour
     GameObject lastselect;
     public Button btnAtual;
     public List<GameObject> BotoesItensInventario;
+    public int maxItem;
      
     void Start()
     {
+        NavegacaoItem();
         lastselect = new GameObject();
         Instance= this;
         actionReferenceEscape.action.started += context =>
@@ -52,9 +54,12 @@ public class InstanciarBotoes : MonoBehaviour
     }
     
     public void instanciar(GameObject go){
+        if(BotoesItensInventario.Count<maxItem){
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(Item, false);
         BotoesItensInventario.Add(_go);
+        NavegacaoItem();
+    }
     }
     public void VoltarPanel(){
         //if(faseId>= 2&& faseId<=3)fechar(panelsFechar[faseId]);
@@ -88,6 +93,27 @@ public class InstanciarBotoes : MonoBehaviour
             ButtonSelected.Instance.SetSelected(btnProximo[0]);
             abrir(panelInventory);
             abriuInventario=true;
+        }
+    }
+    public void NavegacaoItem(){
+        if(BotoesItensInventario.Count>1){
+        Button _btnUltimo = BotoesItensInventario[BotoesItensInventario.Count-1].GetComponent<Button>();
+        Button _btnPrimeiro = BotoesItensInventario[0].GetComponent<Button>();
+        Button _btnPenultimo = BotoesItensInventario[BotoesItensInventario.Count-2].GetComponent<Button>();
+        SetNavegacao(_btnUltimo,_btnPrimeiro,_btnPenultimo);
+        }
+    }
+    public void SetNavegacao(Button _ult,Button _pri ,Button _pen){
+        Navigation navigation = _ult.navigation;
+        navigation.mode = Navigation.Mode.Explicit;
+        navigation.selectOnDown = _pri;
+        if(BotoesItensInventario.Count>2) navigation.selectOnUp = _pen;
+        _ult.navigation = navigation;
+        for(int i=0;i<BotoesItensInventario.Count-1;i++){
+            Button _btns = BotoesItensInventario[i].GetComponent<Button>();
+            Navigation navigation2 = _btns.navigation;
+            navigation2.mode = Navigation.Mode.Vertical;
+            _btns.navigation=navigation2;
         }
     }
      void Update () {         
