@@ -23,6 +23,7 @@ public class InstanciarBotoes : MonoBehaviour
     public Transform Item;
     GameObject lastselect;
     public Button btnAtual;
+    public List<GameObject> BotoesItensInventario;
      
     void Start()
     {
@@ -53,6 +54,7 @@ public class InstanciarBotoes : MonoBehaviour
     public void instanciar(GameObject go){
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(Item, false);
+        BotoesItensInventario.Add(_go);
     }
     public void VoltarPanel(){
         //if(faseId>= 2&& faseId<=3)fechar(panelsFechar[faseId]);

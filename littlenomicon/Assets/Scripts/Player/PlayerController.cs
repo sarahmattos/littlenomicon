@@ -126,6 +126,9 @@ public class PlayerController : MonoBehaviour
         temItem=false;
         InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
         Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
+        Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+        InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+        
     }
     void OnTriggerExit(Collider target)
     {
