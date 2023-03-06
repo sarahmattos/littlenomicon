@@ -19,6 +19,7 @@ public class InstanciarBotoes : MonoBehaviour
     public GameObject panelPrincipal;
     [SerializeField] TMP_Text textoInfo;
     public int faseId=0;
+    private BotoesItem itemClicadoAtual;
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
     bool abriuInventario=false;
@@ -27,7 +28,8 @@ public class InstanciarBotoes : MonoBehaviour
     public Button btnAtual;
     public List<GameObject> BotoesItensInventario;
     public int maxItem;
-     
+    bool usavel;
+     public Sprite Image1, Image2;
     void Start()
     {
         NavegacaoItem();
@@ -58,8 +60,41 @@ public class InstanciarBotoes : MonoBehaviour
         };
         
     }
-    public void atualizaTexoInfo(string texto){
-        textoInfo.text=texto;
+    public void atualizaInfos( BotoesItem _btnItem){
+        textoInfo.text=_btnItem.textoInfo;
+        usavel = _btnItem.usavel;
+        itemClicadoAtual = _btnItem;
+    }
+    public void usaOuEquipa(){
+        if(usavel){
+            //chamar funcao de usar
+            Debug.Log("Item usado");
+            //Inventario.Instance.itens.Remove(Inventario.Instance.itens[itemClicadoAtual.id]);
+            int i=itemClicadoAtual.id;
+            Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+            InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+            NavegacaoItem();
+        }else{
+            //chamar funcao de equipar
+            if(itemClicadoAtual.equipado){
+                itemClicadoAtual.equipado=false;
+                itemClicadoAtual.btn.GetComponent<Image>().sprite = Image2;
+                 Debug.Log("Item desequipado");
+            }else{
+                 Debug.Log("Item equipado");
+                itemClicadoAtual.btn.GetComponent<Image>().sprite = Image1;
+                itemClicadoAtual.equipado=true;
+
+            }
+            
+            //mudar nome do botao para desequipar
+        }
+        fechar(panelInventory);
+        fechar(panelOpcoes);
+        fechar(panelPrincipal);
+        fechar(panelsInfo);
+        faseId=0;
+        QuandoFechaInventario();
     }
     public void instanciar(GameObject go){
         if(BotoesItensInventario.Count<maxItem){
@@ -67,7 +102,9 @@ public class InstanciarBotoes : MonoBehaviour
         _go.transform.SetParent(Item, false);
         BotoesItensInventario.Add(_go);
         NavegacaoItem();
-    }
+        BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
+        _go_Botao.id = BotoesItensInventario.Count-1;
+            }
     }
     public void VoltarPanel(){
         if(faseId==0){

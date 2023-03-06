@@ -3253,6 +3253,8 @@ MonoBehaviour:
   BotoesItensInventario:
   - {fileID: 1941634995}
   maxItem: 10
+  Image1: {fileID: 21300000, guid: a67b58d6cddcd4345b1e001340de5a76, type: 3}
+  Image2: {fileID: 21300000, guid: f96d5f3ce532fa24a907abd095fc75ec, type: 3}
 --- !u!1 &919215900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,7 +4952,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Largar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5208,7 +5210,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1388423702}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 898170220}
+        m_TargetAssemblyTypeName: InstanciarBotoes, Assembly-CSharp
+        m_MethodName: usaOuEquipa
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1388423702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10575,7 +10589,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Usar/Equipar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

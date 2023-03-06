@@ -284,3 +284,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textoInfo: "Sou um item us\xE1vel e recupero +5 de vida!"
+  usavel: 1
