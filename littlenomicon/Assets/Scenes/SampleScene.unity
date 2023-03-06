@@ -2658,7 +2658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &818891919
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2756,8 +2756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1461795b2976b1489966f5c37e7ea8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BotoesItensInventario: []
-  btnsItem: []
 --- !u!1 &834700261
 GameObject:
   m_ObjectHideFlags: 0
@@ -3240,6 +3238,7 @@ MonoBehaviour:
   panelInventory: {fileID: 1088558625}
   panelOpcoes: {fileID: 919215900}
   panelsInfo: {fileID: 999539279}
+  panelPrincipal: {fileID: 0}
   faseId: 0
   btnEscolhidoVolta:
   - {fileID: 0}
@@ -4602,6 +4601,30 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1197848067}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 898170220}
+        m_TargetAssemblyTypeName: InstanciarBotoes, Assembly-CSharp
+        m_MethodName: abriuPanelPrincipal
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 818891918}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 898170220}
+        m_TargetAssemblyTypeName: InstanciarBotoes, Assembly-CSharp
+        m_MethodName: abrir
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 818891918}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

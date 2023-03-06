@@ -16,6 +16,7 @@ public class InstanciarBotoes : MonoBehaviour
     public GameObject panelInventory;
     public GameObject panelOpcoes;
     public GameObject panelsInfo;
+    public GameObject panelPrincipal;
     public int faseId=0;
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
@@ -33,12 +34,13 @@ public class InstanciarBotoes : MonoBehaviour
         Instance= this;
         actionReferenceEscape.action.started += context =>
         {
-            if(faseId!=0){
-                VoltarPanel();
+            if(abriuInventario!=true){
+                QuandoAbreInventario();
             }else{
-                fechar(panelInventory);
-                QuandoFechaInventario();
+                 VoltarPanel();
             }
+              
+               
            
         };
         actionReferenceP.action.started += context =>
@@ -49,7 +51,9 @@ public class InstanciarBotoes : MonoBehaviour
         };
          actionReferenceI.action.started += context =>
         {
-           QuandoAbreInventario();
+          // QuandoAbreInventario();
+           //faseId=1;
+           //abrir(panelPrincipal);
         };
         
     }
@@ -63,11 +67,22 @@ public class InstanciarBotoes : MonoBehaviour
     }
     }
     public void VoltarPanel(){
-        //if(faseId>= 2&& faseId<=3)fechar(panelsFechar[faseId]);
-        fechar(panelOpcoes);
-        fechar(panelsInfo);
-        ButtonSelected.Instance.SetSelected(btnEscolhidoVolta[faseId-1]);
-        faseId--;
+        if(faseId==0){
+            QuandoFechaInventario();
+        }else{
+            if(faseId==1)fechar(panelPrincipal);
+            if(faseId>1){
+                fechar(panelOpcoes);
+                fechar(panelsInfo);
+            }
+            ButtonSelected.Instance.SetSelected(btnEscolhidoVolta[faseId-1]);
+            faseId--;
+        }
+        
+        
+    }
+    public void abriuPanelPrincipal(GameObject _go){
+        panelPrincipal=_go;
     }
     public void AbrirPanel(Button btn){
         btnEscolhidoVolta[faseId]=btn;
