@@ -2677,7 +2677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -85, y: 0}
   m_SizeDelta: {x: 0, y: 1212}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &818891920
@@ -2878,7 +2878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Sou um item de brisa e te dou -3 de concentra\xE7\xE3o!"
+  m_text: New text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3239,6 +3239,7 @@ MonoBehaviour:
   panelOpcoes: {fileID: 919215900}
   panelsInfo: {fileID: 999539279}
   panelPrincipal: {fileID: 0}
+  textoInfo: {fileID: 843315468}
   faseId: 0
   btnEscolhidoVolta:
   - {fileID: 0}
@@ -3291,7 +3292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -496}
+  m_AnchoredPosition: {x: -85, y: -496}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919215902
@@ -3719,7 +3720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 646.09155, y: 3.6779785}
+  m_AnchoredPosition: {x: 561.09155, y: 3.6779785}
   m_SizeDelta: {x: 1354.103, y: 2421.928}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999539281
@@ -3795,11 +3796,11 @@ RectTransform:
   m_Father: {fileID: 898170217}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_SizeDelta: {x: 1920, y: 1212}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1100294965
 GameObject:
   m_ObjectHideFlags: 0
@@ -3838,8 +3839,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -505, y: -252}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -590, y: -18.16504}
+  m_SizeDelta: {x: 0, y: 2137.283}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1100294967
 MonoBehaviour:

@@ -283,3 +283,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10baf48efc330fc4280100df79424481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textoInfo: "Sou um item de brisa e te dou -3 de concentra\xE7\xE3o!"

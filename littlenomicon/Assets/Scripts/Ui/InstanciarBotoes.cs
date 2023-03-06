@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
  using UnityEngine.EventSystems;
-
+using TMPro;
 public class InstanciarBotoes : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -17,6 +17,7 @@ public class InstanciarBotoes : MonoBehaviour
     public GameObject panelOpcoes;
     public GameObject panelsInfo;
     public GameObject panelPrincipal;
+    [SerializeField] TMP_Text textoInfo;
     public int faseId=0;
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
@@ -57,7 +58,9 @@ public class InstanciarBotoes : MonoBehaviour
         };
         
     }
-    
+    public void atualizaTexoInfo(string texto){
+        textoInfo.text=texto;
+    }
     public void instanciar(GameObject go){
         if(BotoesItensInventario.Count<maxItem){
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);

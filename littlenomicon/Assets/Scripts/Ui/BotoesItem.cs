@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BotoesItem : MonoBehaviour
 {
     private Button btn;
+    public string textoInfo;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +18,6 @@ public class BotoesItem : MonoBehaviour
         ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo[1]);
         ButtonSelected.Instance.BotaoApertado(btn);
         InstanciarBotoes.Instance.abrir(InstanciarBotoes.Instance.panelOpcoes);
+        InstanciarBotoes.Instance.atualizaTexoInfo(textoInfo);
     }
 }
