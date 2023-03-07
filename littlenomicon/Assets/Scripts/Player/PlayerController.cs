@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && it.onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             
-            if(it.onMission==true && onMissionComplete==false && temItem==true) {
+            if(it.onMission==true && it.onMissionComplete==false && temItem==true) {
                 InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
                 it.onMissionComplete=true;
             }
@@ -113,9 +113,9 @@ public class PlayerController : MonoBehaviour
                  Vector3 targetPostition2 = new Vector3( targetObjeto.transform.position.x,transform.position.y, targetObjeto.transform.position.z ) ;
                 transform.LookAt(targetPostition2);
             }
-            if(it.jaConversou==true && onMission==false && onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(it.onMission==true && onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(it.onMission==true && onMissionComplete==false && temItem==true) {
+            if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
+            if(it.onMission==true && it.onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(it.onMission==true && it.onMissionComplete==false && temItem==true) {
                 InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
                 it.onMissionComplete=true;
             }
