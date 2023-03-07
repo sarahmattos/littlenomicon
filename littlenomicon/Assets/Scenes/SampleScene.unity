@@ -1834,6 +1834,7 @@ Transform:
   - {fileID: 87199364}
   - {fileID: 956903490}
   - {fileID: 240984944}
+  - {fileID: 2022593547}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3052,6 +3053,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864741033}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &869923810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869923811}
+  m_Layer: 0
+  m_Name: PIVOS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &869923811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869923810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1442961213}
+  - {fileID: 898904461}
+  m_Father: {fileID: 2022593547}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &870277844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,6 +3289,37 @@ MonoBehaviour:
   maxItem: 10
   Image1: {fileID: 21300000, guid: a67b58d6cddcd4345b1e001340de5a76, type: 3}
   Image2: {fileID: 21300000, guid: f96d5f3ce532fa24a907abd095fc75ec, type: 3}
+--- !u!1 &898904460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898904461}
+  m_Layer: 0
+  m_Name: CabecaVendedor
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &898904461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898904460}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.303, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869923811}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &919215900
 GameObject:
   m_ObjectHideFlags: 0
@@ -10159,6 +10224,37 @@ Transform:
   m_Father: {fileID: 623850147}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &1442961212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1442961213}
+  m_Layer: 0
+  m_Name: PivoVendedor
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1442961213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442961212}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.004, y: 0.236, z: -1.393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869923811}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459215001
 GameObject:
   m_ObjectHideFlags: 0
@@ -12003,9 +12099,10 @@ GameObject:
   - component: {fileID: 2022593544}
   - component: {fileID: 2022593548}
   - component: {fileID: 2022593549}
+  - component: {fileID: 2022593550}
   m_Layer: 0
   m_Name: AreaSaida
-  m_TagString: Saida
+  m_TagString: Interagivel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12080,13 +12177,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022593543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.14, z: 36.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 34.1, y: 3.4699998, z: 58.199997}
   m_LocalScale: {x: 17.081127, y: 10.979, z: 10.979}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Children:
+  - {fileID: 869923811}
+  m_Father: {fileID: 518088812}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2022593548
 MonoBehaviour:
@@ -12095,12 +12193,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022593543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a6f0e8934800d943ae780e98316c39d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objetoDesejado: {fileID: 7947255310497057607, guid: 10f6cf140bb0a3f42a073330de280c45, type: 3}
+  podePassar: 0
 --- !u!54 &2022593549
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12117,6 +12216,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2022593550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022593543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2574edf368b62c42aef8574e3cf7dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogueObject: {fileID: 11400000, guid: 26220e3753ea3a44f950aaa863e54369, type: 2}
+  jaVisitouDialogueObject: {fileID: 0}
+  missaoDialogueObject: {fileID: 11400000, guid: b615c09951fe2e14492401da3ec8ce2d, type: 2}
+  missaoConcluidaDialogueObject: {fileID: 11400000, guid: cf17db323f5bfff4dac52b152fb5ed64, type: 2}
+  targetPivo: {fileID: 1442961213}
+  "targetCabe\xE7a": {fileID: 898904461}
+  conversaUmaVez: 0
+  jaConversou: 0
+  onMissionComplete: 0
+  onMission: 0
+  NPC: 0
 --- !u!1 &2066333997
 GameObject:
   m_ObjectHideFlags: 0
