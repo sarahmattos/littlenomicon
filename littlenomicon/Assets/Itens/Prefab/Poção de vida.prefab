@@ -283,5 +283,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10baf48efc330fc4280100df79424481, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btn: {fileID: 0}
   textoInfo: "Sou um item us\xE1vel e recupero +5 de vida!"
   usavel: 1
+  equipado: 0
+  id: 0
+  nomeItem: "Po\xE7\xE3o de vida"

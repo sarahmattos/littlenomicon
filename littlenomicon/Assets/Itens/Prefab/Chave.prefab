@@ -66,7 +66,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Erva
+  m_text: 'Chave
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -150,7 +152,7 @@ GameObject:
   - component: {fileID: 351952749}
   - component: {fileID: 7663800174760518240}
   m_Layer: 5
-  m_Name: Erva
+  m_Name: Chave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -284,8 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn: {fileID: 0}
-  textoInfo: "Sou um item de brisa e te dou -3 de concentra\xE7\xE3o!"
-  usavel: 0
+  textoInfo: "Sou um item us\xE1vel e abro portas"
+  usavel: 1
   equipado: 0
   id: 0
-  nomeItem: Erva
+  nomeItem: Chave

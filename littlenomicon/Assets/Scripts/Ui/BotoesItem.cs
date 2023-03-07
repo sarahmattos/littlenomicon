@@ -10,6 +10,7 @@ public class BotoesItem : MonoBehaviour
     public bool usavel;
     public bool equipado;
     public int id;
+    public string nomeItem;
     // Start is called before the first frame update
     void Start()
     {
