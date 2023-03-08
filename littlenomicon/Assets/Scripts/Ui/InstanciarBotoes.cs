@@ -23,7 +23,7 @@ public class InstanciarBotoes : MonoBehaviour
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
     bool abriuInventario=false;
-    public Transform Item;
+    public Transform Item, ItemBau;
     GameObject lastselect;
     public Button btnAtual;
     public List<GameObject> BotoesItensInventario;
@@ -96,11 +96,37 @@ public class InstanciarBotoes : MonoBehaviour
         faseId=0;
         QuandoFechaInventario();
     }
+    public void largar(){
+        int i=itemClicadoAtual.id;
+        Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+        InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+        Bau.Instance.adicionarItemBau(itemClicadoAtual.nomeItem);
+        NavegacaoItem();
+
+        fechar(panelInventory);
+        fechar(panelOpcoes);
+        fechar(panelPrincipal);
+        fechar(panelsInfo);
+        faseId=0;
+        QuandoFechaInventario();
+        
+       
+    }
     public void instanciar(GameObject go){
         if(BotoesItensInventario.Count<maxItem){
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(Item, false);
         BotoesItensInventario.Add(_go);
+        NavegacaoItem();
+        BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
+        _go_Botao.id = BotoesItensInventario.Count-1;
+            }
+    }
+    public void instanciarBau(GameObject go){
+        if(BotoesItensInventario.Count<maxItem){
+        GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
+        _go.transform.SetParent(ItemBau, false);
+        Bau.Instance.BotoesItensBau.Add(_go);
         NavegacaoItem();
         BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
         _go_Botao.id = BotoesItensInventario.Count-1;
