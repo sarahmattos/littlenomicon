@@ -17,6 +17,7 @@ public class AreaSaida : MonoBehaviour
     }
     void OnTriggerStay(Collider target)
     {
+        /*
         if (target.tag == "Player")
         { 
             if(it.onMissionComplete==true){
@@ -31,8 +32,10 @@ public class AreaSaida : MonoBehaviour
                     podePassar=true;
                 }
             }
-            */
+            
+            
         }
+        */
     }
     void OnTriggerExit(Collider target)
     {

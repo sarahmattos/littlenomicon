@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void entregou(){
+        AreaSaida.Instance.box.enabled=false;
         it.onMission=false;
         temItem=false;
         InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
