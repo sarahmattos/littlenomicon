@@ -163,7 +163,7 @@ public class InstanciarBotoes : MonoBehaviour
         Navigation navigation = _ult.navigation;
         navigation.mode = Navigation.Mode.Explicit;
         navigation.selectOnDown = _pri;
-        if(BotoesItensInventario.Count>2) navigation.selectOnUp = _pen;
+        navigation.selectOnUp = _pen;
         _ult.navigation = navigation;
         for(int i=0;i<BotoesItensInventario.Count-1;i++){
             Button _btns = BotoesItensInventario[i].GetComponent<Button>();

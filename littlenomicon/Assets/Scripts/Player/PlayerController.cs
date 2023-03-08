@@ -126,9 +126,10 @@ public class PlayerController : MonoBehaviour
         it.onMission=false;
         temItem=false;
         InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
-        Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
+        //Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
         Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
         InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+        InstanciarBotoes.Instance.NavegacaoItem();
         
     }
     void OnTriggerExit(Collider target)
@@ -139,9 +140,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void checaItemInventario(){
-             for(int _i=0;_i<Inventario.Instance.itens.Count;_i++){
+             for(int _i=0;_i<InstanciarBotoes.Instance.BotoesItensInventario.Count;_i++){
                 for(int _j=0;_j<InteracaoManager.Instance.objetosDesejados.Count;_j++){
-                    if(Inventario.Instance.itens[_i].name==InteracaoManager.Instance.objetosDesejados[_j]){
+                    BotoesItem btnItem = InstanciarBotoes.Instance.BotoesItensInventario[_i].GetComponent<BotoesItem>();
+                    if(btnItem.nomeItem==InteracaoManager.Instance.objetosDesejados[_j]){
                             temItem=true;
                             i=_i;
                             j=_j;
@@ -150,6 +152,7 @@ public class PlayerController : MonoBehaviour
                     
             
         }
+        
        
     }
     /*
