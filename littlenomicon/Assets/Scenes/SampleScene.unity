@@ -11809,9 +11809,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1362904446}
-        m_TargetAssemblyTypeName: Bau, Assembly-CSharp
-        m_MethodName: fecharBau
+      - m_Target: {fileID: 898170220}
+        m_TargetAssemblyTypeName: InstanciarBotoes, Assembly-CSharp
+        m_MethodName: pegar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

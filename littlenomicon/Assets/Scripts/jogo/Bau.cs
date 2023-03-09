@@ -21,6 +21,13 @@ public class Bau : MonoBehaviour
             }
         }
      }
+      public void removerItemBau( string nome){
+        for(int i=0;i<InteracaoManager.Instance.ObjetosInventario.Length;i++){
+             if(InteracaoManager.Instance.ObjetosInventario[i].name==nome) {
+                 InstanciarBotoes.Instance.instanciar(InteracaoManager.Instance.ObjetosInventario[i]);
+            }
+        }
+     }
      void OnTriggerEnter(Collider target)
     {
         if (target.tag == "Player")

@@ -32,5 +32,6 @@ public class BotoesItem : MonoBehaviour
     public void ClicouBau(){
         ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo[2]);
         InstanciarBotoes.Instance.abrir(Bau.Instance.opcao);
+        InstanciarBotoes.Instance.atualizaInfos(this);
     }
 }

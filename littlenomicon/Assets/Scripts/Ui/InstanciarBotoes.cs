@@ -19,7 +19,7 @@ public class InstanciarBotoes : MonoBehaviour
     public GameObject panelPrincipal;
     [SerializeField] TMP_Text textoInfo;
     public int faseId=0;
-    private BotoesItem itemClicadoAtual;
+    public BotoesItem itemClicadoAtual;
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
     bool abriuInventario=false;
@@ -105,7 +105,7 @@ public class InstanciarBotoes : MonoBehaviour
         InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
         Bau.Instance.adicionarItemBau(itemClicadoAtual.nomeItem);
         NavegacaoItem(BotoesItensInventario);
-
+        NavegacaoItem(Bau.Instance.BotoesItensBau);
         fechar(panelInventory);
         fechar(panelOpcoes);
         fechar(panelPrincipal);
@@ -115,24 +115,38 @@ public class InstanciarBotoes : MonoBehaviour
         
        
     }
+    public void pegar(){
+        int i=itemClicadoAtual.id;
+        Destroy(Bau.Instance.BotoesItensBau[i]);
+        Bau.Instance.BotoesItensBau.Remove(Bau.Instance.BotoesItensBau[i]);
+        Bau.Instance.removerItemBau(itemClicadoAtual.nomeItem);
+        NavegacaoItem(Bau.Instance.BotoesItensBau);
+        NavegacaoItem(BotoesItensInventario);
+        faseId=0;
+        Bau.Instance.fecharBau();
+        
+       
+    }
     public void instanciar(GameObject go){
         if(BotoesItensInventario.Count<maxItem){
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(Item, false);
         BotoesItensInventario.Add(_go);
         NavegacaoItem(BotoesItensInventario);
+        NavegacaoItem(Bau.Instance.BotoesItensBau);
         BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
         _go_Botao.id = BotoesItensInventario.Count-1;
             }
     }
     public void instanciarBau(GameObject go){
-        if(BotoesItensInventario.Count<maxItem){
+        if(Bau.Instance.BotoesItensBau.Count<maxItem){
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(ItemBau, false);
         Bau.Instance.BotoesItensBau.Add(_go);
         NavegacaoItem(Bau.Instance.BotoesItensBau);
+        NavegacaoItem(BotoesItensInventario);
         BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
-        _go_Botao.id = BotoesItensInventario.Count-1;
+        _go_Botao.id = Bau.Instance.BotoesItensBau.Count-1;
             }
     }
     public void VoltarPanel(){
