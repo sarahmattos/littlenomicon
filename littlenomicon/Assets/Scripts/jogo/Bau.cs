@@ -8,6 +8,7 @@ public class Bau : MonoBehaviour
     public static Bau Instance;
     public bool interagirBau, aberto;
     [SerializeField]public GameObject bauUi;
+    [SerializeField]public GameObject opcao;
     public void Start()
     {
         Instance=this;
@@ -45,6 +46,7 @@ public class Bau : MonoBehaviour
     }
     public void fecharBau(){
         bauUi.SetActive(false);
+        opcao.SetActive(false);
         aberto=false;
     }
 }

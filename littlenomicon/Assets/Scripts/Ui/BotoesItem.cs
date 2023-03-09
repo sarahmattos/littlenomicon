@@ -15,7 +15,12 @@ public class BotoesItem : MonoBehaviour
     void Start()
     {
         btn = this.GetComponent<Button>();
-        btn.onClick.AddListener(Clicou);
+        if(Bau.Instance.aberto){
+            btn.onClick.AddListener(ClicouBau);
+        }else{
+            btn.onClick.AddListener(Clicou);
+        }
+        
     }
 
     public void Clicou(){
@@ -23,5 +28,9 @@ public class BotoesItem : MonoBehaviour
         ButtonSelected.Instance.BotaoApertado(btn);
         InstanciarBotoes.Instance.abrir(InstanciarBotoes.Instance.panelOpcoes);
         InstanciarBotoes.Instance.atualizaInfos(this);
+    }
+    public void ClicouBau(){
+        ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo[2]);
+        InstanciarBotoes.Instance.abrir(Bau.Instance.opcao);
     }
 }
