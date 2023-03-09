@@ -32,18 +32,21 @@ public class InstanciarBotoes : MonoBehaviour
      public Sprite Image1, Image2;
     void Start()
     {
-        NavegacaoItem();
+        NavegacaoItem(BotoesItensInventario);
         lastselect = new GameObject();
         Instance= this;
         actionReferenceEscape.action.started += context =>
         {
-            if(abriuInventario!=true){
-                QuandoAbreInventario();
+            if(Bau.Instance.aberto==false){
+                    if(abriuInventario!=true){
+                    QuandoAbreInventario();
+                        }else{
+                            VoltarPanel();
+                }
             }else{
-                 VoltarPanel();
+                Bau.Instance.fecharBau();
             }
-              
-               
+            
            
         };
         actionReferenceP.action.started += context =>
@@ -73,7 +76,7 @@ public class InstanciarBotoes : MonoBehaviour
             int i=itemClicadoAtual.id;
             Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
             InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-            NavegacaoItem();
+            NavegacaoItem(BotoesItensInventario);
         }else{
             //chamar funcao de equipar
             if(itemClicadoAtual.equipado){
@@ -101,7 +104,7 @@ public class InstanciarBotoes : MonoBehaviour
         Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
         InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
         Bau.Instance.adicionarItemBau(itemClicadoAtual.nomeItem);
-        NavegacaoItem();
+        NavegacaoItem(BotoesItensInventario);
 
         fechar(panelInventory);
         fechar(panelOpcoes);
@@ -117,7 +120,7 @@ public class InstanciarBotoes : MonoBehaviour
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(Item, false);
         BotoesItensInventario.Add(_go);
-        NavegacaoItem();
+        NavegacaoItem(BotoesItensInventario);
         BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
         _go_Botao.id = BotoesItensInventario.Count-1;
             }
@@ -127,7 +130,7 @@ public class InstanciarBotoes : MonoBehaviour
         GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
         _go.transform.SetParent(ItemBau, false);
         Bau.Instance.BotoesItensBau.Add(_go);
-        NavegacaoItem();
+        NavegacaoItem(Bau.Instance.BotoesItensBau);
         BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
         _go_Botao.id = BotoesItensInventario.Count-1;
             }
@@ -177,22 +180,22 @@ public class InstanciarBotoes : MonoBehaviour
             abriuInventario=true;
         }
     }
-    public void NavegacaoItem(){
-        if(BotoesItensInventario.Count>1){
-        Button _btnUltimo = BotoesItensInventario[BotoesItensInventario.Count-1].GetComponent<Button>();
-        Button _btnPrimeiro = BotoesItensInventario[0].GetComponent<Button>();
-        Button _btnPenultimo = BotoesItensInventario[BotoesItensInventario.Count-2].GetComponent<Button>();
-        SetNavegacao(_btnUltimo,_btnPrimeiro,_btnPenultimo);
+    public void NavegacaoItem(List<GameObject> _go){
+        if(_go.Count>1){
+        Button _btnUltimo = _go[_go.Count-1].GetComponent<Button>();
+        Button _btnPrimeiro = _go[0].GetComponent<Button>();
+        Button _btnPenultimo = _go[_go.Count-2].GetComponent<Button>();
+        SetNavegacao(_btnUltimo,_btnPrimeiro,_btnPenultimo,  _go);
         }
     }
-    public void SetNavegacao(Button _ult,Button _pri ,Button _pen){
+    public void SetNavegacao(Button _ult,Button _pri ,Button _pen, List<GameObject> _go){
         Navigation navigation = _ult.navigation;
         navigation.mode = Navigation.Mode.Explicit;
         navigation.selectOnDown = _pri;
         navigation.selectOnUp = _pen;
         _ult.navigation = navigation;
-        for(int i=0;i<BotoesItensInventario.Count-1;i++){
-            Button _btns = BotoesItensInventario[i].GetComponent<Button>();
+        for(int i=0;i<_go.Count-1;i++){
+            Button _btns = _go[i].GetComponent<Button>();
             Navigation navigation2 = _btns.navigation;
             navigation2.mode = Navigation.Mode.Vertical;
             _btns.navigation=navigation2;

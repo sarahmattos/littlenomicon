@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         //Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
         Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
         InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-        InstanciarBotoes.Instance.NavegacaoItem();
+        InstanciarBotoes.Instance.NavegacaoItem(InstanciarBotoes.Instance.BotoesItensInventario);
         
     }
     void OnTriggerExit(Collider target)

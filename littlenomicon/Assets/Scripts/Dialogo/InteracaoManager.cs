@@ -41,7 +41,9 @@ public class InteracaoManager : MonoBehaviour
                 }
                 }
             }
-            
+            if(Bau.Instance.interagirBau){
+                Bau.Instance.abrirBau();
+            }
         };
     }
     private void OnEnable()
