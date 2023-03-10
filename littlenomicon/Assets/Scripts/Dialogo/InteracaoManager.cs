@@ -120,7 +120,8 @@ public class InteracaoManager : MonoBehaviour
                         if(ObjetosInventario[i].name==nomeCompra) {
                             //adiciona no array de iventario e instancia botoes que tambem armazena
                             //Inventario.Instance.itens.Add(ObjetosInventario[i]);
-                            InstanciarBotoes.Instance.instanciar(ObjetosInventario[i]);
+                            InstanciarBotoes.Instance.instanciar(ObjetosInventario[i],InstanciarBotoes.Instance.BotoesItensInventario,InstanciarBotoes.Instance.Item);
+                            
                         }
                     }
                     onCompra=false;

@@ -30,6 +30,7 @@ public class InstanciarBotoes : MonoBehaviour
     public int maxItem;
     bool usavel;
      public Sprite Image1, Image2;
+     public Transform pai;
     void Start()
     {
         NavegacaoItem(BotoesItensInventario);
@@ -52,8 +53,8 @@ public class InstanciarBotoes : MonoBehaviour
         actionReferenceP.action.started += context =>
         {
             int rng = Random.Range(0,InteracaoManager.Instance.ObjetosInventario.Length);
-            instanciar(InteracaoManager.Instance.ObjetosInventario[rng]);
-           
+            instanciar(InteracaoManager.Instance.ObjetosInventario[rng], BotoesItensInventario, Item);
+            
         };
          actionReferenceI.action.started += context =>
         {
@@ -72,11 +73,11 @@ public class InstanciarBotoes : MonoBehaviour
         if(usavel){
             //chamar funcao de usar
             Debug.Log("Item usado");
-            //Inventario.Instance.itens.Remove(Inventario.Instance.itens[itemClicadoAtual.id]);
             int i=itemClicadoAtual.id;
-            Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-            InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-            NavegacaoItem(BotoesItensInventario);
+            Destroy(BotoesItensInventario[i]);
+            BotoesItensInventario.Remove(BotoesItensInventario[i]);
+            resetaIdsNavegacao(BotoesItensInventario);
+            FecharInterfaceInteira();
         }else{
             //chamar funcao de equipar
             if(itemClicadoAtual.equipado){
@@ -92,63 +93,42 @@ public class InstanciarBotoes : MonoBehaviour
             
             //mudar nome do botao para desequipar
         }
-        fechar(panelInventory);
-        fechar(panelOpcoes);
-        fechar(panelPrincipal);
-        fechar(panelsInfo);
-        faseId=0;
-        QuandoFechaInventario();
-    }
-    public void largar(){
-        int i=itemClicadoAtual.id;
-        Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-        InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-        Bau.Instance.adicionarItemBau(itemClicadoAtual.nomeItem);
-        NavegacaoItem(BotoesItensInventario);
-        NavegacaoItem(Bau.Instance.BotoesItensBau);
-        fechar(panelInventory);
-        fechar(panelOpcoes);
-        fechar(panelPrincipal);
-        fechar(panelsInfo);
-        faseId=0;
-        QuandoFechaInventario();
         
+    }
+    
+    public void chamaFuncaoPegarLargar(int funcao){
+        if(funcao==0) {
+            pai = ItemBau;
+            pegarOuLargar(Bau.Instance.BotoesItensBau,Instance.BotoesItensInventario);
+        }
+        if(funcao==1){
+            pai = Item;
+            pegarOuLargar(BotoesItensInventario,Bau.Instance.BotoesItensBau);
+        }
+    }
+    public void pegarOuLargar(List<GameObject> _listaAdicionar,List<GameObject> _listaRemover){
+        int i=itemClicadoAtual.id;
+        Destroy(_listaRemover[i]);
+        _listaRemover.Remove(_listaRemover[i]);
+        for(int j=0;j<InteracaoManager.Instance.ObjetosInventario.Length;j++){
+             if(InteracaoManager.Instance.ObjetosInventario[j].name==itemClicadoAtual.nomeItem) {
+                  instanciar(InteracaoManager.Instance.ObjetosInventario[j],_listaAdicionar,pai);
+            } 
+        }
+        resetaIdsNavegacao(_listaAdicionar);
+        resetaIdsNavegacao(_listaRemover);
+        FecharInterfaceInteira();
        
     }
-    public void pegar(){
-        int i=itemClicadoAtual.id;
-        Destroy(Bau.Instance.BotoesItensBau[i]);
-        Bau.Instance.BotoesItensBau.Remove(Bau.Instance.BotoesItensBau[i]);
-        Bau.Instance.removerItemBau(itemClicadoAtual.nomeItem);
-        NavegacaoItem(Bau.Instance.BotoesItensBau);
-        NavegacaoItem(BotoesItensInventario);
-        faseId=0;
-        Bau.Instance.fecharBau();
-        
-       
+    public void instanciar(GameObject go, List<GameObject> lista, Transform _pai){
+        if(lista.Count<maxItem){
+            GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
+            _go.transform.SetParent(_pai, false);
+            lista.Add(_go);
+            resetaIdsNavegacao(lista);
+         }
     }
-    public void instanciar(GameObject go){
-        if(BotoesItensInventario.Count<maxItem){
-        GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
-        _go.transform.SetParent(Item, false);
-        BotoesItensInventario.Add(_go);
-        NavegacaoItem(BotoesItensInventario);
-        NavegacaoItem(Bau.Instance.BotoesItensBau);
-        BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
-        _go_Botao.id = BotoesItensInventario.Count-1;
-            }
-    }
-    public void instanciarBau(GameObject go){
-        if(Bau.Instance.BotoesItensBau.Count<maxItem){
-        GameObject _go = Instantiate(go,go.transform.position,go.transform.rotation);
-        _go.transform.SetParent(ItemBau, false);
-        Bau.Instance.BotoesItensBau.Add(_go);
-        NavegacaoItem(Bau.Instance.BotoesItensBau);
-        NavegacaoItem(BotoesItensInventario);
-        BotoesItem _go_Botao =_go.GetComponent<BotoesItem>();
-        _go_Botao.id = Bau.Instance.BotoesItensBau.Count-1;
-            }
-    }
+   
     public void VoltarPanel(){
         if(faseId==0){
             QuandoFechaInventario();
@@ -161,9 +141,24 @@ public class InstanciarBotoes : MonoBehaviour
             ButtonSelected.Instance.SetSelected(btnEscolhidoVolta[faseId-1]);
             faseId--;
         }
-        
-        
     }
+    public void FecharInterfaceInteira(){
+        fechar(panelInventory);
+        fechar(panelOpcoes);
+        fechar(panelPrincipal);
+        fechar(panelsInfo);
+        faseId=0;
+        QuandoFechaInventario();
+        Bau.Instance.fecharBau();
+    }
+    public void resetaIdsNavegacao(List<GameObject> lista)
+    {
+        NavegacaoItem(lista);
+        for(int i=0;i<lista.Count;i++){
+            BotoesItem _go_Botao = lista[i].GetComponent<BotoesItem>();
+            _go_Botao.id = i;
+        }
+     }
     public void abriuPanelPrincipal(GameObject _go){
         panelPrincipal=_go;
     }
