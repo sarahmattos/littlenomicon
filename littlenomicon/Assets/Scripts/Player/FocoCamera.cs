@@ -11,19 +11,18 @@ public class FocoCamera : MonoBehaviour
     public float smoothTime = 0.3f;
     //public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
-
     public bool focar=false;
-
     public Vector3 offset;
+    float aux;
     // Start is called before the first frame update
     void Start()
     {
+        aux=smoothTime+1f;;
         Instance =this;
-        transform.position=targetGoblin.position;
+        transform.position=targetGoblin.position+ new Vector3(0,4,-5);
         CameraSolta();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (focar)
@@ -33,18 +32,22 @@ public class FocoCamera : MonoBehaviour
             else{ 
                 CameraSolta();
             }
-           // */
     }
     public void CameraParada(){
-       // Debug.Log("entrou aqui");
         Vector3 targetPosition = targetPivo.position;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         transform.LookAt(targetCabeça);
     }
     public void CameraSolta(){
         Vector3 targetPosition = targetGoblin.position + offset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        if(aux>0){
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+            aux-=Time.deltaTime;
+        }else{
+                transform.position=targetPosition;
+        }
         transform.LookAt(targetGoblin);
+        
     }
     public void recebeTargets(Transform _targetPivo,Transform _targetCabeça){
         targetPivo=_targetPivo;

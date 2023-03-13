@@ -1304,13 +1304,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379adfef54ed6a24199a62de3fe4c77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  rg: {fileID: 919132149366549633}
+  speed: 600
   movement: {x: 0, y: 0, z: 0}
   lastPos: {x: 0, y: 0, z: 0}
   interagir: 0
   dialogoAberto: 0
   it: {fileID: 0}
   actionReference: {fileID: 7516675256088574087, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
+  m_move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0561ad08-fb0a-49e5-a53b-109288228888
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   Status: 0
   Dinheiro: 0
   onMission: 0
@@ -11352,6 +11362,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4767400413853537203, guid: b533cf14ec6cc6b4baea40fd26eaec1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7339356831882890532, guid: b533cf14ec6cc6b4baea40fd26eaec1f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -12925,6 +12939,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1967957835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767400413853537203, guid: b533cf14ec6cc6b4baea40fd26eaec1f, type: 3}
+  m_PrefabInstance: {fileID: 1611120361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1967957839
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967957835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6894428203817054813, guid: b533cf14ec6cc6b4baea40fd26eaec1f, type: 3}
 --- !u!1 &1982871619
 GameObject:
   m_ObjectHideFlags: 0
@@ -13316,14 +13349,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022593543}
   serializedVersion: 2
-  m_Mass: 10000000
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2022593550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16054,8 +16087,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.500506, y: 4.638764, z: 1}
-  m_Center: {x: 0.04428959, y: 2.267638, z: 0}
+  m_Size: {x: 2.500506, y: 4.638764, z: 2.5635214}
+  m_Center: {x: 0.04428959, y: 2.267638, z: 0.002214253}
 --- !u!65 &919132149366549632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16080,11 +16113,11 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!4 &921771914982838186
 Transform:
   m_ObjectHideFlags: 0

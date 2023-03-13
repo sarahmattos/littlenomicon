@@ -22,7 +22,7 @@ public class InstanciarBotoes : MonoBehaviour
     public BotoesItem itemClicadoAtual;
     public Button[] btnEscolhidoVolta;
     public Button[] btnProximo;
-    bool abriuInventario=false;
+    public bool abriuInventario=false;
     public Transform Item, ItemBau;
     GameObject lastselect;
     public Button btnAtual;

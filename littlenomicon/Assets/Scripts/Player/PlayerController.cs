@@ -6,6 +6,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public Rigidbody rg;
     public static PlayerController Instance;
     public float speed;
     private Vector2 move;
@@ -17,12 +18,13 @@ public class PlayerController : MonoBehaviour
     private GameObject targetObjeto;
     private bool jaConversou;
     public Interagivel it;
-    public InputActionReference actionReference;
+    public InputAction m_move;
     public int Status;
     public int Dinheiro;
     public bool onMission;
     public bool onMissionComplete;
     bool temItem;
+    private PlayerInput playerInput;
 
     public Transform targetPivo;
     public Transform targetCabeça;
@@ -31,26 +33,26 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         Instance=this;
         anim = gameObject.GetComponent<Animator>();
         Dinheiro=5;
+        m_move = playerInput.actions.FindAction("Move");
+        m_move.Enable();
     }
     private void OnEnable()
     {
-        actionReference.action.Enable();
+        m_move.Enable();
     }
     private void OnDisable()
     {
-        actionReference.action.Disable();
+        m_move.Disable();
     }
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        move = context.ReadValue<Vector2>();
-    }
+    
 
-    void Update()
+    void FixedUpdate()
     {
-        if(dialogoAberto==false){
+        if(dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false){
             movePlayer();
         }
            
@@ -61,12 +63,14 @@ public class PlayerController : MonoBehaviour
     }
     public void movePlayer()
     {
-        movement = new Vector3(move.x, 0f, move.y);
+        Vector2 moveInput = m_move.ReadValue<Vector2>();
+        movement = new Vector3(moveInput.x, 0f, moveInput.y);
+        movement = movement* speed * Time.deltaTime;
         if (movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         }
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        rg.velocity=movement;
     }
     public void AnimatorManager()
     {
