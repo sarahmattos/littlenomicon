@@ -128,13 +128,13 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void entregou(){
-        AreaSaida.Instance.box.enabled=false;
         it.onMission=false;
         it.temItem=false;
-        InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
+        InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[it.j]);
         //Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
-        Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
-        InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[i]);
+        it.objetosDesejados.Remove(it.objetosDesejados[it.j]);
+        Destroy(InstanciarBotoes.Instance.BotoesItensInventario[it.i]);
+        InstanciarBotoes.Instance.BotoesItensInventario.Remove(InstanciarBotoes.Instance.BotoesItensInventario[it.i]);
         InstanciarBotoes.Instance.NavegacaoItem(InstanciarBotoes.Instance.BotoesItensInventario);
         
     }
@@ -149,13 +149,13 @@ public class PlayerController : MonoBehaviour
         Debug.Log("testou");
         int aux=0;
              for(int _i=0;_i<InstanciarBotoes.Instance.BotoesItensInventario.Count;_i++){
-                for(int _j=0;_j<InteracaoManager.Instance.objetosDesejados.Count;_j++){
+                for(int _j=0;_j<it.objetosDesejados.Count;_j++){
                     BotoesItem btnItem = InstanciarBotoes.Instance.BotoesItensInventario[_i].GetComponent<BotoesItem>();
-                    if(btnItem.nomeItem==InteracaoManager.Instance.objetosDesejados[_j]){
+                    if(btnItem.nomeItem==it.objetosDesejados[_j]){
                             aux++;
                             it.temItem=true;
-                            i=_i;
-                            j=_j;
+                            it.i=_i;
+                            it.j=_j;
                     }
                 }
         }

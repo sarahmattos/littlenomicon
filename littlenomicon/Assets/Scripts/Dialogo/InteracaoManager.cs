@@ -94,6 +94,7 @@ public class InteracaoManager : MonoBehaviour
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].missoes.Count;i++){
                         PlayerController.Instance.it.recompensa += dialogueObject.dialogueSegments[indice].missoes[i].recompensa;
                         objetosDesejados.Add(dialogueObject.dialogueSegments[indice].missoes[i].objetoDesejado);
+                        PlayerController.Instance.it.objetosDesejados.Add(dialogueObject.dialogueSegments[indice].missoes[i].objetoDesejado);
                     }
                     
             }
@@ -128,7 +129,12 @@ public class InteracaoManager : MonoBehaviour
                 }
                 if(PlayerController.Instance.it.temItem==true){
                 PlayerController.Instance.entregou();
-                PlayerController.Instance.Dinheiro+=PlayerController.Instance.it.recompensa;
+                if( PlayerController.Instance.it.recompensa>0){
+                    PlayerController.Instance.Dinheiro+=PlayerController.Instance.it.recompensa;
+                }else{
+                    AreaSaida.Instance.box.enabled=false;
+                }
+                
                 PlayerController.Instance.it.onMissionComplete=false;
                 
             }

@@ -28,6 +28,14 @@ public class Interagivel : MonoBehaviour
 
     [HideInInspector]
     public int recompensa;
+
+    public List<string> objetosDesejados;
+
+     [HideInInspector]
+     public int i;
+     [HideInInspector]
+     public int j;
+    
     //public Sprite icon;
     //public string[] texto;
     //public int fontAssetId;
