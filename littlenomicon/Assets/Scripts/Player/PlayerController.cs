@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
            
         AnimatorManager();
          if(it!= null && it.onMission){
-            checaItemInventario();
+           // checaItemInventario();
          }
     }
     public void movePlayer()
@@ -96,11 +96,12 @@ public class PlayerController : MonoBehaviour
             //jaConversou=it.jaConversou;
             if(it.jaConversou==false && it.onMission==false && it.onMissionComplete==false) InteracaoManager.Instance.dialogueObject= it.startDialogueObject;
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(it.onMission==true && it.onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(it.onMission==true && it.onMissionComplete==false && it.temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
             
-            if(it.onMission==true && it.onMissionComplete==false && temItem==true) {
+            if(it.onMission==true && it.onMissionComplete==false && it.temItem==true) {
+                Debug.Log("aqui");
                 InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
-                it.onMissionComplete=true;
+                //it.onMissionComplete=true;
             }
         }
     }
@@ -118,17 +119,18 @@ public class PlayerController : MonoBehaviour
                 transform.LookAt(targetPostition2);
             }
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
-            if(it.onMission==true && it.onMissionComplete==false && temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
-            if(it.onMission==true && it.onMissionComplete==false && temItem==true) {
+            if(it.onMission==true && it.onMissionComplete==false && it.temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;
+            if(it.onMission==true && it.onMissionComplete==false && it.temItem==true) {
                 InteracaoManager.Instance.dialogueObject= it.missaoConcluidaDialogueObject;
-                it.onMissionComplete=true;
+                //it.onMissionComplete=true;
             }
+            if(it!= null && it.onMission)checaItemInventario();
         }
     }
     public void entregou(){
         AreaSaida.Instance.box.enabled=false;
         it.onMission=false;
-        temItem=false;
+        it.temItem=false;
         InteracaoManager.Instance.objetosDesejados.Remove(InteracaoManager.Instance.objetosDesejados[j]);
         //Inventario.Instance.itens.Remove(Inventario.Instance.itens[i]);
         Destroy(InstanciarBotoes.Instance.BotoesItensInventario[i]);
@@ -144,17 +146,21 @@ public class PlayerController : MonoBehaviour
         }
     }
     public void checaItemInventario(){
+        Debug.Log("testou");
+        int aux=0;
              for(int _i=0;_i<InstanciarBotoes.Instance.BotoesItensInventario.Count;_i++){
                 for(int _j=0;_j<InteracaoManager.Instance.objetosDesejados.Count;_j++){
                     BotoesItem btnItem = InstanciarBotoes.Instance.BotoesItensInventario[_i].GetComponent<BotoesItem>();
                     if(btnItem.nomeItem==InteracaoManager.Instance.objetosDesejados[_j]){
-                            temItem=true;
+                            aux++;
+                            it.temItem=true;
                             i=_i;
                             j=_j;
                     }
                 }
-                    
-            
+        }
+        if(aux==0){
+            it.temItem=false;
         }
         
        

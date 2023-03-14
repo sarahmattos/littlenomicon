@@ -89,10 +89,10 @@ public class InteracaoManager : MonoBehaviour
                     }
             }
             if(dialogueObject.dialogueSegments[indice].missoes.Count>0){
-                    recompensa=0;
+                    //recompensa=0;
                     onMission=true;
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].missoes.Count;i++){
-                        recompensa += dialogueObject.dialogueSegments[indice].missoes[i].recompensa;
+                        PlayerController.Instance.it.recompensa += dialogueObject.dialogueSegments[indice].missoes[i].recompensa;
                         objetosDesejados.Add(dialogueObject.dialogueSegments[indice].missoes[i].objetoDesejado);
                     }
                     
@@ -126,9 +126,9 @@ public class InteracaoManager : MonoBehaviour
                     }
                     onCompra=false;
                 }
-                if(PlayerController.Instance.it.onMissionComplete==true){
+                if(PlayerController.Instance.it.temItem==true){
                 PlayerController.Instance.entregou();
-                PlayerController.Instance.Dinheiro+=recompensa;
+                PlayerController.Instance.Dinheiro+=PlayerController.Instance.it.recompensa;
                 PlayerController.Instance.it.onMissionComplete=false;
                 
             }
