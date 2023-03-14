@@ -183,6 +183,12 @@ MonoBehaviour:
   onMissionComplete: 0
   onMission: 0
   NPC: 1
+  temItem: 0
+  recompensa: 0
+  objetosDesejados: []
+  i: 0
+  j: 0
+  tipoRecompensa: 0
 --- !u!65 &87199361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -515,6 +521,12 @@ MonoBehaviour:
   onMissionComplete: 0
   onMission: 0
   NPC: 1
+  temItem: 0
+  recompensa: 0
+  objetosDesejados: []
+  i: 0
+  j: 0
+  tipoRecompensa: 0
 --- !u!54 &240984946
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3463,6 +3475,12 @@ MonoBehaviour:
   onMissionComplete: 0
   onMission: 0
   NPC: 0
+  temItem: 0
+  recompensa: 0
+  objetosDesejados: []
+  i: 0
+  j: 0
+  tipoRecompensa: 0
 --- !u!65 &956903487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5088,6 +5106,10 @@ PrefabInstance:
       propertyPath: "targetCabe\xE7a"
       value: 
       objectReference: {fileID: 423572470}
+    - target: {fileID: 2776443895027712331, guid: 13c844f9da03ab54ea67f950d890b60c, type: 3}
+      propertyPath: tipoRecompensa
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2867763765669144145, guid: 13c844f9da03ab54ea67f950d890b60c, type: 3}
       propertyPath: m_TagString
       value: Interagivel
@@ -11994,6 +12016,12 @@ MonoBehaviour:
   onMissionComplete: 0
   onMission: 0
   NPC: 0
+  temItem: 0
+  recompensa: 0
+  objetosDesejados: []
+  i: 0
+  j: 0
+  tipoRecompensa: 4
 --- !u!65 &2022593551
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -35,6 +35,32 @@ public class Interagivel : MonoBehaviour
      public int i;
      [HideInInspector]
      public int j;
+     public int tipoRecompensa;
+
+public void recompensaFuncao()
+    {
+        switch (tipoRecompensa)
+        {
+        case 5:
+            PlayerController.Instance.Dinheiro+=PlayerController.Instance.it.recompensa;
+            break;
+        case 4:
+            AreaSaida.Instance.box.enabled=false;
+            break;
+        case 3:
+            print ("Whadya want?");
+            break;
+        case 2:
+            print ("Grog SMASH!");
+            break;
+        case 1:
+            print ("Ulg, glib, Pblblblblb");
+            break;
+        default:
+            print ("Incorrect intelligence level.");
+            break;
+        }
+    }
     
     //public Sprite icon;
     //public string[] texto;

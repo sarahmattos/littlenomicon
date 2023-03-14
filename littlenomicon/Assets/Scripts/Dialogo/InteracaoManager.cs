@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+
 public class InteracaoManager : MonoBehaviour
 {
     public static InteracaoManager Instance;
@@ -26,6 +27,7 @@ public class InteracaoManager : MonoBehaviour
     bool optionselected = false;
     void Start()
     {
+         
         Instance =this;
         actionReference.action.started += context =>
         {
@@ -129,12 +131,7 @@ public class InteracaoManager : MonoBehaviour
                 }
                 if(PlayerController.Instance.it.temItem==true){
                 PlayerController.Instance.entregou();
-                if( PlayerController.Instance.it.recompensa>0){
-                    PlayerController.Instance.Dinheiro+=PlayerController.Instance.it.recompensa;
-                }else{
-                    AreaSaida.Instance.box.enabled=false;
-                }
-                
+                PlayerController.Instance.it.recompensaFuncao();
                 PlayerController.Instance.it.onMissionComplete=false;
                 
             }
