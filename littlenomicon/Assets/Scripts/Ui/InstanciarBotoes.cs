@@ -195,6 +195,11 @@ public class InstanciarBotoes : MonoBehaviour
         Button _btnPrimeiro = _go[0].GetComponent<Button>();
         Button _btnPenultimo = _go[_go.Count-2].GetComponent<Button>();
         SetNavegacao(_btnUltimo,_btnPrimeiro,_btnPenultimo,  _go);
+        }else{
+             Button _btn = _go[0].GetComponent<Button>();
+             Navigation navigation = _btn.navigation;
+             navigation.mode = Navigation.Mode.None;
+             _btn.navigation=navigation;
         }
     }
     public void SetNavegacao(Button _ult,Button _pri ,Button _pen, List<GameObject> _go){

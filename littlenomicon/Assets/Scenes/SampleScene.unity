@@ -3763,6 +3763,7 @@ MonoBehaviour:
   - {fileID: 7947255310497057607, guid: d79c68f9f70723b4b996ed34336ba159, type: 3}
   - {fileID: 7947255310497057607, guid: 10f6cf140bb0a3f42a073330de280c45, type: 3}
   "come\xE7ou": 0
+  botoesEscolhasOn: 0
 --- !u!1 &999539279
 GameObject:
   m_ObjectHideFlags: 0
@@ -11662,6 +11663,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818891919}
     m_Modifications:
+    - target: {fileID: 7947255310497057605, guid: e2c37f53f0794c64db8fe93e1f2999bf, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7947255310497057606, guid: e2c37f53f0794c64db8fe93e1f2999bf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
