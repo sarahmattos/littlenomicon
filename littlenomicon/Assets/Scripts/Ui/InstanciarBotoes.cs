@@ -18,9 +18,11 @@ public class InstanciarBotoes : MonoBehaviour
     [SerializeField] GameObject panelInventory;
     [SerializeField] GameObject panelsInfo;
     [SerializeField] TMP_Text textoInfo;
+    [SerializeField] TMP_Text  botaoEquipar;
     [SerializeField] Sprite Image1, Image2;
     public Transform Item, ItemBau;
     public Button[] btnProximo;
+    
 
     [HideInInspector]
     [SerializeField] Button[] btnEscolhidoVolta;
@@ -34,6 +36,7 @@ public class InstanciarBotoes : MonoBehaviour
     private BotoesItem itemClicadoAtual;
     private GameObject panelPrincipal;
     private Transform pai;
+    
 
     [HideInInspector]
     public Button btnAtual;
@@ -78,6 +81,18 @@ public class InstanciarBotoes : MonoBehaviour
         textoInfo.text=_btnItem.textoInfo;
         usavel = _btnItem.usavel;
         itemClicadoAtual = _btnItem;
+        if(usavel){
+            itemClicadoAtual.textoEquipar = "Usar";
+        }else{
+            if(itemClicadoAtual.equipado){
+                itemClicadoAtual.textoEquipar="Desequipar";
+                
+            }else{
+                itemClicadoAtual.textoEquipar = "Equipar";
+            }
+            
+        }
+        botaoEquipar.text =itemClicadoAtual.textoEquipar;
     }
     public void usaOuEquipa(){
         if(usavel){
@@ -89,14 +104,17 @@ public class InstanciarBotoes : MonoBehaviour
             FecharInterfaceInteira();
         }else{
             if(itemClicadoAtual.equipado){
-                itemClicadoAtual.equipado=false;
                 itemClicadoAtual.btn.GetComponent<Image>().sprite = Image2;
                  Debug.Log("Item desequipado");
+                 itemClicadoAtual.textoEquipar="Equipar";
+                botaoEquipar.text =itemClicadoAtual.textoEquipar;
+                itemClicadoAtual.equipado=false;
             }else{
                  Debug.Log("Item equipado");
                 itemClicadoAtual.btn.GetComponent<Image>().sprite = Image1;
+                itemClicadoAtual.textoEquipar="Desequipar";
+                botaoEquipar.text =itemClicadoAtual.textoEquipar;
                 itemClicadoAtual.equipado=true;
-
             }
             
             //mudar nome do botao para desequipar
@@ -203,7 +221,7 @@ public class InstanciarBotoes : MonoBehaviour
         Button _btnPrimeiro = _go[0].GetComponent<Button>();
         Button _btnPenultimo = _go[_go.Count-2].GetComponent<Button>();
         SetNavegacao(_btnUltimo,_btnPrimeiro,_btnPenultimo,  _go);
-        }else{
+        }else if(_go.Count==1){
              Button _btn = _go[0].GetComponent<Button>();
              Navigation navigation = _btn.navigation;
              navigation.mode = Navigation.Mode.None;

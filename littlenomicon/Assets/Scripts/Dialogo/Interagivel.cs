@@ -21,6 +21,7 @@ public class Interagivel : MonoBehaviour
     public bool conversaUmaVez;
     public bool NPC;
     public List<string> objetosDesejados;
+    
 
     public int tipoRecompensa;
     [HideInInspector]
@@ -37,7 +38,8 @@ public class Interagivel : MonoBehaviour
      public int i;
      [HideInInspector]
      public int j;
-    
+
+     
 
 public void recompensaFuncao()
     {

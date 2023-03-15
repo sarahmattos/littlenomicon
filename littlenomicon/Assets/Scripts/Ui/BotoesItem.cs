@@ -8,9 +8,11 @@ public class BotoesItem : MonoBehaviour
     public Button btn;
     public string textoInfo;
     public bool usavel;
-    public bool equipado;
+    public bool equipado=false;
     public int id;
     public string nomeItem;
+    [HideInInspector]
+     public string textoEquipar;
     // Start is called before the first frame update
     void Start()
     {

@@ -42,20 +42,19 @@ public class InteracaoManager : MonoBehaviour
         {
             if(!botoesEscolhasOn){
                 if(PlayerController.Instance.it!= null){
-                if(PlayerController.Instance.interagir==true ){
-                    if(começou==false){
-                        ChamarDialogoInicio();
-                    }else{
-                            indice++;
-                            DisplayDialogue();     
+                    if(PlayerController.Instance.interagir==true ){
+                        if(começou==false){
+                            ChamarDialogoInicio();
+                        }else{
+                                indice++;
+                                DisplayDialogue();     
+                        }
                     }
+                 }
+                if(Bau.Instance.interagirBau){
+                    Bau.Instance.abrirBau();
                 }
             }
-            if(Bau.Instance.interagirBau){
-                Bau.Instance.abrirBau();
-            }
-            }
-            
         };
     }
     private void OnEnable()
