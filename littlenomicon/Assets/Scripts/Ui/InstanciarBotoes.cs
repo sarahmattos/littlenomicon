@@ -7,34 +7,44 @@ using UnityEngine.InputSystem;
 using TMPro;
 public class InstanciarBotoes : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
     public static InstanciarBotoes Instance;
+
+    [Header("ReferenciasCena")]
     public InputActionReference actionReferenceEscape;
-     public InputActionReference actionReferenceI;
-     public InputActionReference actionReferenceP;
-    public GameObject botaoItens;
-    public GameObject panelInventory;
+    public InputActionReference actionReferenceI;
+    public InputActionReference actionReferenceP;
     public GameObject panelOpcoes;
-    public GameObject panelsInfo;
-    public GameObject panelPrincipal;
+    [SerializeField] GameObject panelInventory;
+    [SerializeField] GameObject panelsInfo;
     [SerializeField] TMP_Text textoInfo;
-    public int faseId=0;
-    public BotoesItem itemClicadoAtual;
-    public Button[] btnEscolhidoVolta;
-    public Button[] btnProximo;
-    public bool abriuInventario=false;
+    [SerializeField] Sprite Image1, Image2;
     public Transform Item, ItemBau;
-    GameObject lastselect;
-    public Button btnAtual;
-    public List<GameObject> BotoesItensInventario;
+    public Button[] btnProximo;
+
+    [HideInInspector]
+    [SerializeField] Button[] btnEscolhidoVolta;
+
+
+    [Header("VariaveisScript")]
     public int maxItem;
-    bool usavel;
-     public Sprite Image1, Image2;
-     public Transform pai;
+    public List<GameObject> BotoesItensInventario;
+    private bool usavel;
+    private int faseId=0;
+    private BotoesItem itemClicadoAtual;
+    private GameObject panelPrincipal;
+    private Transform pai;
+
+    [HideInInspector]
+    public Button btnAtual;
+
+    [HideInInspector]
+    public bool abriuInventario=false;
+    
+    
     void Start()
     {
         NavegacaoItem(BotoesItensInventario);
-        lastselect = new GameObject();
         Instance= this;
         actionReferenceEscape.action.started += context =>
         {
@@ -71,7 +81,6 @@ public class InstanciarBotoes : MonoBehaviour
     }
     public void usaOuEquipa(){
         if(usavel){
-            //chamar funcao de usar
             Debug.Log("Item usado");
             int i=itemClicadoAtual.id;
             Destroy(BotoesItensInventario[i]);
@@ -79,7 +88,6 @@ public class InstanciarBotoes : MonoBehaviour
             resetaIdsNavegacao(BotoesItensInventario);
             FecharInterfaceInteira();
         }else{
-            //chamar funcao de equipar
             if(itemClicadoAtual.equipado){
                 itemClicadoAtual.equipado=false;
                 itemClicadoAtual.btn.GetComponent<Image>().sprite = Image2;
