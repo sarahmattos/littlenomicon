@@ -6,36 +6,38 @@ using TMPro;
 
 //[CreateAssetMenu(fileName = "ObjetoInteragivel", menuName = "Interagivel/Novo")]
 public class Interagivel : MonoBehaviour
-{   
+{  
+     [Header("ScriptablesDialogo")]
     public DialogueObject startDialogueObject;
     public DialogueObject jaVisitouDialogueObject;
     public DialogueObject missaoDialogueObject;
     public DialogueObject missaoConcluidaDialogueObject;
 
-    public Transform targetPivo, targetCabeça;
-    //public bool personagem;
+    [Header("ReferenciasCena")]
+    public Transform targetPivo;
+    public Transform targetCabeça;
+
+    [Header("Variaveis")]
     public bool conversaUmaVez;
+    public bool NPC;
+    public List<string> objetosDesejados;
+
+    public int tipoRecompensa;
     [HideInInspector]
     public bool jaConversou;
     [HideInInspector]
     public bool onMissionComplete;
     [HideInInspector]
     public bool onMission;
-
-    public bool NPC;
     [HideInInspector]
     public bool temItem=false;
-
     [HideInInspector]
     public int recompensa;
-
-    public List<string> objetosDesejados;
-
      [HideInInspector]
      public int i;
      [HideInInspector]
      public int j;
-     public int tipoRecompensa;
+    
 
 public void recompensaFuncao()
     {
@@ -63,8 +65,5 @@ public void recompensaFuncao()
     }
     
     //public Sprite icon;
-    //public string[] texto;
-    //public int fontAssetId;
-   // public TMP_FontAsset fontTexto;
 }
 

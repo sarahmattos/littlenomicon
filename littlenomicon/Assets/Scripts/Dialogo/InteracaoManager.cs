@@ -8,23 +8,32 @@ using TMPro;
 public class InteracaoManager : MonoBehaviour
 {
     public static InteracaoManager Instance;
+    [Header("ReferenciasCena")]
+    [SerializeField] InputActionReference actionReference;
     public DialogueObject dialogueObject;
     [SerializeField] GameObject Dialoguecanvas;
-    public GameObject DialogueChoices;
     [SerializeField] GameObject[] ChoicesBtn;
     [SerializeField] TMP_Text texto;
     [SerializeField] Image icon;
     [SerializeField] TMP_FontAsset[] fontTexto;
-    public InputActionReference actionReference;
-    public int recompensa, valorCompra;
-    public int indice=0;
-    public bool onMission, onCompra;
-    public string nomeCompra;
+    
+    [HideInInspector]
+    public GameObject DialogueChoices;
+    
+    [Header("Variaveis")]
     public List<string> objetosDesejados;
     public GameObject[] ObjetosInventario;
-    public bool começou=false;
-    public bool botoesEscolhasOn;
-    bool optionselected = false;
+    private bool onMission;
+    private bool começou=false;
+    private bool botoesEscolhasOn;
+    private int indice=0;
+    
+    [HideInInspector]
+    public string nomeCompra;
+    [HideInInspector]
+    public int valorCompra;
+    [HideInInspector]
+    public bool onCompra;
     void Start()
     {
          
@@ -70,7 +79,6 @@ public class InteracaoManager : MonoBehaviour
     
     public void DisplayDialogue(){
         PlayerController.Instance.dialogoAberto=true;
-        //PlayerController.Instance.interagir=false;
         começou=true;
         
         
@@ -94,7 +102,6 @@ public class InteracaoManager : MonoBehaviour
                     }
             }
             if(dialogueObject.dialogueSegments[indice].missoes.Count>0){
-                    //recompensa=0;
                     onMission=true;
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].missoes.Count;i++){
                         PlayerController.Instance.it.recompensa += dialogueObject.dialogueSegments[indice].missoes[i].recompensa;
@@ -111,7 +118,6 @@ public class InteracaoManager : MonoBehaviour
             }else{
                 começou=false;
                 FocoCamera.Instance.focar=false;
-                //PlayerController.Instance.interagir=false;
                 Dialoguecanvas.SetActive(false);
                 PlayerController.Instance.dialogoAberto=false;
                 if(PlayerController.Instance.it.conversaUmaVez==true)PlayerController.Instance.it.jaConversou=true;
@@ -125,7 +131,6 @@ public class InteracaoManager : MonoBehaviour
                     for(int i=0;i<ObjetosInventario.Length;i++){
                         if(ObjetosInventario[i].name==nomeCompra) {
                             //adiciona no array de iventario e instancia botoes que tambem armazena
-                            //Inventario.Instance.itens.Add(ObjetosInventario[i]);
                             InstanciarBotoes.Instance.instanciar(ObjetosInventario[i],InstanciarBotoes.Instance.BotoesItensInventario,InstanciarBotoes.Instance.Item);
                             
                         }
@@ -137,44 +142,8 @@ public class InteracaoManager : MonoBehaviour
                 PlayerController.Instance.it.recompensaFuncao();
                 PlayerController.Instance.it.onMissionComplete=false;
                 
+                }
             }
-            
-            }
-            
-            
         }
-        
     }
-    
-    
-    
-    /*
-    IEnumerator DisplayDialogue(DialogueObject _dialogueObject){
-        yield return null;
-        Dialoguecanvas.SetActive(true);
-        foreach(var dialogue in _dialogueObject.dialogueSegments){
-            texto.text=dialogue.dialogueText;
-            icon.sprite =dialogue.icon;
-            texto.font = fontTexto[dialogue.fontAssetId];
-            if(dialogue.dialogueChoices.Count==0){
-                yield return new WaitForSeconds(dialogue.dialogueDisplayTime);
-            }else{
-            //options
-            DialogueChoices.SetActive(true);
-            for(int i=0;i<dialogue.dialogueChoices.Count;i++){
-                 ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogue.dialogueChoices[i].followOnDialogue, dialogue.dialogueChoices[i].dialogueChoice);
-            }
-            while(!optionselected){
-                yield return null;
-            }
-            break;
-        }
-        
-    }
-        Dialoguecanvas.SetActive(false);
-         DialogueChoices.SetActive(false);
-         optionselected=false;
-         PlayerController.Instance.dialogoAberto=false;
-}
-*/
 }
