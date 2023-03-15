@@ -23,7 +23,7 @@ public class InteracaoManager : MonoBehaviour
     public List<string> objetosDesejados;
     public GameObject[] ObjetosInventario;
     public bool começou=false;
-    
+    public bool botoesEscolhasOn;
     bool optionselected = false;
     void Start()
     {
@@ -31,21 +31,22 @@ public class InteracaoManager : MonoBehaviour
         Instance =this;
         actionReference.action.started += context =>
         {
-            if(PlayerController.Instance.it!= null){
+            if(!botoesEscolhasOn){
+                if(PlayerController.Instance.it!= null){
                 if(PlayerController.Instance.interagir==true ){
                     if(começou==false){
                         ChamarDialogoInicio();
                     }else{
                             indice++;
-                            DisplayDialogue();
-                        
-                    
-                }
+                            DisplayDialogue();     
+                    }
                 }
             }
             if(Bau.Instance.interagirBau){
                 Bau.Instance.abrirBau();
             }
+            }
+            
         };
     }
     private void OnEnable()
@@ -77,6 +78,7 @@ public class InteracaoManager : MonoBehaviour
             texto.text=dialogueObject.dialogueSegments[indice].dialogueText;
             icon.sprite =dialogueObject.dialogueSegments[indice].icon;
             texto.font = fontTexto[dialogueObject.dialogueSegments[indice].fontAssetId];
+            botoesEscolhasOn=false;
             if(dialogueObject.dialogueSegments[indice].IsPlayer==true){
                 FocoCamera.Instance.recebeTargets(PlayerController.Instance.targetPivo, PlayerController.Instance.targetCabeça);
                 FocoCamera.Instance.focar=true;
@@ -85,6 +87,7 @@ public class InteracaoManager : MonoBehaviour
                 FocoCamera.Instance.focar=true;
             }
             if(dialogueObject.dialogueSegments[indice].dialogueChoices.Count>0){
+                botoesEscolhasOn=true;
                     DialogueChoices.SetActive(true);
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].dialogueChoices.Count;i++){
                         ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice,dialogueObject.dialogueSegments[indice].dialogueChoices[i].AlteraStatus, dialogueObject.dialogueSegments[indice].dialogueChoices[i].Compra);
