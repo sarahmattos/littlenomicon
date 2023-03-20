@@ -480,7 +480,7 @@ MonoBehaviour:
   "targetCabe\xE7a": {fileID: 1618318713}
   smoothTime: 0.4
   focar: 0
-  offset: {x: 0, y: 9, z: -10}
+  offset: {x: 0, y: 19, z: -18}
 --- !u!114 &15492687
 MonoBehaviour:
   m_ObjectHideFlags: 0
