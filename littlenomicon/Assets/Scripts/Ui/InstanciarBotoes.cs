@@ -47,6 +47,7 @@ public class InstanciarBotoes : MonoBehaviour
     
     void Start()
     {
+        Cursor.visible = false;
         NavegacaoItem(BotoesItensInventario);
         Instance= this;
         actionReferenceEscape.action.started += context =>
@@ -200,7 +201,7 @@ public class InstanciarBotoes : MonoBehaviour
     }
     public void QuandoFechaInventario(){
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        //Cursor.visible = true;
 
         fechar(panelInventory);
         abriuInventario=false;
@@ -208,7 +209,7 @@ public class InstanciarBotoes : MonoBehaviour
     public void QuandoAbreInventario(){
         if(abriuInventario==false){
            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.visible = false;
             
             ButtonSelected.Instance.SetSelected(btnProximo[0]);
             abrir(panelInventory);
