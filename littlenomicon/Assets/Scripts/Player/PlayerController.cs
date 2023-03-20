@@ -53,8 +53,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         if(dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false){
-            movePlayer();
+            speed=600;
+            
+        }else{
+            speed=0;
         }
+        movePlayer();
            
         AnimatorManager();
          if(it!= null && it.onMission){
