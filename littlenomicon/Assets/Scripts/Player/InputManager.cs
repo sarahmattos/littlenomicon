@@ -71,6 +71,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RotateMouse"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea7e4214-cca9-4d11-8a10-250cc945181f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Teste"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e7bf53f-24bb-4a61-b4ab-dcbb16275c88"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RotateMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Voltar = m_Player.FindAction("Voltar", throwIfNotFound: true);
         m_Player_Teste = m_Player.FindAction("Teste", throwIfNotFound: true);
+        m_Player_RotateMouse = m_Player.FindAction("RotateMouse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -249,6 +270,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Voltar;
     private readonly InputAction m_Player_Teste;
+    private readonly InputAction m_Player_RotateMouse;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -258,6 +280,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Voltar => m_Wrapper.m_Player_Voltar;
         public InputAction @Teste => m_Wrapper.m_Player_Teste;
+        public InputAction @RotateMouse => m_Wrapper.m_Player_RotateMouse;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +305,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Teste.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeste;
                 @Teste.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeste;
                 @Teste.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTeste;
+                @RotateMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateMouse;
+                @RotateMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateMouse;
+                @RotateMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateMouse;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -301,6 +327,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Teste.started += instance.OnTeste;
                 @Teste.performed += instance.OnTeste;
                 @Teste.canceled += instance.OnTeste;
+                @RotateMouse.started += instance.OnRotateMouse;
+                @RotateMouse.performed += instance.OnRotateMouse;
+                @RotateMouse.canceled += instance.OnRotateMouse;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnVoltar(InputAction.CallbackContext context);
         void OnTeste(InputAction.CallbackContext context);
+        void OnRotateMouse(InputAction.CallbackContext context);
     }
 }

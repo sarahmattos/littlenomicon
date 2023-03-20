@@ -28,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform targetPivo;
     public Transform targetCabeça;
+    public float sensibilidade = 2.0f;
+
+	private float mouseX = 0.0f, mouseY = 0.0f;
+    public Transform cameraTrans;
 
     int i,j;
 
@@ -70,11 +74,14 @@ public class PlayerController : MonoBehaviour
         Vector2 moveInput = m_move.ReadValue<Vector2>();
         movement = new Vector3(moveInput.x, 0f, moveInput.y);
         movement = movement* speed * Time.deltaTime;
+        movement = Quaternion.AngleAxis(cameraTrans.rotation.eulerAngles.y,Vector3.up)*movement;
         if (movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         }
         rg.velocity=movement;
+
+       
     }
     public void AnimatorManager()
     {

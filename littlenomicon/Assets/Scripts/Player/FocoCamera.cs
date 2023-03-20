@@ -13,6 +13,10 @@ public class FocoCamera : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public bool focar=false;
     public Vector3 offset;
+    
+    public float sensibilidade = 2.0f;
+
+	private float mouseX = 0.0f, mouseY = 0.0f;
     float aux;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,7 @@ public class FocoCamera : MonoBehaviour
 
     void Update()
     {
+        rotate();
         if (focar)
         {
             CameraParada();
@@ -33,9 +38,15 @@ public class FocoCamera : MonoBehaviour
                 CameraSolta();
             }
     }
+    public void rotate(){
+         mouseX += Input.GetAxis("Mouse X") * sensibilidade; // Incrementa o valor do eixo X e multiplica pela sensibilidade
+		mouseY -= Input.GetAxis("Mouse Y") * sensibilidade; // Incrementa o valor do eixo Y e multiplica pela sensibilidade. (Obs. usamos o - para inverter os valores)
+
+		transform.eulerAngles = new Vector3(mouseY, mouseX, 0);
+    }
     public void CameraParada(){
         Vector3 targetPosition = targetPivo.position;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position +new Vector3(mouseY, mouseX, 0), targetPosition, ref velocity, smoothTime);
         transform.LookAt(targetCabeça);
     }
     public void CameraSolta(){
