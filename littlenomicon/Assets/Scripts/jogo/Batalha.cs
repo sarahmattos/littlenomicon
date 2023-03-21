@@ -9,6 +9,8 @@ public class Batalha : MonoBehaviour
     [SerializeField] Transform spawBoss;
     [SerializeField] GameObject[] bosses;
     [SerializeField] GameObject[] itensColissao;
+    //private GameObject bossAtual;
+    public BossController BossControllerAtual;
 
 
     void Start()
@@ -26,7 +28,13 @@ public class Batalha : MonoBehaviour
     }
     public void iniciarConfiguracoes(int i,int itens){
         player.position = spawPlayer.position;
-        GameObject _go = Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
+        Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
         itensColissao[i].SetActive(true);
+        chamarAtaque(bosses[i]);
+    }
+    public void chamarAtaque(GameObject bossAtual){
+        BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
+        int tipoAtaque = Random.Range(0,5);
+        BossControllerAtual.Ataque(tipoAtaque);
     }
 }
