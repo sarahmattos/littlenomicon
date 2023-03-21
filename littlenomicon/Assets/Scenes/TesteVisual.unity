@@ -4083,7 +4083,7 @@ MonoBehaviour:
   spawPlayer: {fileID: 261016675}
   spawBoss: {fileID: 1698148424}
   bosses:
-  - {fileID: 624119731438712168, guid: 13c844f9da03ab54ea67f950d890b60c, type: 3}
+  - {fileID: 283976461912840040, guid: d57f7aae43ba7c748a49430b77ace138, type: 3}
   itensColissao:
   - {fileID: 2124605575}
   - {fileID: 1210858398}
