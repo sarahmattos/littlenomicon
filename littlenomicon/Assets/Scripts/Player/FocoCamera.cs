@@ -29,7 +29,7 @@ public class FocoCamera : MonoBehaviour
 
     void Update()
     {
-        rotate();
+        //rotate();
         if (focar)
         {
             CameraParada();

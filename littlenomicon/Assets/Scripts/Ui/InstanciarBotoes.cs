@@ -249,7 +249,7 @@ public class InstanciarBotoes : MonoBehaviour
                     {
                         btnAtual.Select();
                         Cursor.lockState = CursorLockMode.Locked;
-                        Cursor.visible = false;
+                       // Cursor.visible = false;
                     }
 
             }        

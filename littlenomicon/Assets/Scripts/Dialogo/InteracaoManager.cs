@@ -86,6 +86,7 @@ public class InteracaoManager : MonoBehaviour
             icon.sprite =dialogueObject.dialogueSegments[indice].icon;
             texto.font = fontTexto[dialogueObject.dialogueSegments[indice].fontAssetId];
             botoesEscolhasOn=false;
+             Cursor.visible = false;
             if(dialogueObject.dialogueSegments[indice].IsPlayer==true){
                 FocoCamera.Instance.recebeTargets(PlayerController.Instance.targetPivo, PlayerController.Instance.targetCabeça);
                 FocoCamera.Instance.focar=true;
@@ -95,6 +96,7 @@ public class InteracaoManager : MonoBehaviour
             }
             if(dialogueObject.dialogueSegments[indice].dialogueChoices.Count>0){
                 botoesEscolhasOn=true;
+                 Cursor.visible = true;
                     DialogueChoices.SetActive(true);
                     for(int i=0;i<dialogueObject.dialogueSegments[indice].dialogueChoices.Count;i++){
                         ChoicesBtn[i].GetComponent<UiDialogueInteract>().SetUp(this, dialogueObject.dialogueSegments[indice].dialogueChoices[i].followOnDialogue, dialogueObject.dialogueSegments[indice].dialogueChoices[i].dialogueChoice,dialogueObject.dialogueSegments[indice].dialogueChoices[i].AlteraStatus, dialogueObject.dialogueSegments[indice].dialogueChoices[i].Compra);

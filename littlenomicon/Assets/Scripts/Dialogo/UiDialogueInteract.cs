@@ -25,6 +25,7 @@ public class UiDialogueInteract : MonoBehaviour
         
     }
     public void SelectOption(int valueStatus){
+        Cursor.visible = false;
         InteracaoManager.Instance.DialogueChoices.SetActive(false);
         interacaoManager.optionSelected(dialogueObject);
         if(alteraStatus)PlayerController.Instance.Status+=valueStatus;
