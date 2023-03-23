@@ -27,7 +27,11 @@ public class UiDialogueInteract : MonoBehaviour
     public void SelectOption(int valueStatus){
         Cursor.visible = false;
         InteracaoManager.Instance.DialogueChoices.SetActive(false);
-        interacaoManager.optionSelected(dialogueObject);
+        if(dialogueObject !=null){ interacaoManager.optionSelected(dialogueObject);
+        }else{
+           InteracaoManager.Instance.indice++;
+           InteracaoManager.Instance.DisplayDialogue();  
+        }
         if(alteraStatus)PlayerController.Instance.Status+=valueStatus;
     }
     public void Compra(int value){

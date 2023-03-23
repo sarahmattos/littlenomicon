@@ -4087,7 +4087,9 @@ MonoBehaviour:
   itensColissao:
   - {fileID: 2124605575}
   - {fileID: 1210858398}
+  opcoesPlayer: {fileID: 11400000, guid: 9dfb62aef9cfa3a488b812527775f9d6, type: 2}
   BossControllerAtual: {fileID: 0}
+  batalhaOn: 0
 --- !u!1 &161503943
 GameObject:
   m_ObjectHideFlags: 0
@@ -42595,7 +42597,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900433496}
-  m_LocalRotation: {x: 0.4468002, y: -0.000000037309942, z: 0.000000018633422, w: 0.89463377}
+  m_LocalRotation: {x: 0.44680023, y: -0.000000019451276, z: 0.000000009714404, w: 0.89463377}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

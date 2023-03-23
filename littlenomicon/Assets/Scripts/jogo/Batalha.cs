@@ -11,6 +11,7 @@ public class Batalha : MonoBehaviour
     [SerializeField] GameObject[] bosses;
     [SerializeField] GameObject[] itensColissao;
     //private GameObject bossAtual;
+    public DialogueObject opcoesPlayer;
     public BossController BossControllerAtual;
      private IEnumerator coroutine;
     public bool batalhaOn;
@@ -30,7 +31,6 @@ public class Batalha : MonoBehaviour
         iniciarConfiguracoes(0,0);
     }
     public void iniciarConfiguracoes(int i,int itens){
-        batalhaOn=true;
         bossAtual = bosses[i].GetComponentInChildren<BonecoDeTreino_Boss>();
         player.position = spawPlayer.position;
         Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
@@ -39,17 +39,28 @@ public class Batalha : MonoBehaviour
         StartCoroutine(coroutine);
         //chamarAtaque(bosses[i]);
     }
+    public void chamarDialogoBatalha(){
+        batalhaOn=true;
+        InteracaoManager.Instance.ChamarDialogoInicio();
+    }
     public void chamarAtaque(){
         //BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         int tipoAtaque = Random.Range(0,5);
         bossAtual.Ataque(tipoAtaque);
+        coroutine = WaitAndOptions(3.0f);
+        StartCoroutine(coroutine);
     }
-    public void chamarDialogoBatalha(){
-        InteracaoManager.Instance.ChamarDialogoInicio();
-    }
+    
     IEnumerator WaitAndDo(float time)
     {
         yield return new WaitForSeconds(time);
         chamarDialogoBatalha();
+    }
+    IEnumerator WaitAndOptions(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Debug.Log("acabou ataque, chama opcoes pra jogador");
+        InteracaoManager.Instance.dialogueObject = opcoesPlayer;
+        InteracaoManager.Instance.ChamarDialogoInicio();
     }
 }

@@ -26,7 +26,7 @@ public class InteracaoManager : MonoBehaviour
     private bool onMission;
     private bool começou=false;
     private bool botoesEscolhasOn;
-    private int indice=0;
+    public int indice=0;
     
     [HideInInspector]
     public string nomeCompra;

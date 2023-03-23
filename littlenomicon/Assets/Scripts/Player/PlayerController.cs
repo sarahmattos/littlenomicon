@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter(Collider target)
     {
+        if(!Batalha.Instance.batalhaOn){
         if (target.tag == "Interagivel")
         {   
             targetObjeto = target.gameObject;
@@ -115,9 +116,11 @@ public class PlayerController : MonoBehaviour
                 //it.onMissionComplete=true;
             }
         }
+        }
     }
     void OnTriggerStay(Collider target)
     {
+         if(!Batalha.Instance.batalhaOn){
         if (target.tag == "Interagivel")
         {   
             if(it.NPC){
@@ -137,6 +140,7 @@ public class PlayerController : MonoBehaviour
             }
             if(it!= null && it.onMission)checaItemInventario();
         }
+         }
     }
     public void entregou(){
         it.onMission=false;
