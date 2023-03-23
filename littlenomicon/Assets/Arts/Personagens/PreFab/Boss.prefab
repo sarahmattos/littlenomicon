@@ -4547,9 +4547,10 @@ GameObject:
   - component: {fileID: 2093043451044734657}
   - component: {fileID: 996636661229436459}
   - component: {fileID: 386170955971903171}
+  - component: {fileID: 5086742988517288238}
   m_Layer: 0
   m_Name: Personagem_01
-  m_TagString: Untagged
+  m_TagString: Interagivel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4633,6 +4634,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: {fileID: 0}
+--- !u!114 &5086742988517288238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212726194657444945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2574edf368b62c42aef8574e3cf7dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDialogueObject: {fileID: 11400000, guid: 018f70e44b398524bbe964f680c14a40, type: 2}
+  jaVisitouDialogueObject: {fileID: 0}
+  missaoDialogueObject: {fileID: 0}
+  missaoConcluidaDialogueObject: {fileID: 0}
+  targetPivo: {fileID: 0}
+  "targetCabe\xE7a": {fileID: 0}
+  conversaUmaVez: 0
+  NPC: 0
+  objetosDesejados: []
+  tipoRecompensa: 0
+  jaConversou: 0
+  onMissionComplete: 0
+  onMission: 0
+  temItem: 0
+  recompensa: 0
+  i: 0
+  j: 0
 --- !u!1 &3395794957613387087
 GameObject:
   m_ObjectHideFlags: 0

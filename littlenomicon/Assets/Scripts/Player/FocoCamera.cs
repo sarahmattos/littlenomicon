@@ -45,9 +45,9 @@ public class FocoCamera : MonoBehaviour
 		transform.eulerAngles = new Vector3(mouseY, mouseX, 0);
     }
     public void CameraParada(){
-        Vector3 targetPosition = targetPivo.position;
-        transform.position = Vector3.SmoothDamp(transform.position +new Vector3(mouseY, mouseX, 0), targetPosition, ref velocity, smoothTime);
-        transform.LookAt(targetCabeça);
+//        Vector3 targetPosition = targetPivo.position;
+   //     transform.position = Vector3.SmoothDamp(transform.position +new Vector3(mouseY, mouseX, 0), targetPosition, ref velocity, smoothTime);
+   //     transform.LookAt(targetCabeça);
     }
     public void CameraSolta(){
         Vector3 targetPosition = targetGoblin.position + offset;

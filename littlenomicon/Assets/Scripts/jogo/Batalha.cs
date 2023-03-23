@@ -35,6 +35,6 @@ public class Batalha : MonoBehaviour
     public void chamarAtaque(GameObject bossAtual){
         BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         int tipoAtaque = Random.Range(0,5);
-        BossControllerAtual.Ataque(tipoAtaque);
+        //BossControllerAtual.Ataque(tipoAtaque);
     }
 }
