@@ -4549,6 +4549,7 @@ GameObject:
   - component: {fileID: 386170955971903171}
   - component: {fileID: 5086742988517288238}
   - component: {fileID: 4453728540529786445}
+  - component: {fileID: 1950810665966214588}
   m_Layer: 0
   m_Name: Personagem_01
   m_TagString: Interagivel
@@ -4677,6 +4678,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 295.02518, y: 27.080252, z: 254.93811}
   m_Center: {x: 19.797089, y: 13.040126, z: -17.225056}
+--- !u!114 &1950810665966214588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212726194657444945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0800018a04731114f9f907cfd20bac98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidaAtual: 0
+  vidaMaxima: 0
+  "cansa\xE7o": 0
+  raiva: 0
 --- !u!1 &3395794957613387087
 GameObject:
   m_ObjectHideFlags: 0

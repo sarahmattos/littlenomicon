@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Batalha : MonoBehaviour
 {
+    public static Batalha Instance;
     [SerializeField] Transform player;
     [SerializeField] Transform spawPlayer;
     [SerializeField] Transform spawBoss;
@@ -12,11 +13,12 @@ public class Batalha : MonoBehaviour
     //private GameObject bossAtual;
     public BossController BossControllerAtual;
      private IEnumerator coroutine;
-
+    public bool batalhaOn;
+    BossModelo bossAtual;
 
     void Start()
     {
-        
+        Instance = this;
     }
 
     // Update is called once per frame
@@ -28,6 +30,8 @@ public class Batalha : MonoBehaviour
         iniciarConfiguracoes(0,0);
     }
     public void iniciarConfiguracoes(int i,int itens){
+        batalhaOn=true;
+        bossAtual = bosses[i].GetComponentInChildren<BonecoDeTreino_Boss>();
         player.position = spawPlayer.position;
         Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
         itensColissao[i].SetActive(true);
@@ -35,9 +39,10 @@ public class Batalha : MonoBehaviour
         StartCoroutine(coroutine);
         //chamarAtaque(bosses[i]);
     }
-    public void chamarAtaque(GameObject bossAtual){
-        BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
+    public void chamarAtaque(){
+        //BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         int tipoAtaque = Random.Range(0,5);
+        bossAtual.Ataque(tipoAtaque);
     }
     public void chamarDialogoBatalha(){
         InteracaoManager.Instance.ChamarDialogoInicio();

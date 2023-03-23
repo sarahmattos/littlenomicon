@@ -144,6 +144,9 @@ public class InteracaoManager : MonoBehaviour
                 PlayerController.Instance.it.onMissionComplete=false;
                 
                 }
+                if(Batalha.Instance.batalhaOn){
+                    Batalha.Instance.chamarAtaque();
+                }
             }
         }
     }
