@@ -4548,6 +4548,7 @@ GameObject:
   - component: {fileID: 996636661229436459}
   - component: {fileID: 386170955971903171}
   - component: {fileID: 5086742988517288238}
+  - component: {fileID: 4453728540529786445}
   m_Layer: 0
   m_Name: Personagem_01
   m_TagString: Interagivel
@@ -4663,6 +4664,19 @@ MonoBehaviour:
   recompensa: 0
   i: 0
   j: 0
+--- !u!65 &4453728540529786445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212726194657444945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 295.02518, y: 27.080252, z: 254.93811}
+  m_Center: {x: 19.797089, y: 13.040126, z: -17.225056}
 --- !u!1 &3395794957613387087
 GameObject:
   m_ObjectHideFlags: 0

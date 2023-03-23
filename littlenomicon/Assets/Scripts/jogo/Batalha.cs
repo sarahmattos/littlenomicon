@@ -11,6 +11,7 @@ public class Batalha : MonoBehaviour
     [SerializeField] GameObject[] itensColissao;
     //private GameObject bossAtual;
     public BossController BossControllerAtual;
+     private IEnumerator coroutine;
 
 
     void Start()
@@ -30,11 +31,20 @@ public class Batalha : MonoBehaviour
         player.position = spawPlayer.position;
         Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
         itensColissao[i].SetActive(true);
-        chamarAtaque(bosses[i]);
+        coroutine = WaitAndDo(2.0f);
+        StartCoroutine(coroutine);
+        //chamarAtaque(bosses[i]);
     }
     public void chamarAtaque(GameObject bossAtual){
         BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         int tipoAtaque = Random.Range(0,5);
-        //BossControllerAtual.Ataque(tipoAtaque);
+    }
+    public void chamarDialogoBatalha(){
+        InteracaoManager.Instance.ChamarDialogoInicio();
+    }
+    IEnumerator WaitAndDo(float time)
+    {
+        yield return new WaitForSeconds(time);
+        chamarDialogoBatalha();
     }
 }
