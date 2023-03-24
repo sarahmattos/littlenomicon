@@ -145,7 +145,9 @@ public class InteracaoManager : MonoBehaviour
                 
                 }
                 if(Batalha.Instance.batalhaOn){
-                    Batalha.Instance.chamarAtaque();
+                    Debug.Log("chamou de novo");
+                    // se n tiver evento chama ataque de novo
+                    Batalha.Instance.chamarEvento();
                 }
             }
         }

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public abstract class BossModelo : MonoBehaviour
 {
-        public int vidaAtual;//diminui com ataque - visual interface
-        public int vidaMaxima;
-        public int cansaço;// diminui com acoes- visual falas
-        public int raiva;// diminui com falas do jogador- visual falas
+        public int vidaAtual{get;set;}//diminui com ataque - visual interface
+        public int vidaMaxima{get;set;}
+        public int cansaço{get;set;}// diminui com acoes- visual falas
+        public int cansaçoInicial{get;set;}// diminui com acoes- visual falas
+        public int raiva{get;set;}// diminui com falas do jogador- visual falas
+        public int raivaInicial{get;set;}// diminui com falas do jogador- visual falas
     // Update is called once per frame
     public abstract void Ataque(int tipoAtaque);
+    public abstract void Fala(int tipoFala);
     
 }
