@@ -29,10 +29,13 @@ public class UiDialogueInteract : MonoBehaviour
         InteracaoManager.Instance.DialogueChoices.SetActive(false);
         if(dialogueObject !=null){ interacaoManager.optionSelected(dialogueObject);
         }else{
-            Batalha.Instance.atacarBoss();
-            Batalha.Instance.checarEstatiscticas();
-           InteracaoManager.Instance.indice++;
-           InteracaoManager.Instance.DisplayDialogue();  
+            if(Batalha.Instance.batalhaOn){
+                Batalha.Instance.atacarBoss();
+                //Batalha.Instance.acalmarBoss();
+                Batalha.Instance.checarEstatiscticas();
+                InteracaoManager.Instance.indice++;
+                InteracaoManager.Instance.DisplayDialogue();  
+                }
         }
         if(alteraStatus)PlayerController.Instance.Status+=valueStatus;
     }

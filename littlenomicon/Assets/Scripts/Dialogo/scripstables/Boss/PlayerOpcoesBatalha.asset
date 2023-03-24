@@ -27,7 +27,7 @@ MonoBehaviour:
       AlteraStatus: 0
       Compra: 0
     - dialogueChoice: Raiva
-      followOnDialogue: {fileID: 11400000, guid: 31d8e93d6a0f9904bb8ac52979fdc8d7, type: 2}
+      followOnDialogue: {fileID: 0}
       AlteraStatus: 0
       Compra: 0
     missoes: []

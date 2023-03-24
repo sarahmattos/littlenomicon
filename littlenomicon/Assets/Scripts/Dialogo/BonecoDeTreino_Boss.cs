@@ -49,36 +49,40 @@ public class BonecoDeTreino_Boss : BossModelo
     {
         switch (tipoFala)
         {
+        case 7:
+            Debug.Log("Conversa calma");
+            break;
         case 6:
             Debug.Log("Metade de dano");
-            Batalha.Instance.evento=0;
-            InteracaoManager.Instance.dialogueObject = caseDialogue[6];
-            InteracaoManager.Instance.ChamarDialogoInicio();
             break;
         case 5:
             Debug.Log("Morreu de dano");
-            Batalha.Instance.evento=0;
+            //variavel de acabar batalha
             break;
         case 4:
             Debug.Log("Metade Calmo");
-            Batalha.Instance.evento=0;
             break;
         case 3:
             Debug.Log("Totalmente calmo");
-            Batalha.Instance.evento=0;
+            //variavel de acabar batalha
             break;
         case 2:
             Debug.Log("metade cansado");
-            Batalha.Instance.evento=0;
             break;
         case 1:
             Debug.Log("totalmente cansado");
-            Batalha.Instance.evento=0;
+            //variavel de acabar batalha
             break;
         default:
             Debug.Log("Nao tem evento");
             Batalha.Instance.chamarAtaque();
             break;
         }
+        if(tipoFala!=0){
+            Batalha.Instance.evento=0;
+            InteracaoManager.Instance.dialogueObject = caseDialogue[tipoFala];
+            InteracaoManager.Instance.ChamarDialogoInicio();
+        }
+            
     }
 }

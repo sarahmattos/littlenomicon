@@ -4691,13 +4691,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   caseDialogue:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 16acd972a62a7f34a9090921da9cc385, type: 2}
+  - {fileID: 11400000, guid: 16acd972a62a7f34a9090921da9cc385, type: 2}
+  - {fileID: 11400000, guid: 57df67184fea72c4381c9960b2d8b18c, type: 2}
+  - {fileID: 11400000, guid: b45590926980e2a408bb9f2b8334d95d, type: 2}
   - {fileID: 11400000, guid: d6914c7f09cfd644488a39e98e5fd244, type: 2}
+  - {fileID: 11400000, guid: c944a467f7eb1cc4ea03f945102dbd15, type: 2}
+  - {fileID: 11400000, guid: 7c8f0277fd6de1f4abb4077da28fb54d, type: 2}
+  - {fileID: 11400000, guid: 31d8e93d6a0f9904bb8ac52979fdc8d7, type: 2}
 --- !u!1 &3395794957613387087
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,10 +92,20 @@ public class Batalha : MonoBehaviour
 
     
     public void atacarBoss(){
-        Debug.Log("ataca?");
         if(batalhaOn){
             bossAtual.vidaAtual = bossAtual.vidaAtual-3;
             Debug.Log("ataca");
+        }
+    }
+    public void acalmarBoss(){
+        if(batalhaOn){
+            evento=7;
+             bossAtual.raiva = bossAtual.raiva-1;
+        }
+    }
+    public void cansarBoss(){
+        if(batalhaOn){
+             bossAtual.cansaço = bossAtual.cansaço-1;
         }
     }
 }

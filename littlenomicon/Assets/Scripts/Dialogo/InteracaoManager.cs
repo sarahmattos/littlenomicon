@@ -148,6 +148,7 @@ public class InteracaoManager : MonoBehaviour
                     Debug.Log("chamou de novo");
                     // se n tiver evento chama ataque de novo
                     Batalha.Instance.chamarEvento();
+                    //verificar variavel de final batalha
                 }
             }
         }
