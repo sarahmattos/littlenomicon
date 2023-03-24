@@ -4690,10 +4690,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0800018a04731114f9f907cfd20bac98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidaAtual: 0
-  vidaMaxima: 0
-  "cansa\xE7o": 0
-  raiva: 0
+  caseDialogue:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: d6914c7f09cfd644488a39e98e5fd244, type: 2}
 --- !u!1 &3395794957613387087
 GameObject:
   m_ObjectHideFlags: 0

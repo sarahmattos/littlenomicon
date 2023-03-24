@@ -26,7 +26,7 @@ public class Batalha : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(bossAtual.vidaAtual);
+        //Debug.Log(bossAtual.vidaAtual);
     }
     public void teste(){
         iniciarConfiguracoes(0,0);

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BonecoDeTreino_Boss : BossModelo
 {
     // Start is called before the first frame update
+    public DialogueObject[] caseDialogue;
     void Start()
     {
         vidaMaxima=10;
@@ -51,14 +52,12 @@ public class BonecoDeTreino_Boss : BossModelo
         case 6:
             Debug.Log("Metade de dano");
             Batalha.Instance.evento=0;
-            //InteracaoManager.Instance.indice++;
-            //InteracaoManager.Instance.DisplayDialogue(); 
+            InteracaoManager.Instance.dialogueObject = caseDialogue[6];
+            InteracaoManager.Instance.ChamarDialogoInicio();
             break;
         case 5:
             Debug.Log("Morreu de dano");
             Batalha.Instance.evento=0;
-            InteracaoManager.Instance.indice++;
-            InteracaoManager.Instance.DisplayDialogue(); 
             break;
         case 4:
             Debug.Log("Metade Calmo");
