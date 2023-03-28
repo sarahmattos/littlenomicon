@@ -17,10 +17,13 @@ public class Batalha : MonoBehaviour
     public bool batalhaOn;
     public BossModelo bossAtual;
     public int evento;
+     bool[] jaExecutado;
 
     void Start()
     {
         Instance = this;
+        
+       jaExecutado = new bool[6];
     }
 
     // Update is called once per frame
@@ -57,24 +60,30 @@ public class Batalha : MonoBehaviour
         bossAtual.Fala(evento);
     }
     public void checarEstatiscticas(){
-        if(bossAtual.vidaAtual<=bossAtual.vidaMaxima/2){
+        if(!jaExecutado[0] && bossAtual.vidaAtual<=bossAtual.vidaMaxima/2){
             evento=6;
+            jaExecutado[0]=true;
             //uma vez
         }
-        if(bossAtual.vidaAtual<=0){
+        if(!jaExecutado[1] && bossAtual.vidaAtual<=0){
             evento=5;
+            jaExecutado[1]=true;
         }
-        if(bossAtual.cansaço<=bossAtual.cansaçoInicial/2){
+        if(!jaExecutado[2] && bossAtual.cansaço<=bossAtual.cansaçoInicial/2){
             evento=2;
+            jaExecutado[2]=true;
         }
-        if(bossAtual.cansaço<=0){
+        if(!jaExecutado[3] && bossAtual.cansaço<=0){
             evento=1;
+            jaExecutado[3]=true;
         }
-        if(bossAtual.raiva<=bossAtual.raivaInicial/2){
+        if(!jaExecutado[4] && bossAtual.raiva<=bossAtual.raivaInicial/2){
             evento=4;
+            jaExecutado[4]=true;
         }
-        if(bossAtual.raiva<=0){
+        if(!jaExecutado[5] && bossAtual.raiva<=0){
             evento=3;
+            jaExecutado[5]=true;
         }
     }
     IEnumerator WaitAndDo(float time)
@@ -101,11 +110,13 @@ public class Batalha : MonoBehaviour
         if(batalhaOn){
             evento=7;
              bossAtual.raiva = bossAtual.raiva-1;
+             Debug.Log("cansa");
         }
     }
     public void cansarBoss(){
         if(batalhaOn){
              bossAtual.cansaço = bossAtual.cansaço-1;
+             Debug.Log("acalma");
         }
     }
 }

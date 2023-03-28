@@ -30,7 +30,7 @@ public class UiDialogueInteract : MonoBehaviour
         if(dialogueObject !=null){ interacaoManager.optionSelected(dialogueObject);
         }else{
             if(Batalha.Instance.batalhaOn){
-                Batalha.Instance.atacarBoss();
+                //Batalha.Instance.atacarBoss();
                 //Batalha.Instance.acalmarBoss();
                 Batalha.Instance.checarEstatiscticas();
                 InteracaoManager.Instance.indice++;

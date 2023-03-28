@@ -731,7 +731,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32466965}
-  m_LocalRotation: {x: 0.43045333, y: 0.000000015530706, z: -0.000000007406547, w: 0.9026128}
+  m_LocalRotation: {x: 0.43045333, y: -0.000000015530702, z: 0.0000000074065443, w: 0.9026128}
   m_LocalPosition: {x: 35.47, y: 40.969997, z: 118.600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4090,6 +4090,8 @@ MonoBehaviour:
   opcoesPlayer: {fileID: 11400000, guid: 9dfb62aef9cfa3a488b812527775f9d6, type: 2}
   BossControllerAtual: {fileID: 0}
   batalhaOn: 0
+  bossAtual: {fileID: 0}
+  evento: 0
 --- !u!1 &161503943
 GameObject:
   m_ObjectHideFlags: 0
@@ -15141,7 +15143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757028725}
-  m_LocalRotation: {x: 0.43045336, y: 0.000000015530704, z: -0.000000007406547, w: 0.9026128}
+  m_LocalRotation: {x: 0.43045336, y: -0.000000015530699, z: 0.0000000074065443, w: 0.9026128}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15766,6 +15768,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 158820170}
+        m_TargetAssemblyTypeName: Batalha, Assembly-CSharp
+        m_MethodName: acalmarBoss
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 793253916}
         m_TargetAssemblyTypeName: UiDialogueInteract, Assembly-CSharp
         m_MethodName: SelectOption
@@ -18047,6 +18061,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 158820170}
+        m_TargetAssemblyTypeName: Batalha, Assembly-CSharp
+        m_MethodName: cansarBoss
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 910349359}
         m_TargetAssemblyTypeName: UiDialogueInteract, Assembly-CSharp
         m_MethodName: SelectOption
@@ -26805,6 +26831,7 @@ MonoBehaviour:
   - {fileID: 7947255310497057607, guid: e2c37f53f0794c64db8fe93e1f2999bf, type: 3}
   - {fileID: 7947255310497057607, guid: d79c68f9f70723b4b996ed34336ba159, type: 3}
   - {fileID: 7947255310497057607, guid: 10f6cf140bb0a3f42a073330de280c45, type: 3}
+  indice: 0
   nomeCompra: 
   valorCompra: 0
   onCompra: 0
@@ -42597,7 +42624,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900433496}
-  m_LocalRotation: {x: 0.44680023, y: -0.000000019451276, z: 0.000000009714404, w: 0.89463377}
+  m_LocalRotation: {x: 0.4468002, y: 0.000000037309945, z: -0.000000018633424, w: 0.89463377}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45885,6 +45912,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 158820170}
+        m_TargetAssemblyTypeName: Batalha, Assembly-CSharp
+        m_MethodName: atacarBoss
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2085978748}
         m_TargetAssemblyTypeName: UiDialogueInteract, Assembly-CSharp
         m_MethodName: SelectOption
