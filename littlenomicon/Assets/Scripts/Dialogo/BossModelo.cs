@@ -10,6 +10,7 @@ public abstract class BossModelo : MonoBehaviour
         public int cansaçoInicial{get;set;}// diminui com acoes- visual falas
         public int raiva{get;set;}// diminui com falas do jogador- visual falas
         public int raivaInicial{get;set;}// diminui com falas do jogador- visual falas
+        public bool acabouBatalha{get;set;}
     // Update is called once per frame
     public abstract void Ataque(int tipoAtaque);
     public abstract void Fala(int tipoFala);

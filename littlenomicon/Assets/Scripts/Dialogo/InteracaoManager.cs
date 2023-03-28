@@ -43,9 +43,9 @@ public class InteracaoManager : MonoBehaviour
             if(!botoesEscolhasOn){
                 if(PlayerController.Instance.it!= null){
                     if(PlayerController.Instance.interagir==true ){
-                        if(começou==false){
-                            ChamarDialogoInicio();
-                        }else{
+                        if(começou==false && !Batalha.Instance.batalhaOn){
+                                ChamarDialogoInicio();
+                        }else if( PlayerController.Instance.dialogoAberto){
                                 indice++;
                                 DisplayDialogue();     
                         }

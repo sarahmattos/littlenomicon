@@ -51,10 +51,20 @@ public class Batalha : MonoBehaviour
     }
     public void chamarAtaque(){
         //BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
-        int tipoAtaque = Random.Range(0,5);
-        bossAtual.Ataque(tipoAtaque);
-        coroutine = WaitAndOptions(3.0f);
-        StartCoroutine(coroutine);
+        if(!bossAtual.acabouBatalha){
+            int tipoAtaque = Random.Range(0,5);
+            bossAtual.Ataque(tipoAtaque);
+            coroutine = WaitAndOptions(3.0f);
+            StartCoroutine(coroutine);
+        }else{
+            resetarBatalha();
+        }
+        
+    }
+    public void resetarBatalha(){
+        Debug.Log("Acabou batalha");
+        batalhaOn=false;
+        jaExecutado = new bool[6];
     }
     public void chamarEvento(){
         bossAtual.Fala(evento);

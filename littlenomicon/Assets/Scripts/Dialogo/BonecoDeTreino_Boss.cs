@@ -58,6 +58,7 @@ public class BonecoDeTreino_Boss : BossModelo
         case 5:
             Debug.Log("Morreu de dano");
             //variavel de acabar batalha
+            acabouBatalha=true;
             break;
         case 4:
             Debug.Log("Metade Calmo");
@@ -65,6 +66,7 @@ public class BonecoDeTreino_Boss : BossModelo
         case 3:
             Debug.Log("Totalmente calmo");
             //variavel de acabar batalha
+            acabouBatalha=true;
             break;
         case 2:
             Debug.Log("metade cansado");
@@ -72,6 +74,7 @@ public class BonecoDeTreino_Boss : BossModelo
         case 1:
             Debug.Log("totalmente cansado");
             //variavel de acabar batalha
+            acabouBatalha=true;
             break;
         default:
             Debug.Log("Nao tem evento");
