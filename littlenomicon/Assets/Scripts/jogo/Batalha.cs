@@ -89,10 +89,13 @@ public class Batalha : MonoBehaviour
         }
         if(!jaExecutado[4] && bossAtual.raiva<=bossAtual.raivaInicial/2){
             evento=4;
+            //InteracaoManager.Instance.dialogueObject.endDialogue = PlayerController.Instance.it.missaoDialogueObject;
             jaExecutado[4]=true;
         }
         if(!jaExecutado[5] && bossAtual.raiva<=0){
-            evento=3;
+             evento=3;
+            //InteracaoManager.Instance.dialogueObject.endDialogue = PlayerController.Instance.it.missaoConcluidaDialogueObject;
+            //bossAtual.caseDialogue[3];
             jaExecutado[5]=true;
         }
     }
@@ -120,13 +123,13 @@ public class Batalha : MonoBehaviour
         if(batalhaOn){
             evento=7;
              bossAtual.raiva = bossAtual.raiva-1;
-             Debug.Log("cansa");
+             Debug.Log("acalma");
         }
     }
     public void cansarBoss(){
         if(batalhaOn){
              bossAtual.cansaço = bossAtual.cansaço-1;
-             Debug.Log("acalma");
+             Debug.Log("cansa");
         }
     }
 }

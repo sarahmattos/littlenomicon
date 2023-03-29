@@ -14,6 +14,7 @@ public class BonecoDeTreino_Boss : BossModelo
         cansaçoInicial=3;
         raiva=3;
         raivaInicial=3;
+        caseDialogue[7].endDialogue = caseDialogue[8];
     }
     //sequencia de ataques pre definida
     // Update is called once per frame
@@ -51,6 +52,7 @@ public class BonecoDeTreino_Boss : BossModelo
         {
         case 7:
             Debug.Log("Conversa calma");
+            
             break;
         case 6:
             Debug.Log("Metade de dano");
@@ -62,6 +64,7 @@ public class BonecoDeTreino_Boss : BossModelo
             break;
         case 4:
             Debug.Log("Metade Calmo");
+            //InteracaoManager.Instance.dialogueObject.endDialogue = PlayerController.Instance.it.missaoDialogueObject;
             break;
         case 3:
             Debug.Log("Totalmente calmo");
@@ -81,10 +84,18 @@ public class BonecoDeTreino_Boss : BossModelo
             Batalha.Instance.chamarAtaque();
             break;
         }
-        if(tipoFala!=0){
+        if(tipoFala!=0 && tipoFala!=4 && tipoFala!=3){
+            Debug.Log("entrou"+tipoFala);
             Batalha.Instance.evento=0;
             InteracaoManager.Instance.dialogueObject = caseDialogue[tipoFala];
             InteracaoManager.Instance.ChamarDialogoInicio();
+        }else{
+            if(tipoFala==4||tipoFala==3){
+            Batalha.Instance.evento=0;
+            InteracaoManager.Instance.dialogueObject = caseDialogue[7];
+            InteracaoManager.Instance.dialogueObject.endDialogue = caseDialogue[tipoFala];
+            InteracaoManager.Instance.ChamarDialogoInicio();
+            }
         }
             
     }
