@@ -68,7 +68,11 @@ public class Batalha : MonoBehaviour
         jaExecutado = new bool[6];
     }
     public void chamarEvento(){
+        if(evento==0)checarCansaço();
+        //evento=2;
+        
         bossAtual.Fala(evento);
+        
     }
     public void checarEstatiscticas(){
         if(!jaExecutado[0] && bossAtual.vidaAtual<=bossAtual.vidaMaxima/2){
@@ -101,12 +105,16 @@ public class Batalha : MonoBehaviour
         }
     }
     public void checarCansaço(){
+        Debug.Log("indices "+jaExecutado[2]+bossAtual.cansaço+bossAtual.cansaçoInicial/2);
        if(!jaExecutado[2] && bossAtual.cansaço<=bossAtual.cansaçoInicial/2){
             evento=2;
             jaExecutado[2]=true;
+           // InteracaoManager.Instance.ChamarDialogoInicio();
+           Debug.Log("checou cansaco2 "+Batalha.Instance.evento);
         }else{
             evento=0;
         }
+        
        // evento=2;
     }
     IEnumerator WaitAndDo(float time)
