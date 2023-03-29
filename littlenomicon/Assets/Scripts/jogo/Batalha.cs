@@ -59,6 +59,7 @@ public class Batalha : MonoBehaviour
         }else{
             resetarBatalha();
         }
+        cansarBoss();
         
     }
     public void resetarBatalha(){
@@ -79,10 +80,10 @@ public class Batalha : MonoBehaviour
             evento=5;
             jaExecutado[1]=true;
         }
-        if(!jaExecutado[2] && bossAtual.cansaço<=bossAtual.cansaçoInicial/2){
+        /*if(!jaExecutado[2] && bossAtual.cansaço<=bossAtual.cansaçoInicial/2){
             evento=2;
             jaExecutado[2]=true;
-        }
+        }*/
         if(!jaExecutado[3] && bossAtual.cansaço<=0){
             evento=1;
             jaExecutado[3]=true;
@@ -98,6 +99,15 @@ public class Batalha : MonoBehaviour
             //bossAtual.caseDialogue[3];
             jaExecutado[5]=true;
         }
+    }
+    public void checarCansaço(){
+       if(!jaExecutado[2] && bossAtual.cansaço<=bossAtual.cansaçoInicial/2){
+            evento=2;
+            jaExecutado[2]=true;
+        }else{
+            evento=0;
+        }
+       // evento=2;
     }
     IEnumerator WaitAndDo(float time)
     {

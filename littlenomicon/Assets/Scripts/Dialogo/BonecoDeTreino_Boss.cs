@@ -86,12 +86,14 @@ public class BonecoDeTreino_Boss : BossModelo
         }
         if(tipoFala!=0 && tipoFala!=4 && tipoFala!=3){
             Debug.Log("entrou"+tipoFala);
-            Batalha.Instance.evento=0;
+            //Batalha.Instance.evento=0;
+            Batalha.Instance.checarCansaço();
             InteracaoManager.Instance.dialogueObject = caseDialogue[tipoFala];
             InteracaoManager.Instance.ChamarDialogoInicio();
         }else{
             if(tipoFala==4||tipoFala==3){
-            Batalha.Instance.evento=0;
+            //Batalha.Instance.evento=0;
+            Batalha.Instance.checarCansaço();
             InteracaoManager.Instance.dialogueObject = caseDialogue[7];
             InteracaoManager.Instance.dialogueObject.endDialogue = caseDialogue[tipoFala];
             InteracaoManager.Instance.ChamarDialogoInicio();
