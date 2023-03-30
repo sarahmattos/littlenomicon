@@ -22,7 +22,7 @@ MonoBehaviour:
       followOnDialogue: {fileID: 0}
       AlteraStatus: 0
       Compra: 0
-    - dialogueChoice: "Cansa\xE7o"
+    - dialogueChoice: Defesa
       followOnDialogue: {fileID: 0}
       AlteraStatus: 0
       Compra: 0

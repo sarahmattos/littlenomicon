@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public Transform targetCabeça;
     public float sensibilidade = 2.0f;
 
+    public float vidaMaxima;
+    public float vidaAtual;
+
 	private float mouseX = 0.0f, mouseY = 0.0f;
     public Transform cameraTrans;
 

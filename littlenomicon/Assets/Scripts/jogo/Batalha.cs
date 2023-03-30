@@ -18,6 +18,7 @@ public class Batalha : MonoBehaviour
     public BossModelo bossAtual;
     public int evento;
      bool[] jaExecutado;
+     bool defesaOn;
 
     void Start()
     {
@@ -54,6 +55,7 @@ public class Batalha : MonoBehaviour
         if(!bossAtual.acabouBatalha){
             int tipoAtaque = Random.Range(0,5);
             bossAtual.Ataque(tipoAtaque);
+            recebeDano(3);
             coroutine = WaitAndOptions(3.0f);
             StartCoroutine(coroutine);
         }else{
@@ -149,5 +151,22 @@ public class Batalha : MonoBehaviour
              bossAtual.cansaço = bossAtual.cansaço-1;
              Debug.Log("cansa");
         }
+    }
+    public void defender(){
+        defesaOn=true;
+    }
+    public void recebeDano(float dano){
+        if(defesaOn){
+            float valor = dano*0.5f;
+            Debug.Log("dano: "+dano);
+            Debug.Log("desconto: "+valor);
+            dano -=  valor;
+             PlayerController.Instance.vidaAtual-=dano;
+             defesaOn=false;
+        }else{
+             PlayerController.Instance.vidaAtual-=dano;
+             Debug.Log("dano: "+dano);
+        }
+       
     }
 }
