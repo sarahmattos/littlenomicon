@@ -120,20 +120,23 @@ public class PlayerController : MonoBehaviour
             }
         }
         }
+        
     }
     void OnTriggerStay(Collider target)
     {
-         if(!Batalha.Instance.batalhaOn){
+        
         if (target.tag == "Interagivel")
         {   
-            if(it.NPC){
-                Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
-                targetObjeto.transform.LookAt(targetPostition);
-            }
+           
             
             if(dialogoAberto==true){
                  Vector3 targetPostition2 = new Vector3( targetObjeto.transform.position.x,transform.position.y, targetObjeto.transform.position.z ) ;
                 transform.LookAt(targetPostition2);
+            }
+             if(!Batalha.Instance.batalhaOn){
+             if(it.NPC){
+                Vector3 targetPostition = new Vector3( targetCabeça.position.x,targetObjeto.transform.position.y,  targetCabeça.transform.position.z ) ;
+                targetObjeto.transform.LookAt(targetPostition);
             }
             if(it.jaConversou==true && it.onMission==false && it.onMissionComplete==false)InteracaoManager.Instance.dialogueObject= it.jaVisitouDialogueObject;
             if(it.onMission==true && it.onMissionComplete==false && it.temItem==false)InteracaoManager.Instance.dialogueObject= it.missaoDialogueObject;

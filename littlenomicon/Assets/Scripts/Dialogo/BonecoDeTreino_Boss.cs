@@ -10,8 +10,8 @@ public class BonecoDeTreino_Boss : BossModelo
     {
         vidaMaxima=10;
         vidaAtual=10;
-        cansaço=3;
-        cansaçoInicial=3;
+        cansaço=6;
+        cansaçoInicial=6;
         raiva=3;
         raivaInicial=3;
         caseDialogue[7].endDialogue = caseDialogue[8];
