@@ -19,7 +19,8 @@ public class Batalha : MonoBehaviour
     public int evento;
      bool[] jaExecutado;
      bool defesaOn;
-
+    Vector3 posicaoAntesBatalha;
+     GameObject _go;
     void Start()
     {
         Instance = this;
@@ -36,9 +37,9 @@ public class Batalha : MonoBehaviour
         iniciarConfiguracoes(0,0);
     }
     public void iniciarConfiguracoes(int i,int itens){
-        
+        posicaoAntesBatalha = player.position;
         player.position = spawPlayer.position;
-        GameObject _go =Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
+         _go =Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
         BonecoDeTreino_Boss bonecoDeTreino_Boss =_go.GetComponentInChildren<BonecoDeTreino_Boss>();
         bossAtual = bonecoDeTreino_Boss;
         itensColissao[i].SetActive(true);
@@ -66,8 +67,10 @@ public class Batalha : MonoBehaviour
     }
     public void resetarBatalha(){
         Debug.Log("Acabou batalha");
+        player.position = posicaoAntesBatalha;
         batalhaOn=false;
         jaExecutado = new bool[6];
+        Destroy(_go);
     }
     public void chamarEvento(){
         if(evento==0)checarCansaço();
