@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float life = 20;
     public float dano = 3;
+    public bool aereo;
     void Awake()
     {
         Destroy(gameObject, life);
@@ -18,6 +19,15 @@ public class Bullet : MonoBehaviour
              Batalha.Instance.recebeDano(dano);
         }
         
-         Destroy(gameObject);
+        if(aereo!=true)Destroy(gameObject);
+    }
+    private void OnTriggerStay(Collision  other)
+    {   if(aereo==true){
+            if(other.gameObject.tag =="Player"){
+             Batalha.Instance.recebeDano(dano);
+        }
+        
+        }
+        
     }
 }

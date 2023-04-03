@@ -57,7 +57,7 @@ public class Batalha : MonoBehaviour
         if(!bossAtual.acabouBatalha){
             int tipoAtaque = Random.Range(0,6);
             emAtaque=true;
-            bossAtual.Ataque(tipoAtaque);
+            bossAtual.Ataque(2);
             //recebeDano(3);
             coroutine = WaitAndOptions(3.0f);
             StartCoroutine(coroutine);

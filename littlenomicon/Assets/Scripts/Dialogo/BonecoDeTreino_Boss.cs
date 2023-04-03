@@ -39,6 +39,7 @@ public class BonecoDeTreino_Boss : BossModelo
             break;
         case 2:
             Debug.Log("Ataque 2");
+            atira.atirando2();
             break;
         case 1:
             Debug.Log("Ataque 1");

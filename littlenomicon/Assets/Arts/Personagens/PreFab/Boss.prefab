@@ -7054,6 +7054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpwanPoint: {fileID: 634821721}
   bulletPrefab: {fileID: 8325156939053069639, guid: eef84910ed621c44cae2cfc5a9b46582, type: 3}
+  ataqueAereoPrefab: {fileID: 1470039251658558423, guid: ede240f853e1f4747a4b278d9f8c5df9, type: 3}
   bulletSpeed: 100
 --- !u!1 &5216639828827839224
 GameObject:
