@@ -21,6 +21,7 @@ public class Batalha : MonoBehaviour
      bool defesaOn;
     Vector3 posicaoAntesBatalha;
      GameObject _go;
+     public bool emAtaque;
     void Start()
     {
         Instance = this;
@@ -54,9 +55,10 @@ public class Batalha : MonoBehaviour
     public void chamarAtaque(){
         //BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         if(!bossAtual.acabouBatalha){
-            int tipoAtaque = Random.Range(0,5);
+            int tipoAtaque = Random.Range(0,6);
+            emAtaque=true;
             bossAtual.Ataque(tipoAtaque);
-            recebeDano(3);
+            //recebeDano(3);
             coroutine = WaitAndOptions(3.0f);
             StartCoroutine(coroutine);
         }else{
@@ -130,6 +132,7 @@ public class Batalha : MonoBehaviour
     IEnumerator WaitAndOptions(float time)
     {
         yield return new WaitForSeconds(time);
+        emAtaque=false;
         Debug.Log("acabou ataque, chama opcoes pra jogador");
         InteracaoManager.Instance.dialogueObject = opcoesPlayer;
         InteracaoManager.Instance.ChamarDialogoInicio();
@@ -161,14 +164,14 @@ public class Batalha : MonoBehaviour
     public void recebeDano(float dano){
         if(defesaOn){
             float valor = dano*0.5f;
-            Debug.Log("dano: "+dano);
-            Debug.Log("desconto: "+valor);
+            //Debug.Log("dano: "+dano);
+            //Debug.Log("desconto: "+valor);
             dano -=  valor;
              PlayerController.Instance.vidaAtual-=dano;
              defesaOn=false;
         }else{
              PlayerController.Instance.vidaAtual-=dano;
-             Debug.Log("dano: "+dano);
+            // Debug.Log("dano: "+dano);
         }
        
     }

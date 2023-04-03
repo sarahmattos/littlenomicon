@@ -6,6 +6,7 @@ public class BonecoDeTreino_Boss : BossModelo
 {
     // Start is called before the first frame update
     public DialogueObject[] caseDialogue;
+    public Atirar atira;
     void Start()
     {
         vidaMaxima=10;
@@ -15,6 +16,7 @@ public class BonecoDeTreino_Boss : BossModelo
         raiva=3;
         raivaInicial=3;
         caseDialogue[7].endDialogue = caseDialogue[8];
+        atira = GetComponentInChildren<Atirar>();
     }
     //sequencia de ataques pre definida
     // Update is called once per frame
@@ -40,6 +42,7 @@ public class BonecoDeTreino_Boss : BossModelo
             break;
         case 1:
             Debug.Log("Ataque 1");
+            atira.atirando();
             break;
         default:
             Debug.Log("Ataque default");
