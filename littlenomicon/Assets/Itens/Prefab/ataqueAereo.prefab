@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 4
-  dano: 1
+  dano: 8
   aereo: 1
 --- !u!1 &1470039253009459591
 GameObject:

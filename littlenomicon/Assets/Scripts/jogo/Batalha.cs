@@ -35,7 +35,7 @@ public class Batalha : MonoBehaviour
         //Debug.Log(bossAtual.vidaAtual);
     }
     public void teste(){
-        iniciarConfiguracoes(0,0);
+        iniciarConfiguracoes(0,1);
     }
     public void iniciarConfiguracoes(int i,int itens){
         posicaoAntesBatalha = player.position;
@@ -43,7 +43,7 @@ public class Batalha : MonoBehaviour
          _go =Instantiate(bosses[i],spawBoss.position,bosses[i].transform.rotation);
         BonecoDeTreino_Boss bonecoDeTreino_Boss =_go.GetComponentInChildren<BonecoDeTreino_Boss>();
         bossAtual = bonecoDeTreino_Boss;
-        itensColissao[i].SetActive(true);
+        itensColissao[itens].SetActive(true);
         coroutine = WaitAndDo(2.0f);
         StartCoroutine(coroutine);
         //chamarAtaque(bosses[i]);
@@ -57,7 +57,7 @@ public class Batalha : MonoBehaviour
         if(!bossAtual.acabouBatalha){
             int tipoAtaque = Random.Range(0,6);
             emAtaque=true;
-            bossAtual.Ataque(2);
+            bossAtual.Ataque(1);
             //recebeDano(3);
             coroutine = WaitAndOptions(3.0f);
             StartCoroutine(coroutine);

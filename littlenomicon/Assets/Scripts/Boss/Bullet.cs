@@ -18,16 +18,44 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.tag =="Player"){
              Batalha.Instance.recebeDano(dano);
         }
+        if(other.gameObject.tag =="Barril"){
+            Obstaculo obstaculo = other.gameObject.GetComponent<Obstaculo>();
+            obstaculo.vida-=dano;
+        }
+        if(other.gameObject.tag =="Coluna"){
+            Obstaculo obstaculo = other.gameObject.GetComponent<Obstaculo>();
+            obstaculo.vida-=dano;
+        }
         
         if(aereo!=true)Destroy(gameObject);
     }
-    private void OnTriggerStay(Collision  other)
+    private void OnTriggerEnter(Collider  other)
+    {
+        if(aereo){
+            if(other.tag =="Player"){
+             Batalha.Instance.recebeDano(dano);
+        }
+        if(other.tag =="Barril"){
+            Obstaculo obstaculo = other.GetComponent<Obstaculo>();
+            obstaculo.vida-=dano;
+        }
+        if(other.tag =="Coluna"){
+            Obstaculo obstaculo = other.GetComponent<Obstaculo>();
+            obstaculo.vida-=dano;
+        }
+        
+        if(aereo!=true)Destroy(gameObject);
+        }
+        
+    }
+    /*private void OnTriggerStay(Collision  other)
     {   if(aereo==true){
             if(other.gameObject.tag =="Player"){
              Batalha.Instance.recebeDano(dano);
         }
+       
         
         }
-        
-    }
+         
+    }*/
 }
