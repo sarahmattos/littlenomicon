@@ -731,7 +731,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32466965}
-  m_LocalRotation: {x: 0.43045333, y: 0.000000015530706, z: -0.000000007406547, w: 0.9026128}
+  m_LocalRotation: {x: 0.43045333, y: -0.000000023807607, z: 0.000000011353777, w: 0.9026128}
   m_LocalPosition: {x: 35.47, y: 40.969997, z: 118.600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2253,7 +2253,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72937582}
-  m_LocalRotation: {x: 0.4140078, y: -0.000000015662504, z: 0.0000000071235737, w: 0.9102734}
+  m_LocalRotation: {x: 0.41400784, y: 0.0000000073154216, z: -0.0000000033271788, w: 0.9102734}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4121,6 +4121,7 @@ MonoBehaviour:
   bossAtual: {fileID: 0}
   evento: 0
   emAtaque: 0
+  esperaTimeAtaque: 2
 --- !u!1 &161503943
 GameObject:
   m_ObjectHideFlags: 0
@@ -15314,7 +15315,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757028725}
-  m_LocalRotation: {x: 0.43045336, y: 0.000000015530704, z: -0.000000007406547, w: 0.9026128}
+  m_LocalRotation: {x: 0.43045336, y: -0.000000023807605, z: 0.000000011353776, w: 0.9026128}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -26310,6 +26311,7 @@ GameObject:
   - component: {fileID: 1153341292}
   - component: {fileID: 1153341291}
   - component: {fileID: 1153341290}
+  - component: {fileID: 1153341297}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -26411,12 +26413,15 @@ MonoBehaviour:
   Dinheiro: 0
   onMission: 0
   onMissionComplete: 0
+  isDashing: 0
+  dashSpeed: 4000
   targetPivo: {fileID: 116183602}
   "targetCabe\xE7a": {fileID: 1618318713}
   sensibilidade: 2
   vidaMaxima: 20
   vidaAtual: 20
   cameraTrans: {fileID: 32466966}
+  moveInput: {x: 0, y: 0}
 --- !u!114 &1153341295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26478,6 +26483,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ea7e4214-cca9-4d11-8a10-250cc945181f
     m_ActionName: Player/Teste1[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9a5cc58d-7933-4b09-8c28-e4fad02e0b28
+    m_ActionName: Player/RotateMouse1[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -26505,6 +26514,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153341297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153341289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00159ac7b9e262b47aa424281a71f37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 1618318713}
+  playerCam: {fileID: 32466966}
+  dashForce: 1000
+  dashUpwardForce: 0
+  dashDuration: 0.25
+  dashCd: 1.5
+  useCameraForward: 1
+  allowAllDirections: 1
+  disableGravity: 0
+  reseteVel: 1
+  actionReference: {fileID: 6861679133661952862, guid: 78ab38aa2aa571c4f8359a0b53025ada, type: 3}
 --- !u!1 &1155112272
 GameObject:
   m_ObjectHideFlags: 0
@@ -42756,7 +42788,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1900433496}
-  m_LocalRotation: {x: 0.44680023, y: -0.000000019451276, z: 0.000000009714404, w: 0.89463377}
+  m_LocalRotation: {x: 0.44680023, y: 0.000000011296584, z: -0.0000000056417666, w: 0.89463377}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -45465,7 +45497,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1618318713}
-  m_Follow: {fileID: 1618318713}
+  m_Follow: {fileID: 0}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 40
@@ -45587,7 +45619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063987622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11a3b8022241dd64aaf431d83c7761a0, type: 3}
   m_Name: 

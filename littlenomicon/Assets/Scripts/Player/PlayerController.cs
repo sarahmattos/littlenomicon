@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour
     public bool onMission;
     public bool onMissionComplete;
     bool temItem;
+    public bool isDashing;
     private PlayerInput playerInput;
+    public float dashSpeed;
 
     public Transform targetPivo;
     public Transform targetCabeça;
@@ -37,6 +39,15 @@ public class PlayerController : MonoBehaviour
     public Transform cameraTrans;
 
     int i,j;
+     private IEnumerator coroutine;
+
+     public Vector2 moveInput;
+
+    //dash
+    private float desiredMoveSpeed;
+    private float lastDesiredMoveSpeed;
+    private bool keepMomentum;
+
 
     private void Start()
     {
@@ -59,12 +70,30 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false){
-            speed=600;
-            
+        if(isDashing){
+            desiredMoveSpeed = dashSpeed;
         }else{
-            speed=0;
+            if(dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false){
+            desiredMoveSpeed=600;
+            
+            }else{
+                desiredMoveSpeed=0;
+            }
         }
+        bool desiredMOveSpeedHasChanged = desiredMoveSpeed != lastDesiredMoveSpeed;
+        lastDesiredMoveSpeed =  desiredMoveSpeed;
+        if(isDashing==false){
+            keepMomentum =true;
+        }
+        if(desiredMOveSpeedHasChanged){
+            if(keepMomentum){
+                coroutine =SmoothlyLerpMoveSpeed();
+                 StartCoroutine(coroutine);
+            }else{
+                speed=desiredMoveSpeed;
+            }
+        }
+        
         movePlayer();
            
         AnimatorManager();
@@ -72,9 +101,29 @@ public class PlayerController : MonoBehaviour
            // checaItemInventario();
          }
     }
+    //public void startDashing(){
+//
+   // }
+    private float speedChangeFactor;
+    private IEnumerator SmoothlyLerpMoveSpeed(){
+        float time=0;
+        float diferrence = Mathf.Abs(desiredMoveSpeed-speed);
+        float startValue = speed;
+        float boostFactor = speedChangeFactor;
+
+        while(time<diferrence){
+            speed = Mathf.Lerp(startValue, desiredMoveSpeed, time/diferrence);
+            time += Time.deltaTime * boostFactor;
+            yield return null;
+        }
+        speed = desiredMoveSpeed;
+        speedChangeFactor = 1f;
+        keepMomentum=false;
+    }
+
     public void movePlayer()
     {
-        Vector2 moveInput = m_move.ReadValue<Vector2>();
+        moveInput = m_move.ReadValue<Vector2>();
         movement = new Vector3(moveInput.x, 0f, moveInput.y);
         movement = movement* speed * Time.deltaTime;
         movement = Quaternion.AngleAxis(cameraTrans.rotation.eulerAngles.y,Vector3.up)*movement;

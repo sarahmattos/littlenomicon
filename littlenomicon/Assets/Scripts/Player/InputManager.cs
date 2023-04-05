@@ -80,6 +80,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""9a5cc58d-7933-4b09-8c28-e4fad02e0b28"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""RotateMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e2cf5cc-9e1a-4bd7-9d87-65af26fd5ccd"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player_Voltar = m_Player.FindAction("Voltar", throwIfNotFound: true);
         m_Player_Teste = m_Player.FindAction("Teste", throwIfNotFound: true);
         m_Player_RotateMouse = m_Player.FindAction("RotateMouse", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -271,6 +292,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Voltar;
     private readonly InputAction m_Player_Teste;
     private readonly InputAction m_Player_RotateMouse;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -281,6 +303,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public InputAction @Voltar => m_Wrapper.m_Player_Voltar;
         public InputAction @Teste => m_Wrapper.m_Player_Teste;
         public InputAction @RotateMouse => m_Wrapper.m_Player_RotateMouse;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -308,6 +331,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @RotateMouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateMouse;
                 @RotateMouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateMouse;
                 @RotateMouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateMouse;
+                @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -330,6 +356,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @RotateMouse.started += instance.OnRotateMouse;
                 @RotateMouse.performed += instance.OnRotateMouse;
                 @RotateMouse.canceled += instance.OnRotateMouse;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -342,5 +371,6 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         void OnVoltar(InputAction.CallbackContext context);
         void OnTeste(InputAction.CallbackContext context);
         void OnRotateMouse(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
