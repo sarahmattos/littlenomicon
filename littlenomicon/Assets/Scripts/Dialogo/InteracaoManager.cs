@@ -34,6 +34,7 @@ public class InteracaoManager : MonoBehaviour
     public int valorCompra;
     [HideInInspector]
     public bool onCompra;
+    private IEnumerator coroutine;
     void Start()
     {
          
@@ -147,7 +148,9 @@ public class InteracaoManager : MonoBehaviour
                 if(Batalha.Instance.batalhaOn){
                     Debug.Log("chamou de novo");
                     // se n tiver evento chama ataque de novo
-                    Batalha.Instance.chamarEvento();
+                     coroutine = Batalha.Instance.EsperarAtaqueComeça( Batalha.Instance.esperaTimeAtaque);
+                    StartCoroutine(coroutine);
+                    //Batalha.Instance.chamarEvento();
                     //verificar variavel de final batalha
                 }
             }

@@ -22,6 +22,7 @@ public class Batalha : MonoBehaviour
     Vector3 posicaoAntesBatalha;
      GameObject _go;
      public bool emAtaque;
+     public float esperaTimeAtaque=2f;
     void Start()
     {
         Instance = this;
@@ -55,11 +56,12 @@ public class Batalha : MonoBehaviour
     public void chamarAtaque(){
         //BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         if(!bossAtual.acabouBatalha){
+            float tempo = 5f;
             int tipoAtaque = Random.Range(0,6);
             emAtaque=true;
             bossAtual.Ataque(1);
             //recebeDano(3);
-            coroutine = WaitAndOptions(3.0f);
+            coroutine = EsperarAtaqueTermina(tempo);
             StartCoroutine(coroutine);
         }else{
             resetarBatalha();
@@ -132,10 +134,21 @@ public class Batalha : MonoBehaviour
     IEnumerator WaitAndOptions(float time)
     {
         yield return new WaitForSeconds(time);
-        emAtaque=false;
         Debug.Log("acabou ataque, chama opcoes pra jogador");
         InteracaoManager.Instance.dialogueObject = opcoesPlayer;
         InteracaoManager.Instance.ChamarDialogoInicio();
+    }
+    public IEnumerator EsperarAtaqueComeça(float time)
+    {
+        yield return new WaitForSeconds(time);
+        chamarAtaque();
+    }
+    IEnumerator EsperarAtaqueTermina(float time)
+    {
+        yield return new WaitForSeconds(time);
+        emAtaque=false;
+         coroutine = WaitAndOptions(esperaTimeAtaque);
+        StartCoroutine(coroutine);
     }
 
     
