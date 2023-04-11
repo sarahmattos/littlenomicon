@@ -20,7 +20,12 @@ public class BotoesItem : MonoBehaviour
         if(Bau.Instance.aberto){
             btn.onClick.AddListener(ClicouBau);
         }else{
-            btn.onClick.AddListener(Clicou);
+            if(InstanciarBotoes.Instance.abriuInventario){
+                btn.onClick.AddListener(Clicou);
+            }
+            if(InstanciarBotoes.Instance.abriuJornal){
+                btn.onClick.AddListener(Clicou2);
+            }
         }
         
     }
@@ -30,6 +35,12 @@ public class BotoesItem : MonoBehaviour
         ButtonSelected.Instance.BotaoApertado(btn);
         InstanciarBotoes.Instance.abrir(InstanciarBotoes.Instance.panelOpcoes);
         InstanciarBotoes.Instance.atualizaInfos(this);
+    }
+    public void Clicou2(){
+        //ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo2[1]);
+        InstanciarBotoes.Instance.abrir(InstanciarBotoes.Instance.panelsLerPagina);
+        ButtonSelected.Instance.BotaoApertado(btn);
+        //InstanciarBotoes.Instance.atualizaInfos(this);
     }
     public void ClicouBau(){
         ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo[2]);

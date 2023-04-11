@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Jornal",
+                    "type": "Button",
+                    "id": "ad3fb260-8688-4356-a6a1-3d545e24d3e2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Inventory",
                     "type": "Button",
                     "id": "171f4ff2-4d5d-4225-b98c-7140f6f5154e",
@@ -188,6 +197,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "289b705e-1d31-40b1-aacc-301b8fe7a21e",
+                    "path": "<Keyboard>/j",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jornal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -12,16 +12,20 @@ public class InstanciarBotoes : MonoBehaviour
 
     [Header("ReferenciasCena")]
     public InputActionReference actionReferenceEscape;
+    public InputActionReference actionReferenceJ;
     public InputActionReference actionReferenceI;
     public InputActionReference actionReferenceP;
     public GameObject panelOpcoes;
     [SerializeField] GameObject panelInventory;
+    [SerializeField] GameObject panelJornal;
     [SerializeField] GameObject panelsInfo;
+    [SerializeField] public GameObject panelsLerPagina;
     [SerializeField] TMP_Text textoInfo;
     [SerializeField] TMP_Text  botaoEquipar;
     [SerializeField] Sprite Image1, Image2;
     public Transform Item, ItemBau;
     public Button[] btnProximo;
+    public Button[] btnProximo2;
     
 
     [HideInInspector]
@@ -32,7 +36,7 @@ public class InstanciarBotoes : MonoBehaviour
     public int maxItem;
     public List<GameObject> BotoesItensInventario;
     private bool usavel;
-    private int faseId=0;
+    public int faseId=0;
     private BotoesItem itemClicadoAtual;
     private GameObject panelPrincipal;
     private Transform pai;
@@ -43,6 +47,7 @@ public class InstanciarBotoes : MonoBehaviour
 
     [HideInInspector]
     public bool abriuInventario=false;
+    public bool abriuJornal=false;
     
     
     void Start()
@@ -52,17 +57,25 @@ public class InstanciarBotoes : MonoBehaviour
         Instance= this;
         actionReferenceEscape.action.started += context =>
         {
-            if(Bau.Instance.aberto==false){
-                    if(abriuInventario!=true){
-                    QuandoAbreInventario();
-                        }else{
-                            VoltarPanel();
+            if(abriuJornal!=true){
+                if(Bau.Instance.aberto==false){
+                        if(abriuInventario!=true){
+                        QuandoAbreInventario();
+                            }else{
+                                VoltarPanel();
+                    }
+                }else{
+                    Bau.Instance.fecharBau();
                 }
             }else{
-                Bau.Instance.fecharBau();
+                VoltarPanel2();
             }
             
            
+        };
+        actionReferenceJ.action.started += context =>
+        {
+            QuandoAbreJornal();
         };
         actionReferenceP.action.started += context =>
         {
@@ -169,6 +182,16 @@ public class InstanciarBotoes : MonoBehaviour
             faseId--;
         }
     }
+    public void VoltarPanel2(){
+        if(faseId==0){
+            QuandoFechaJornal();
+        }else{
+                fechar(panelsLerPagina);
+            //ver isso
+            ButtonSelected.Instance.SetSelected(btnProximo2[0]);
+            faseId--;
+        }
+    }
     public void FecharInterfaceInteira(){
         fechar(panelInventory);
         fechar(panelOpcoes);
@@ -190,7 +213,7 @@ public class InstanciarBotoes : MonoBehaviour
         panelPrincipal=_go;
     }
     public void AbrirPanel(Button btn){
-        btnEscolhidoVolta[faseId]=btn;
+        if(abriuInventario)btnEscolhidoVolta[faseId]=btn;
          faseId++;
     }
     public void abrir(GameObject go){
@@ -206,6 +229,13 @@ public class InstanciarBotoes : MonoBehaviour
         fechar(panelInventory);
         abriuInventario=false;
     }
+     public void QuandoFechaJornal(){
+        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+
+        fechar(panelJornal);
+        abriuJornal=false;
+    }
     public void QuandoAbreInventario(){
         if(abriuInventario==false){
            Cursor.lockState = CursorLockMode.Locked;
@@ -214,6 +244,17 @@ public class InstanciarBotoes : MonoBehaviour
             ButtonSelected.Instance.SetSelected(btnProximo[0]);
             abrir(panelInventory);
             abriuInventario=true;
+        }
+    }
+    
+    public void QuandoAbreJornal(){
+        if(abriuJornal==false){
+           Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.visible = false;
+            
+            ButtonSelected.Instance.SetSelected(btnProximo2[0]);
+            abrir(panelJornal);
+            abriuJornal=true;
         }
     }
     public void NavegacaoItem(List<GameObject> _go){

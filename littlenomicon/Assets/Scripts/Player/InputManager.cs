@@ -46,6 +46,15 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Jornal"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad3fb260-8688-4356-a6a1-3d545e24d3e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Inventory"",
                     ""type"": ""Button"",
                     ""id"": ""171f4ff2-4d5d-4225-b98c-7140f6f5154e"",
@@ -212,6 +221,17 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""289b705e-1d31-40b1-aacc-301b8fe7a21e"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jornal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -222,6 +242,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Press = m_Player.FindAction("Press", throwIfNotFound: true);
+        m_Player_Jornal = m_Player.FindAction("Jornal", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Voltar = m_Player.FindAction("Voltar", throwIfNotFound: true);
         m_Player_Teste = m_Player.FindAction("Teste", throwIfNotFound: true);
@@ -288,6 +309,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Press;
+    private readonly InputAction m_Player_Jornal;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Voltar;
     private readonly InputAction m_Player_Teste;
@@ -299,6 +321,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
         public PlayerActions(@InputManager wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Press => m_Wrapper.m_Player_Press;
+        public InputAction @Jornal => m_Wrapper.m_Player_Jornal;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Voltar => m_Wrapper.m_Player_Voltar;
         public InputAction @Teste => m_Wrapper.m_Player_Teste;
@@ -319,6 +342,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Press.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPress;
                 @Press.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPress;
                 @Press.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPress;
+                @Jornal.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJornal;
+                @Jornal.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJornal;
+                @Jornal.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJornal;
                 @Inventory.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
                 @Inventory.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventory;
@@ -344,6 +370,9 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
                 @Press.started += instance.OnPress;
                 @Press.performed += instance.OnPress;
                 @Press.canceled += instance.OnPress;
+                @Jornal.started += instance.OnJornal;
+                @Jornal.performed += instance.OnJornal;
+                @Jornal.canceled += instance.OnJornal;
                 @Inventory.started += instance.OnInventory;
                 @Inventory.performed += instance.OnInventory;
                 @Inventory.canceled += instance.OnInventory;
@@ -367,6 +396,7 @@ public partial class @InputManager : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnPress(InputAction.CallbackContext context);
+        void OnJornal(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnVoltar(InputAction.CallbackContext context);
         void OnTeste(InputAction.CallbackContext context);
