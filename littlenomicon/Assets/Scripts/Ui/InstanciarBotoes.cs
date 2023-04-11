@@ -23,18 +23,21 @@ public class InstanciarBotoes : MonoBehaviour
     [SerializeField] TMP_Text textoInfo;
     [SerializeField] TMP_Text  botaoEquipar;
     [SerializeField] Sprite Image1, Image2;
-    public Transform Item, ItemBau;
+    public Transform Item, ItemBau, Paginas;
     public Button[] btnProximo;
     public Button[] btnProximo2;
     
 
     [HideInInspector]
     [SerializeField] Button[] btnEscolhidoVolta;
+    [HideInInspector]
+    [SerializeField] Button[] btnEscolhidoVolta2;
 
 
     [Header("VariaveisScript")]
     public int maxItem;
     public List<GameObject> BotoesItensInventario;
+    public List<GameObject> BotoesItensJornal;
     private bool usavel;
     public int faseId=0;
     private BotoesItem itemClicadoAtual;
@@ -52,8 +55,11 @@ public class InstanciarBotoes : MonoBehaviour
     
     void Start()
     {
+        btnEscolhidoVolta2 = new Button[2];
         Cursor.visible = false;
         NavegacaoItem(BotoesItensInventario);
+        NavegacaoItem(BotoesItensJornal);
+        
         Instance= this;
         actionReferenceEscape.action.started += context =>
         {
@@ -79,8 +85,13 @@ public class InstanciarBotoes : MonoBehaviour
         };
         actionReferenceP.action.started += context =>
         {
-            int rng = Random.Range(0,InteracaoManager.Instance.ObjetosInventario.Length);
-            instanciar(InteracaoManager.Instance.ObjetosInventario[rng], BotoesItensInventario, Item);
+            if(abriuInventario){
+                int rng = Random.Range(0,InteracaoManager.Instance.ObjetosInventario.Length);
+                instanciar(InteracaoManager.Instance.ObjetosInventario[rng], BotoesItensInventario, Item);
+            }
+            if(abriuJornal){
+                instanciar(InteracaoManager.Instance.ObjetosInventario[3], BotoesItensJornal, Paginas);
+            }
             
         };
          actionReferenceI.action.started += context =>
@@ -188,7 +199,7 @@ public class InstanciarBotoes : MonoBehaviour
         }else{
                 fechar(panelsLerPagina);
             //ver isso
-            ButtonSelected.Instance.SetSelected(btnProximo2[0]);
+            ButtonSelected.Instance.SetSelected(btnEscolhidoVolta2[faseId-1]);
             faseId--;
         }
     }
@@ -214,6 +225,7 @@ public class InstanciarBotoes : MonoBehaviour
     }
     public void AbrirPanel(Button btn){
         if(abriuInventario)btnEscolhidoVolta[faseId]=btn;
+        if(abriuJornal)btnEscolhidoVolta2[faseId]=btn;
          faseId++;
     }
     public void abrir(GameObject go){
