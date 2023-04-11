@@ -21,6 +21,7 @@ public class InstanciarBotoes : MonoBehaviour
     [SerializeField] GameObject panelsInfo;
     [SerializeField] public GameObject panelsLerPagina;
     [SerializeField] TMP_Text textoInfo;
+    [SerializeField] TMP_Text textoInfo2;
     [SerializeField] TMP_Text  botaoEquipar;
     [SerializeField] Sprite Image1, Image2;
     public Transform Item, ItemBau, Paginas;
@@ -119,6 +120,9 @@ public class InstanciarBotoes : MonoBehaviour
         }
         botaoEquipar.text =itemClicadoAtual.textoEquipar;
     }
+     public void atualizaInfos2( BotoesItem _btnItem){
+        textoInfo2.text=_btnItem.textoInfo;
+     }
     public void usaOuEquipa(){
         if(usavel){
             Debug.Log("Item usado");

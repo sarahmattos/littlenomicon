@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btn: {fileID: 0}
-  textoInfo: 
+  textoInfo: Hoje aconteceu tal coisa bla bla bla
   usavel: 0
   equipado: 0
   id: 0

@@ -40,7 +40,7 @@ public class BotoesItem : MonoBehaviour
         ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo2[1]);
         InstanciarBotoes.Instance.abrir(InstanciarBotoes.Instance.panelsLerPagina);
         ButtonSelected.Instance.BotaoApertado(btn);
-        //InstanciarBotoes.Instance.atualizaInfos(this);
+        InstanciarBotoes.Instance.atualizaInfos2(this);
     }
     public void ClicouBau(){
         ButtonSelected.Instance.SetSelected(InstanciarBotoes.Instance.btnProximo[2]);
