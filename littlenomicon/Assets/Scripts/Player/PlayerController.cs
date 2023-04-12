@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         if(isDashing){
             desiredMoveSpeed = dashSpeed;
         }else{
-            if(dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false){
+            if(dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false && InstanciarBotoes.Instance.abriuJornal==false){
             desiredMoveSpeed=600;
             
             }else{
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
     {
         moveInput = m_move.ReadValue<Vector2>();
         movement = new Vector3(moveInput.x, 0f, moveInput.y);
-        movement = movement* speed * Time.deltaTime;
+        movement = movement* desiredMoveSpeed * Time.deltaTime;
         movement = Quaternion.AngleAxis(cameraTrans.rotation.eulerAngles.y,Vector3.up)*movement;
         if (movement != Vector3.zero)
         {
