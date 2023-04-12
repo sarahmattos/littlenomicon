@@ -52,9 +52,10 @@ public class InstanciarBotoes : MonoBehaviour
     [HideInInspector]
     public bool abriuInventario=false;
     public bool abriuJornal=false;
+    public bool abriuVendas=false;
     
     
-    void Start()
+    public void Start()
     {
         btnEscolhidoVolta2 = new Button[2];
         Cursor.visible = false;
@@ -63,21 +64,23 @@ public class InstanciarBotoes : MonoBehaviour
         
         Instance= this;
         actionReferenceEscape.action.started += context =>
-        {
-            if(abriuJornal!=true){
-                if(Bau.Instance.aberto==false){
-                        if(abriuInventario!=true){
-                        QuandoAbreInventario();
-                            }else{
-                                VoltarPanel();
+        {   if(abriuVendas!=true){
+                if(abriuJornal!=true){
+                    if(Bau.Instance.aberto==false){
+                            if(abriuInventario!=true){
+                            QuandoAbreInventario();
+                                }else{
+                                    VoltarPanel();
+                        }
+                    }else{
+                        Bau.Instance.fecharBau();
                     }
                 }else{
-                    Bau.Instance.fecharBau();
+                    VoltarPanel2();
                 }
-            }else{
-                VoltarPanel2();
-            }
-            
+         }else{
+            Vendas.Instance.fecharVendas();
+         }
            
         };
         actionReferenceJ.action.started += context =>
