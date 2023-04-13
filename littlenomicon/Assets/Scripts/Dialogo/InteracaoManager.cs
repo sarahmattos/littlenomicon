@@ -148,8 +148,8 @@ public class InteracaoManager : MonoBehaviour
                 if(Batalha.Instance.batalhaOn){
                     Debug.Log("chamou de novo");
                     // se n tiver evento chama ataque de novo
-                     coroutine = Batalha.Instance.EsperarAtaqueComeça( Batalha.Instance.esperaTimeAtaque);
-                    StartCoroutine(coroutine);
+                    Batalha.Instance.chamarEvento();
+                     
                     //Batalha.Instance.chamarEvento();
                     //verificar variavel de final batalha
                 }

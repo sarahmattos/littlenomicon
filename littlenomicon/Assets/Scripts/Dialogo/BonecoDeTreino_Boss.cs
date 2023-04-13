@@ -7,6 +7,7 @@ public class BonecoDeTreino_Boss : BossModelo
     // Start is called before the first frame update
     public DialogueObject[] caseDialogue;
     public Atirar atira;
+    private IEnumerator coroutine;
     void Start()
     {
         vidaMaxima=10;
@@ -85,7 +86,8 @@ public class BonecoDeTreino_Boss : BossModelo
             break;
         default:
             Debug.Log("Nao tem evento");
-            Batalha.Instance.chamarAtaque();
+            coroutine = Batalha.Instance.EsperarAtaqueComeça( Batalha.Instance.esperaTimeAtaque);
+            StartCoroutine(coroutine);
             break;
         }
         if(tipoFala!=0 && tipoFala!=4 && tipoFala!=3){
