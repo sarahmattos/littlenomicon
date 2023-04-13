@@ -27,7 +27,10 @@ public class Dashing : MonoBehaviour
     {
         actionReference.action.started += context =>
         {
-            Dash();
+             if(PlayerController.Instance.dialogoAberto==false && Bau.Instance.aberto==false && InstanciarBotoes.Instance.abriuInventario==false && InstanciarBotoes.Instance.abriuJornal==false)
+            {
+                Dash();
+            }
         };
         rb = GetComponent<Rigidbody>();
         pc = GetComponent<PlayerController>();

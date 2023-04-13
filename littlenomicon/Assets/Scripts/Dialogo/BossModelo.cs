@@ -14,5 +14,6 @@ public abstract class BossModelo : MonoBehaviour
     // Update is called once per frame
     public abstract void Ataque(int tipoAtaque);
     public abstract void Fala(int tipoFala);
+    public abstract void checaMorte();
     
 }

@@ -51,6 +51,10 @@ public class BonecoDeTreino_Boss : BossModelo
             break;
         }
     }
+    public override void checaMorte()
+    {
+       if(acabouBatalha)Batalha.Instance.resetarBatalha();
+    }
     public override void Fala(int tipoFala)
     {
         switch (tipoFala)

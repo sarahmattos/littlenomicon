@@ -57,9 +57,9 @@ public class Batalha : MonoBehaviour
         //BossControllerAtual = bossAtual.GetComponentInChildren<BossController>();
         if(!bossAtual.acabouBatalha){
             float tempo = 5f;
-            int tipoAtaque = Random.Range(0,6);
+            int tipoAtaque = Random.Range(1,3);
             emAtaque=true;
-            bossAtual.Ataque(1);
+            bossAtual.Ataque(tipoAtaque);
             //recebeDano(3);
             coroutine = EsperarAtaqueTermina(tempo);
             StartCoroutine(coroutine);
